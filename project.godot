@@ -14,6 +14,10 @@ config/name="project_root"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GLOBALS="*uid://glw8qu4i4j47"
+
 [display]
 
 window/stretch/mode="canvas_items"
