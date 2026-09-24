@@ -2,5 +2,10 @@
 
 [ext_resource type="Script" uid="uid://ircm7q6ths2o" path="res://scripts/root.gd" id="1_734vk"]
 
+[sub_resource type="Curve2D" id="Curve2D_734vk"]
+
 [node name="Root" type="Node2D" unique_id=1285881573]
 script = ExtResource("1_734vk")
+
+[node name="RootPath" type="Path2D" parent="." unique_id=1215080075]
+curve = SubResource("Curve2D_734vk")
