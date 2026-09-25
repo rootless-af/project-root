@@ -1,14 +1,25 @@
 [gd_scene format=3 uid="uid://u08lp1xujarv"]
 
 [ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://scenes/viewport_camera.tscn" id="1_o5qli"]
-[ext_resource type="Texture2D" uid="uid://d1fcfm7kvon81" path="res://assets/textures/prototype_textures/DSCF7863.JPG" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://d1pn0awo34ut7" path="res://prefabs/root.tscn" id="2_0wfyh"]
 
 [node name="Main" type="Node2D" unique_id=51194236]
 
 [node name="ViewportCamera" parent="." unique_id=1012732459 instance=ExtResource("1_o5qli")]
-position = Vector2(-17, 16)
+position = Vector2(640, 360)
 max_zoom = 5.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=636301301]
-position = Vector2(1344, 1092)
-texture = ExtResource("2_0wfyh")
+[node name="Root" parent="." unique_id=1285881573 instance=ExtResource("2_0wfyh")]
+position = Vector2(128, 29)
+
+[node name="Root2" parent="." unique_id=1410567580 instance=ExtResource("2_0wfyh")]
+position = Vector2(353, 29)
+
+[node name="Root3" parent="." unique_id=1098809520 instance=ExtResource("2_0wfyh")]
+position = Vector2(562, 29)
+
+[node name="Root4" parent="." unique_id=835700558 instance=ExtResource("2_0wfyh")]
+position = Vector2(763, 29)
+
+[node name="Root5" parent="." unique_id=1075258405 instance=ExtResource("2_0wfyh")]
+position = Vector2(988, 29)

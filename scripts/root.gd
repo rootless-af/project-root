@@ -21,7 +21,7 @@ var root_direction := Vector2(0,1);
 
 # -- Genetics -- ( W I P )
 
-@export var max_depth: float = 1000.0;
+@export var max_depth: float = 10000.0;
 @export var rock_penetration: float = 0.0;
 @export var clay_penetration: float = 0.0;
 
