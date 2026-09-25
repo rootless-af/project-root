@@ -7,15 +7,15 @@ extends Node2D
 
 # -- Growth --
 
-@export var growth_speed: float = 40.0;
-@export var growth_interval: float = 0.15;
+@export var growth_speed: float = 400.0;
+@export var growth_interval: float = 0.005;
 
 var growth_timer: float = 0.0;
 
 # -- Root shape --
 
 @export var downward_bias: float = 1.0;
-@export var randomness: float = 150.0;
+@export var randomness: float = 15.0;
 
 var root_direction := Vector2(0,1);
 
@@ -32,6 +32,7 @@ var direction_stability: float = 0.85; # How strongly the root prefers to go dow
 
 var current_depth: float = 0.0;
 var is_growing: bool = false;
+var current_direction := Vector2(0,1);
 
 func _ready() -> void:
 	setup_root();
@@ -66,21 +67,11 @@ func grow() -> void:
 	
 	var last_point := curve.get_point_position(curve.point_count - 1);
 	
-	# Generate slightly randomized direction
-	
-	var random_x := randf_range(-randomness,randomness);
-	
-	var direction := Vector2(
-		random_x,
-		growth_speed
-	)
-	
-	# Mostly downwards
-	direction.y *= downward_bias;
+	var direction := calculate_growth_direction();
 	
 	# Calculate next position
 	
-	var movement := direction * growth_interval;
+	var movement := direction * growth_interval * growth_speed;
 	var next_point := last_point + movement;
 	
 	# Check maximimum deapth
@@ -94,6 +85,20 @@ func grow() -> void:
 	# Add point
 	curve.add_point(next_point)
 	root_line.add_point(next_point)
+
+func calculate_growth_direction() -> Vector2:
+	var random_angle := randf_range(
+		-0.15,
+		0.15
+	);
+	
+	current_direction = current_direction.rotated(random_angle)
+	
+	# Downwards bias
+	if current_direction.y < 0.5:
+		current_direction.y = 0.5;
+	
+	return current_direction.normalized();
 
 func stop_growth() -> void:
 	is_growing = false;
