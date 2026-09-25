@@ -8,10 +8,6 @@ limit_left = 0
 limit_top = 0
 position_smoothing_speed = 15.0
 script = ExtResource("1_coroc")
-max_zoom = 1.4
+default_speed = 200.0
 min_zoom = 0.6
-
-[node name="Timer" type="Timer" parent="." unique_id=143056353]
-one_shot = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+max_zoom = 1.4

@@ -2,14 +2,14 @@ extends Camera2D
 
 enum CameraMotion {LEFT, RIGHT, UP, DOWN, STATIC}
 
-@onready var timer: Timer = $Timer
-
 @export var default_speed:float = 100.0;
-@export var speed_multiple:float = 1.003;
+@export var sprint_speed: float = 400.0;
 @export var zoom_strength:float = 0.05;
-@export var max_zoom:float = 2.0;
-@export var min_zoom:float = 0.1;
+@export var min_zoom:float = 2.0;
+@export var max_zoom:float = 0.1;
+@export var is_sprint_toggle:bool = false
 
+var is_sprinting:bool = false;
 var speed:float;
 var can_alter_camera:bool = true;
 var is_moving:bool = false;
@@ -24,18 +24,30 @@ func _process(delta: float) -> void:
 		# -- Camera Movement --
 		if not speed:
 			return
+			
 		if Input.is_action_pressed("camera_left"):
 			move_camera(CameraMotion.LEFT, delta)
 		elif Input.is_action_pressed("camera_right"):
 			move_camera(CameraMotion.RIGHT, delta)
+			
 		if Input.is_action_pressed("camera_up"):
 			move_camera(CameraMotion.UP, delta)
 		elif Input.is_action_pressed("camera_down"):
 			move_camera(CameraMotion.DOWN, delta)
-		if !Input.is_anything_pressed():
-			if is_moving:
-				timer.start()
-				is_moving = false;
+		
+		if not is_sprint_toggle:
+			if Input.is_action_pressed("sprint"):
+				speed = sprint_speed;
+			elif Input.is_action_just_released("sprint"):
+				speed = default_speed;
+		else:
+			if Input.is_action_just_pressed("sprint"):
+				if is_sprinting:
+					speed = default_speed;
+					is_sprinting = false;
+				elif not is_sprinting:
+					speed = sprint_speed;
+					is_sprinting = true;
 		
 		
 		# -- Camera Zoom --
@@ -56,16 +68,9 @@ func _process(delta: float) -> void:
 			else:
 				zoom -= Vector2(zoom_strength, zoom_strength);
 
-func multiply_speed():
-	if speed * speed_multiple > 300:
-		speed = 300;
-	else:
-		speed *=speed_multiple
 
 
 func move_camera(motion:CameraMotion, delta: float):
-	if !timer.is_stopped():
-		timer.stop()
 	is_moving = true;
 	match motion:
 		CameraMotion.LEFT:
@@ -84,7 +89,3 @@ func move_camera(motion:CameraMotion, delta: float):
 		CameraMotion.DOWN:
 			#if not (position >= Vector2(0, limit_bottom)):
 			position += Vector2(0, speed * delta)
-	multiply_speed()
-
-func _on_timer_timeout() -> void:
-	speed = default_speed
