@@ -1,20 +1,3 @@
 [gd_scene format=3 uid="uid://u08lp1xujarv"]
 
-[ext_resource type="Texture2D" uid="uid://cbx6ebvdsf4gt" path="res://assets/textures/prototype_textures/rainbow.jpg" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://scenes/viewport_camera.tscn" id="1_o5qli"]
-
 [node name="Main" type="Node2D" unique_id=51194236]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=397028347]
-texture_filter = 1
-position = Vector2(528, 352)
-rotation = -2.7973437
-scale = Vector2(3.3876092, 0.4996454)
-texture = ExtResource("1_0wfyh")
-
-[node name="ViewportCamera" parent="." unique_id=1012732459 instance=ExtResource("1_o5qli")]
-default_speed = 100
-speed_multiple = 1.003
-zoom_strength = 0.05
-max_zoom = 1.4
-min_zoom = 0.6
