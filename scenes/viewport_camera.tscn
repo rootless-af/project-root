@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b61rtvhiw8ak5" path="res://scripts/viewport_camera.gd" id="1_coroc"]
 
 [node name="ViewportCamera" type="Camera2D" unique_id=1012732459]
-anchor_mode = 0
+limit_enabled = false
 limit_left = 0
 limit_top = 0
 position_smoothing_speed = 15.0
