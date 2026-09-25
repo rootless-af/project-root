@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BranchChanceUpgrade" format=3 uid="uid://mharjf5qjxw8"]
+
+[ext_resource type="Script" uid="uid://b6748lf55g217" path="res://scripts/upgrades/brach_chance_upgrade.gd" id="1_va71d"]
+
+[resource]
+script = ExtResource("1_va71d")
+split_chance_upgrade = 0.02
+metadata/_custom_type_script = "uid://b6748lf55g217"
