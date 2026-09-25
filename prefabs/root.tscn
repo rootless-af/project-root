@@ -5,13 +5,8 @@
 
 [node name="Root" type="Node2D" unique_id=1285881573]
 script = ExtResource("1_734vk")
+root_texture = ExtResource("3_jg706")
 
 [node name="RootLifetime" type="Timer" parent="." unique_id=714939160]
 
 [node name="RootPath" type="Path2D" parent="." unique_id=222678001]
-
-[node name="RootLine" type="Line2D" parent="RootPath" unique_id=784546695]
-texture_repeat = 2
-width = 100.0
-texture = ExtResource("3_jg706")
-texture_mode = 1
