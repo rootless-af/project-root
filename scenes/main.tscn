@@ -1,3 +1,8 @@
 [gd_scene format=3 uid="uid://u08lp1xujarv"]
 
+[ext_resource type="PackedScene" uid="uid://d1pn0awo34ut7" path="res://prefabs/root.tscn" id="1_o5qli"]
+
 [node name="Main" type="Node2D" unique_id=51194236]
+
+[node name="Root" parent="." unique_id=1285881573 instance=ExtResource("1_o5qli")]
+position = Vector2(612, 59)
