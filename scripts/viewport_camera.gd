@@ -8,6 +8,7 @@ enum CameraMotion {LEFT, RIGHT, UP, DOWN, STATIC}
 @export var min_zoom:float = 0.1;
 @export var max_zoom:float = 2;
 @export var is_sprint_toggle:bool = false
+@export var zoom_speed_multiplier: float = 1.0
 
 var is_sprinting:bool = false;
 var speed:float;
@@ -55,11 +56,13 @@ func _process(delta: float) -> void:
 			return
 		elif Input.is_action_just_pressed("camera_zoom_in"):
 			if zoom == Vector2(max_zoom, max_zoom):
+				speed = default_speed
 				return;
 			elif zoom + Vector2(zoom_strength, zoom_strength) > Vector2(max_zoom, max_zoom):
 				zoom = Vector2(max_zoom, max_zoom)
 			else:
 				zoom += Vector2(zoom_strength, zoom_strength);
+			
 		elif Input.is_action_just_pressed("camera_zoom_out"):
 			if zoom == Vector2(min_zoom, min_zoom):
 				return;
@@ -68,10 +71,10 @@ func _process(delta: float) -> void:
 			else:
 				zoom -= Vector2(zoom_strength, zoom_strength);
 
-
-
 func move_camera(motion:CameraMotion, delta: float):
 	is_moving = true;
+	var current_speed = speed * (1.0 / zoom.x) * zoom_speed_multiplier
+	print(current_speed)
 	match motion:
 		CameraMotion.LEFT:
 			"""
@@ -79,13 +82,13 @@ func move_camera(motion:CameraMotion, delta: float):
 					still move in a direction while the camera is not.
 			"""
 			#if not (position <= Vector2(limit_left,0)): 
-			position -= Vector2(speed * delta, 0)
+			position -= Vector2(current_speed * delta, 0)
 		CameraMotion.RIGHT:
 			#if not (position >= Vector2(limit_right, 0)):
-			position += Vector2(speed * delta, 0)
+			position += Vector2(current_speed * delta, 0)
 		CameraMotion.UP:
 			#if not (position <= Vector2(0, limit_top)): 
-			position -= Vector2(0, speed * delta)
+			position -= Vector2(0, current_speed * delta)
 		CameraMotion.DOWN:
 			#if not (position >= Vector2(0, limit_bottom)):
-			position += Vector2(0, speed * delta)
+			position += Vector2(0, current_speed * delta)
