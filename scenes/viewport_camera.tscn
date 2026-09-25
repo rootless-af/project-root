@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://3kk5tnl4ya4j"]
+
+[ext_resource type="Script" uid="uid://b61rtvhiw8ak5" path="res://scripts/viewport_camera.gd" id="1_coroc"]
+
+[node name="ViewportCamera" type="Camera2D" unique_id=1012732459]
+anchor_mode = 0
+limit_left = 0
+limit_top = 0
+position_smoothing_speed = 15.0
+script = ExtResource("1_coroc")
+max_zoom = 1.4
+min_zoom = 0.6
+
+[node name="Timer" type="Timer" parent="." unique_id=143056353]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
