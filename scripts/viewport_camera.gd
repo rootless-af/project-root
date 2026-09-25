@@ -1,20 +1,18 @@
 extends Camera2D
-enum CameraMotion {LEFT, RIGHT, UP, DOWN}
-
+enum CameraMotion {LEFT, RIGHT, UP, DOWN, STATIC}
 
 @onready var timer: Timer = $Timer
 
-
-@export var default_speed = 100;
+@export var default_speed:float = 100.0;
 @export var speed_multiple:float = 1.003;
 @export var zoom_strength:float = 0.05;
 @export var max_zoom:float = 2.0;
 @export var min_zoom:float = 0.1;
 
-var speed;
-var can_move = true;
-var is_moving = false;
-var motion_status = null;
+var speed:float;
+var can_move:bool = true;
+var is_moving:bool = false;
+var motion_status:CameraMotion = CameraMotion.STATIC;
 
 func _ready() -> void:
 	speed = default_speed;
@@ -23,7 +21,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if can_move:
 		
-		#CAMERA MOVEMENT
+		# -- Camera Movement --
 		if not speed:
 			return
 		elif Input.is_action_pressed("camera_left"):
@@ -40,7 +38,7 @@ func _process(delta: float) -> void:
 				is_moving = false;
 		
 		
-		#CAMERA ZOOM
+		# -- Camera Zoom --
 		if not zoom_strength:
 			return
 		elif Input.is_action_just_pressed("camera_zoom_in"):
@@ -65,13 +63,16 @@ func multiply_speed():
 		speed *=speed_multiple
 
 
-func move_camera(motion:CameraMotion, delta):
+func move_camera(motion:CameraMotion, delta: float):
 	if !timer.is_stopped():
 		timer.stop()
 	is_moving = true;
 	match motion:
 		CameraMotion.LEFT:
-			# if statment needed so that the position doesn't still go left while the camera is not.
+			"""
+				If statment is needed so that the position doesn't 
+					still go left while the camera is not.
+			"""
 			if not (position <= Vector2(limit_left,0)): 
 				position -= Vector2(speed * delta, 0)
 		CameraMotion.RIGHT:
