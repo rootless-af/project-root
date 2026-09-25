@@ -5,8 +5,8 @@ enum CameraMotion {LEFT, RIGHT, UP, DOWN, STATIC}
 @export var default_speed:float = 100.0;
 @export var sprint_speed: float = 400.0;
 @export var zoom_strength:float = 0.05;
-@export var min_zoom:float = 2.0;
-@export var max_zoom:float = 0.1;
+@export var min_zoom:float = 0.1;
+@export var max_zoom:float = 2;
 @export var is_sprint_toggle:bool = false
 
 var is_sprinting:bool = false;
