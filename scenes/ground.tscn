@@ -14,7 +14,7 @@ interpolation_mode = 2
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4pira"]
 noise_type = 3
 seed = 720343699
-frequency = 0.005
+frequency = 0.033
 offset = Vector3(821.43, -210.53, 0)
 fractal_octaves = 7
 metadata/_preview_in_3d_space_ = true
@@ -27,18 +27,19 @@ color_ramp = SubResource("Gradient_14lh4")
 script = ExtResource("1_mi8v4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1264636969]
-visible = false
 position = Vector2(636, 357.5)
 scale = Vector2(2.4960938, 1.3886719)
 texture = SubResource("NoiseTexture2D_b1wkp")
 script = ExtResource("2_lmksl")
 
 [node name="KviktoriumOre2D" type="Sprite2D" parent="." unique_id=223995600]
+visible = false
 texture = ExtResource("3_lmksl")
 script = ExtResource("4_1ywih")
 
 [node name="MineralSpawner" parent="." unique_id=1578543460 instance=ExtResource("5_ct7o8")]
 
 [node name="ViewportCamera" parent="." unique_id=1012732459 instance=ExtResource("6_ct7o8")]
+min_zoom = 0.01
 
 [node name="RootTestbed" parent="." unique_id=1355742889 instance=ExtResource("7_vjnaj")]

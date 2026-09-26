@@ -70,7 +70,13 @@ func find_resource_deposits() -> void:
 	
 	var candidates: Array[Dictionary] = []
 	
+		#Entivera, # Most common
+		#Barbanium, # Rare
+		#Rihtocide, # Very rare
+		#Kviktorium, # Rarest
+	
 	for x in range(map_width) :
+		
 		for y in range(low_surface_start, low_surface_end): 
 			var noise_volume_value := low_surface_materials_noise.get_noise_2d(x, y)
 			if noise_volume_value > low_resource_threshold :
@@ -78,6 +84,7 @@ func find_resource_deposits() -> void:
 				if !ore_deposit.is_empty() :
 					#low_surface_resource_positions.append(ore_deposit)
 					mineral_deposits.append(ore_deposit)
+					low_surface_resource_positions.append(ore_deposit)
 				
 		for y in range(mid_surface_start, mid_surface_end):
 			var noise_volume_value = mid_surface_materials_noise.get_noise_2d(x, y)
@@ -86,6 +93,7 @@ func find_resource_deposits() -> void:
 				if !ore_deposit.is_empty() :
 					#mid_surface_resource_positions.append(ore_deposit)
 					mineral_deposits.append(ore_deposit)
+					mid_surface_resource_positions.append(ore_deposit)
 				
 		for y in range(middeep_surface_start, middeep_surface_end):
 			var noise_volume_value = middeep_surface_materials_noise.get_noise_2d(x, y)
@@ -94,16 +102,15 @@ func find_resource_deposits() -> void:
 				if !ore_deposit.is_empty() :
 					#middeep_surface_resource_positions.append(ore_deposit)
 					mineral_deposits.append(ore_deposit)
+					middeep_surface_resource_positions.append(ore_deposit)
 				
 		for y in range(deep_surface_start, deep_surface_end):	
 			var noise_volume_value = deep_surface_materials_noise.get_noise_2d(x, y)
 			if noise_volume_value > deep_resource_threshold:
 				var ore_deposit = deposit_generator.couple_ore_vein(noise_volume_value, Vector2i(x, y))
-				if not ore_deposit.is_empty() :
-
+				if not ore_deposit.is_empty()   :
 					#deep_surface_resource_positions.append(ore_deposit)
 					mineral_deposits.append(ore_deposit)
-
 					deep_surface_resource_positions.append(ore_deposit)
 	if debug_messages:
 		var low_surface_pos_string := "";
@@ -136,7 +143,7 @@ func _ready() -> void:
 	mineral_deposits.shuffle()
 	
 	var amount_to_spawn = min(
-		20000,
+		35000,
 		mineral_deposits.size()
 	)
 	
@@ -146,9 +153,14 @@ func _ready() -> void:
 		if deposit.coordinates[1] > 251:
 			mineral_spawner.initialize_material(
 				deposit.coordinates,
-				deposit.richness
+				deposit.richness,
+				deposit.type
 			)
-	
+
+	print(low_surface_resource_positions.size())
+	print(mid_surface_resource_positions.size())
+	print(middeep_surface_resource_positions.size())
+	print(deep_surface_resource_positions.size())
 
 func calculate_layer_overlap(previous_layer_end) -> int:
 	var overlap := randi_range(50, 150)
