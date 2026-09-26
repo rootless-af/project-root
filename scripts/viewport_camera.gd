@@ -4,7 +4,7 @@ enum CameraMotion {LEFT, RIGHT, UP, DOWN, STATIC}
 
 @export var default_speed:float = 100.0;
 @export var sprint_speed: float = 400.0;
-@export var zoom_strength:float = 0.05;
+@export var zoom_strength:float = 0.01;
 @export var min_zoom:float = 2.0;
 @export var max_zoom:float = 0.1;
 @export var is_sprint_toggle:bool = false
@@ -53,14 +53,14 @@ func _process(delta: float) -> void:
 		# -- Camera Zoom --
 		if not zoom_strength:
 			return
-		elif Input.is_action_just_pressed("camera_zoom_in"):
+		elif Input.is_action_pressed("camera_zoom_in"):
 			if zoom == Vector2(max_zoom, max_zoom):
 				return;
 			elif zoom + Vector2(zoom_strength, zoom_strength) > Vector2(max_zoom, max_zoom):
 				zoom = Vector2(max_zoom, max_zoom)
 			else:
 				zoom += Vector2(zoom_strength, zoom_strength);
-		elif Input.is_action_just_pressed("camera_zoom_out"):
+		elif Input.is_action_pressed("camera_zoom_out"):
 			if zoom == Vector2(min_zoom, min_zoom):
 				return;
 			elif zoom - Vector2(zoom_strength, zoom_strength) < Vector2(min_zoom, min_zoom):
