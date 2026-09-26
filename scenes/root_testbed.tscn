@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dliby6xgc5o06"]
 
+[ext_resource type="Texture2D" uid="uid://bk7cw2giy0f8h" path="res://assets/textures/prototype_textures/sky-background-sky-and-clouds-background-1313033389.jpg" id="1_n0icb"]
 [ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://prefabs/viewport_camera.tscn" id="1_u0w26"]
 [ext_resource type="PackedScene" uid="uid://d1pn0awo34ut7" path="res://prefabs/root.tscn" id="2_4bjpm"]
 [ext_resource type="PackedScene" uid="uid://bweklfylimun5" path="res://prefabs/bucket.tscn" id="4_n0icb"]
@@ -25,6 +26,11 @@ color_ramp = SubResource("Gradient_4bjpm")
 size = Vector2(34739, 39.5)
 
 [node name="RootTestbed" type="Node2D" unique_id=1355742889]
+
+[node name="SkyBackgroundSkyAndCloudsBackground1313033389" type="Sprite2D" parent="." unique_id=1471652262]
+position = Vector2(1467.0005, -1854.0001)
+scale = Vector2(24.391113, 14.884165)
+texture = ExtResource("1_n0icb")
 
 [node name="ViewportCamera" parent="." unique_id=1012732459 instance=ExtResource("1_u0w26")]
 position = Vector2(640, 360)
