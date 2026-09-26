@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4bx3uwj2wh26"
-path="res://.godot/imported/seed_store_panel_proto.png-f9f3bc8567cccdc191c961180d365fbd.ctex"
+uid="uid://b0847gdofgre5"
+path="res://.godot/imported/bg_tilemap_quarter.png-167488fc597445a76f7823dfdc83ab96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/prototype_textures/seed_store_panel_proto.png"
-dest_files=["res://.godot/imported/seed_store_panel_proto.png-f9f3bc8567cccdc191c961180d365fbd.ctex"]
+source_file="res://assets/textures/bg_tilemap/bg_tilemap_quarter.png"
+dest_files=["res://.godot/imported/bg_tilemap_quarter.png-167488fc597445a76f7823dfdc83ab96.ctex"]
 
 [params]
 
