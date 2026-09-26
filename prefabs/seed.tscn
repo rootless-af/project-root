@@ -1,18 +1,20 @@
 [gd_scene format=3 uid="uid://clu7cstpsyyh4"]
 
 [ext_resource type="Script" uid="uid://dq4cib4dqw3kg" path="res://scripts/seed.gd" id="1_ujo7y"]
-[ext_resource type="PackedScene" uid="uid://d1pn0awo34ut7" path="res://prefabs/root.tscn" id="2_dwh6c"]
+[ext_resource type="PackedScene" uid="uid://cnt8r2e1750or" path="res://prefabs/roots/normal_root.tscn" id="3_r5plm"]
 [ext_resource type="Texture2D" uid="uid://bokjk045cjg4w" path="res://assets/textures/seeds/normal_seed.png" id="3_rlkhx"]
 [ext_resource type="Texture2D" uid="uid://ekpht5bjd37h" path="res://assets/textures/seeds/Water_Seed.png" id="4_dqe5w"]
+[ext_resource type="PackedScene" uid="uid://bakaab88aj1q4" path="res://prefabs/roots/water_root.tscn" id="5_rlkhx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t4pjw"]
 radius = 42.047592
 
 [node name="Seed" type="Node2D" unique_id=460068766]
 script = ExtResource("1_ujo7y")
-root_scene = ExtResource("2_dwh6c")
 seed_basic_texture = ExtResource("3_rlkhx")
+root_basic_scene = ExtResource("3_r5plm")
 seed_water_texture = ExtResource("4_dqe5w")
+root_water_scene = ExtResource("5_rlkhx")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1505769138]
 

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bakaab88aj1q4"]
+
+[ext_resource type="PackedScene" uid="uid://d1pn0awo34ut7" path="res://prefabs/root.tscn" id="1_4fumj"]
+[ext_resource type="Texture2D" uid="uid://c3j0236bv82mo" path="res://assets/textures/roots/Water_Root_ROTATED.png" id="2_b37jq"]
+
+[node name="Root" unique_id=1285881573 instance=ExtResource("1_4fumj")]
+segment_length = 32.0
+root_texture = ExtResource("2_b37jq")
+root_width = 150.0
+randomness = 0.5

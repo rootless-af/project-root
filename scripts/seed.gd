@@ -35,13 +35,21 @@ const GROUND_MASK := 2; # Collision layer
 @export var ground_ray_length: float = 20.0;
 
 # -- Resources --
-@export_group("Resources")
-@export var root_scene: PackedScene;
+var root_scene: PackedScene;
+var root_offset := Vector2(0,-115);
 
-@export_group("Seed Textures")
+
+@export_group("Seed References")
+# NORMAL 
 @export var seed_basic_texture: Texture2D;
-@export var seed_water_texture: Texture2D;	
+@export var root_basic_scene: PackedScene;
+# WATER
+@export var seed_water_texture: Texture2D;
+@export var root_water_scene: PackedScene;
+# FIRE
 @export var seed_fire_texture: Texture2D;
+@export var root_fire_scene : PackedScene;
+
 
 func _ready() -> void:
 	setup_seed();
@@ -50,12 +58,17 @@ func setup_seed() -> void:
 	match seed_type:
 		SeedType.NORMAL:
 			seed_sprite.texture = seed_basic_texture;
+			root_scene = root_basic_scene;
+			root_offset = Vector2(0, -115);
 		SeedType.WATER:
 			seed_sprite.texture = seed_water_texture;
+			root_scene = root_water_scene;
+			root_offset = Vector2(0,-90);
 		SeedType.FIREPLANT:
 			pass
 		_:
 			seed_sprite.texture = seed_basic_texture;
+			root_scene = root_basic_scene;
 
 func _on_seed_input_event(
 	_viewport: Node,
@@ -177,6 +190,6 @@ func spawn_root() -> void:
 	# Root and seed should be siblings. (Sweet home alabama)
 	get_parent().add_child(root);
 	
-	root.global_position = global_position - Vector2(0,-115); # Magic fucking number
+	root.global_position = global_position - root_offset; # Magic fucking number
 	
 	queue_free();

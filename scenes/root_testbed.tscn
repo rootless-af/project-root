@@ -2,13 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://prefabs/viewport_camera.tscn" id="1_u0w26"]
 [ext_resource type="PackedScene" uid="uid://d1pn0awo34ut7" path="res://prefabs/root.tscn" id="2_4bjpm"]
-[ext_resource type="Texture2D" uid="uid://ckhq0drxg1cfm" path="res://assets/textures/roots/Normal_Root_ROTATED.png" id="3_dlyo3"]
 [ext_resource type="Texture2D" uid="uid://c3j0236bv82mo" path="res://assets/textures/roots/Water_Root_ROTATED.png" id="4_ykmvj"]
 [ext_resource type="PackedScene" uid="uid://clu7cstpsyyh4" path="res://prefabs/seed.tscn" id="5_n0icb"]
 
 [sub_resource type="Gradient" id="Gradient_4bjpm"]
-offsets = PackedFloat32Array(0.13663663, 0.7822823)
-colors = PackedColorArray(0.10790006, 0.056860894, 1.8049032e-08, 1, 0.12156863, 0.09019608, 0.003921569, 1)
+offsets = PackedFloat32Array(0.32985553, 0.63322634)
+colors = PackedColorArray(0.10790006, 0.056860894, 1.8049032e-08, 1, 0.14433476, 0.108914785, 0.0052387915, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_14upv"]
 noise_type = 3
@@ -51,17 +50,18 @@ growth_speed = 800.0
 root_texture = ExtResource("4_ykmvj")
 root_width = 150.0
 randomness = 0.05
-max_depth = 10000.0
 
 [node name="normal_root" parent="." unique_id=1285881573 instance=ExtResource("2_4bjpm")]
 visible = false
 position = Vector2(429, 247)
 growth_speed = 800.0
 segment_length = 32.0
-root_texture = ExtResource("3_dlyo3")
 root_width = 150.0
 randomness = 0.25
-max_depth = 10000.0
 
 [node name="Seed" parent="." unique_id=460068766 instance=ExtResource("5_n0icb")]
 position = Vector2(924, 72)
+
+[node name="Seed2" parent="." unique_id=1522986524 instance=ExtResource("5_n0icb")]
+position = Vector2(1082, 72)
+seed_type = 1
