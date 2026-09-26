@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://c16m0j1keu5ws"]
 
 [ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://prefabs/viewport_camera.tscn" id="1_jgn6e"]
+[ext_resource type="PackedScene" uid="uid://d3ubhvxo26uf0" path="res://prefabs/inventory.tscn" id="3_e477q"]
 [ext_resource type="PackedScene" uid="uid://n5dxx2e4o678" path="res://prefabs/skill_tree.tscn" id="3_jgn6e"]
+[ext_resource type="PackedScene" uid="uid://c6nu82r4fgm0v" path="res://prefabs/custom_button.tscn" id="4_e477q"]
 
 [node name="RootUpgradeTest" type="Node2D" unique_id=620800501]
 
@@ -13,3 +15,11 @@ zoom_speed_multiplier = 0.6
 
 [node name="SkillTree" parent="." unique_id=1913636242 instance=ExtResource("3_jgn6e")]
 position = Vector2(0, 36)
+
+[node name="Inventory" parent="." unique_id=1872189339 instance=ExtResource("3_e477q")]
+
+[node name="CustomButton" parent="." unique_id=1944092315 instance=ExtResource("4_e477q")]
+position = Vector2(535, 339)
+
+[node name="CustomButton2" parent="." unique_id=733008112 instance=ExtResource("4_e477q")]
+position = Vector2(632, 339)

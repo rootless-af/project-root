@@ -15,6 +15,9 @@ extends Node2D
 @onready var growth_depth_2: CheckButton = $GrowthDepth2
 @onready var growth_depth_3: CheckButton = $GrowthDepth3
 
+@onready var inventory: Node2D = $"../Inventory"
+
+
 const ROOT = preload("uid://d1pn0awo34ut7")
 var root_instance = null;
 var root = null;

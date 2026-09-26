@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bmd82ecnlhjth"]
+
+[ext_resource type="Script" uid="uid://gq60y3o7lx2p" path="res://scripts/tool_tip.gd" id="1_rxga0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxga0"]
+bg_color = Color(0.21176471, 0.21960784, 0.20784314, 0.6745098)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[node name="ToolTip" type="CanvasLayer" unique_id=767050846]
+script = ExtResource("1_rxga0")
+
+[node name="Label" type="Label" parent="." unique_id=1201434607]
+custom_maximum_size = Vector2(200, -1)
+offset_right = 40.0
+offset_bottom = 23.0
+mouse_default_cursor_shape = 4
+theme_override_font_sizes/font_size = 11
+theme_override_styles/normal = SubResource("StyleBoxFlat_rxga0")
+text = "Enhance Size"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

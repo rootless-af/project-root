@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c6nu82r4fgm0v"]
+
+[ext_resource type="Script" uid="uid://esjau0uur1tl" path="res://scripts/custom_button.gd" id="1_hkt20"]
+[ext_resource type="Texture2D" uid="uid://v1g2gio2dlfr" path="res://icon.svg" id="2_opfj4"]
+[ext_resource type="PackedScene" uid="uid://bmd82ecnlhjth" path="res://prefabs/tool_tip.tscn" id="3_opfj4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yflkj"]
+
+[node name="CustomButton" type="Node2D" unique_id=1944092315]
+script = ExtResource("1_hkt20")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=559426557]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_opfj4")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=313880139]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=294345557]
+scale = Vector2(3.2041163, 3.2120297)
+shape = SubResource("RectangleShape2D_yflkj")
+
+[node name="ToolTip" parent="." unique_id=767050846 instance=ExtResource("3_opfj4")]
+text = "Hello brother, how are you doing? What's wrong with you today."
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
