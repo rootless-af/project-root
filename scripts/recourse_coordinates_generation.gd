@@ -13,73 +13,79 @@ var low_surface_materials_noise := FastNoiseLite.new();
 var low_surface_materials_noise_frequency: float = 0.0153 # We need a mechanism for generating the seeds
 var low_surface_start: int = 0
 var low_surface_end: int = 750
-var low_resource_threshold: float = 0.46
+var low_resource_threshold: float = GLOBALS.low_ground_resource_threshold
+#var low_resource_threshold: float = 0.49
 
 #------------
 # Mid surface resource
 #-----------
 var mid_surface_materials_noise := FastNoiseLite.new();
 var mid_surface_materials_noise_frequency: float = 0.0312
-var mid_surface_start: int = low_surface_end
+var mid_surface_start: int = calculate_layer_overlap(low_surface_end)
 var mid_surface_end: int =  mid_surface_start * 2
-var mid_resource_threshold: float = 0.36
+var mid_resource_threshold: float = GLOBALS.mid_ground_resource_threshold
+#var mid_resource_threshold: float = 0.36
 
 #------------
 # Mid-deep surface resource
 #-----------
 var middeep_surface_materials_noise := FastNoiseLite.new();
 var middeep_surface_materials_noise_frequency: float = 0.0412
-var middeep_surface_start: int = mid_surface_end
+var middeep_surface_start: int = calculate_layer_overlap(mid_surface_end)
 var middeep_surface_end: int =  middeep_surface_start * 2
-var middeep_resource_threshold: float = 0.29
+var middeep_resource_threshold: float = GLOBALS.middeep_ground_resource_threshold
+#var middeep_resource_threshold: float = 0.29
 
 #------------
 # Deep surface resource
 #-----------
 var deep_surface_materials_noise := FastNoiseLite.new();
 var deep_surface_materials_noise_frequency: float = 0.0672
-var deep_surface_start: int = mid_surface_end
+var deep_surface_start: int = calculate_layer_overlap(middeep_surface_end)
 var deep_surface_end: int = viewport_y
-var deep_resource_threshold: float = 0.21
+var deep_resource_threshold: float = GLOBALS.deep_ground_resource_threshold
+#var deep_resource_threshold: float = 0.21
 
 var terrain_noice := FastNoiseLite.new();
 
-@export var low_surface_resource_positions: Array[Vector2i]
-@export var mid_surface_resource_positions: Array[Vector2i]
-@export var middeep_surface_resource_positions: Array[Vector2i]
-@export var deep_surface_resource_positions: Array[Vector2i]
-
-@export var test_mineral:PackedScene;
+@export var low_surface_resource_positions: Array[Dictionary]
+@export var mid_surface_resource_positions: Array[Dictionary]
+@export var middeep_surface_resource_positions: Array[Dictionary]
+@export var deep_surface_resource_positions: Array[Dictionary]
 
 func find_resource_deposits() -> void:
-	
+	var deposit_generator := Deposit_Generator.new()
 	var sample_coordinates_x = map_width
 	var sample_coordinates_y = viewport_y
 	
 	for x in range(map_width) :
-		for y in range(low_surface_start, low_surface_end):
-			var value := low_surface_materials_noise.get_noise_2d(x, y)
-			if value > low_resource_threshold :
-				low_surface_resource_positions.append(Vector2i(x, y))
+		for y in range(low_surface_start, low_surface_end): 
+			var noise_volume_value := low_surface_materials_noise.get_noise_2d(x, y)
+			if noise_volume_value > low_resource_threshold :
+				var ore_deposit = deposit_generator.couple_ore_vein(noise_volume_value, Vector2i(x, y))
+				if !ore_deposit.is_empty() :
+					low_surface_resource_positions.append(ore_deposit)
 				
 		for y in range(mid_surface_start, mid_surface_end):
-			var value = mid_surface_materials_noise.get_noise_2d(x, y)
-			if value > mid_resource_threshold :
-				mid_surface_resource_positions.append(Vector2i(x, y))
+			var noise_volume_value = mid_surface_materials_noise.get_noise_2d(x, y)
+			if noise_volume_value > mid_resource_threshold :
+				var ore_deposit = deposit_generator.couple_ore_vein(noise_volume_value, Vector2i(x, y))
+				if !ore_deposit.is_empty() :
+					mid_surface_resource_positions.append(ore_deposit)
 				
 		for y in range(middeep_surface_start, middeep_surface_end):
-			var value = middeep_surface_materials_noise.get_noise_2d(x, y)
-			if value > middeep_resource_threshold:
-				middeep_surface_resource_positions.append(Vector2i(x,y))
+			var noise_volume_value = middeep_surface_materials_noise.get_noise_2d(x, y)
+			if noise_volume_value > middeep_resource_threshold:
+				var ore_deposit = deposit_generator.couple_ore_vein(noise_volume_value, Vector2i(x, y))
+				if !ore_deposit.is_empty() :
+					middeep_surface_resource_positions.append(ore_deposit)
 				
 		for y in range(deep_surface_start, deep_surface_end):	
-			var value = deep_surface_materials_noise.get_noise_2d(x, y)
-			if value > mid_resource_threshold:
-				deep_surface_resource_positions.append(Vector2i(x, y))
-				
-	print("mid deep values")
-	print(middeep_surface_resource_positions)
-
+			var noise_volume_value = deep_surface_materials_noise.get_noise_2d(x, y)
+			if noise_volume_value > deep_resource_threshold:
+				var ore_deposit = deposit_generator.couple_ore_vein(noise_volume_value, Vector2i(x, y))
+				if not ore_deposit.is_empty() :
+					deep_surface_resource_positions.append(ore_deposit)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -97,15 +103,20 @@ func _ready() -> void:
 	mid_surface_materials_noise.noise_type = FastNoiseLite.TYPE_PERLIN
 	
 	middeep_surface_materials_noise.frequency = middeep_surface_materials_noise_frequency
-	middeep_surface_materials_noise.seed = noise_seed + 200
+	middeep_surface_materials_noise.seed = noise_seed + 270
 	middeep_surface_materials_noise.noise_type = FastNoiseLite.TYPE_PERLIN
 	
 	deep_surface_materials_noise.frequency = deep_surface_materials_noise_frequency
-	deep_surface_materials_noise.seed = noise_seed + 320
+	deep_surface_materials_noise.seed = noise_seed + 360
 	deep_surface_materials_noise.noise_type = FastNoiseLite.TYPE_PERLIN
 	await find_resource_deposits()
 	
 
+func calculate_layer_overlap(previous_layer_end) -> int:
+	var diviosor = randi_range(2, 6)
+	
+	return previous_layer_end - (previous_layer_end - diviosor)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
