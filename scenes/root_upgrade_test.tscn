@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c16m0j1keu5ws"]
 
 [ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://prefabs/viewport_camera.tscn" id="1_jgn6e"]
+[ext_resource type="PackedScene" uid="uid://d3ubhvxo26uf0" path="res://prefabs/inventory.tscn" id="3_e477q"]
 [ext_resource type="PackedScene" uid="uid://n5dxx2e4o678" path="res://prefabs/skill_tree.tscn" id="3_jgn6e"]
 [ext_resource type="Script" uid="uid://desrbqtmexp6u" path="res://scripts/funds_test_button.gd" id="4_e477q"]
-[ext_resource type="PackedScene" uid="uid://d3ubhvxo26uf0" path="res://prefabs/inventory.tscn" id="3_e477q"]
 
 [node name="RootUpgradeTest" type="Node2D" unique_id=620800501]
 
@@ -12,9 +12,6 @@ position = Vector2(640, 360)
 max_zoom = 5.0
 is_sprint_toggle = true
 zoom_speed_multiplier = 0.6
-
-[node name="SkillTree" parent="." unique_id=1913636242 instance=ExtResource("3_jgn6e")]
-position = Vector2(0, 36)
 
 [node name="Inventory" parent="." unique_id=1872189339 instance=ExtResource("3_e477q")]
 
@@ -33,6 +30,8 @@ offset_right = 1267.0
 offset_bottom = 412.0
 horizontal_alignment = 2
 
-[connection signal="upgrade_purchased" from="SkillTree" to="Inventory" method="_on_skill_tree_upgrade_purchased"]
+[node name="SkillTree" parent="." unique_id=1946057991 instance=ExtResource("3_jgn6e")]
+
 [connection signal="mineral_amount_changed" from="Inventory" to="SkillTree" method="_on_inventory_mineral_amount_changed"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="upgrade_purchased" from="SkillTree" to="Inventory" method="_on_skill_tree_upgrade_purchased"]

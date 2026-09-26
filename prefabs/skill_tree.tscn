@@ -26,16 +26,14 @@ barbanium = 100
 rihtocide = 100
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
-[node name="SkillTree" type="CanvasLayer" unique_id=1913636242]
+[node name="SkillTree" type="Node2D" unique_id=1946057991]
 script = ExtResource("1_wugqu")
 
 [node name="GrowthUpgrade" parent="." unique_id=1944092315 instance=ExtResource("2_y3bw0")]
 position = Vector2(637, 321)
-disabled = false
 upgrade_level = 3
 tooltip_text = "Plant Seed"
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_y3bw0"), SubResource("Resource_wc8jx"), SubResource("Resource_s2ugs")])
-unlocked = false
 
 [node name="TestStartButton" type="Button" parent="." unique_id=771101340]
 offset_left = 1155.0
@@ -50,5 +48,8 @@ offset_top = 59.0
 offset_right = 1262.0
 offset_bottom = 90.0
 text = "clear root"
+
+[connection signal="mineral_amount_changed" from="." to="GrowthUpgrade" method="_on_skill_tree_mineral_amount_changed"]
+[connection signal="upgrade_purchased" from="GrowthUpgrade" to="." method="_on_growth_upgrade_upgrade_purchased"]
 [connection signal="pressed" from="TestStartButton" to="." method="_on_test_start_button_pressed"]
 [connection signal="pressed" from="TestStopButton" to="." method="_on_test_stop_button_pressed"]
