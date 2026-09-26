@@ -12,7 +12,6 @@ config_version=5
 
 config/name="project_root"
 run/main_scene="uid://u08lp1xujarv"
-
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +19,7 @@ config/icon="res://icon.svg"
 
 GLOBALS="*uid://glw8qu4i4j47"
 MusicManager="*uid://drr54ke5ijsig"
+AudioManager="*uid://bcpa32onbpr6h"
 
 [display]
 
