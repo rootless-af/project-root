@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WidthUpgrade" format=3 uid="uid://oyi56l1p0qru"]
+
+[ext_resource type="Script" uid="uid://dkn2utirwsf51" path="res://scripts/upgrades/width_upgrade.gd" id="1_3a0j8"]
+
+[resource]
+script = ExtResource("1_3a0j8")
+root_width_upgrade = 100.0
+metadata/_custom_type_script = "uid://dkn2utirwsf51"

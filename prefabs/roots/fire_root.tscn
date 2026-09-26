@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bdigkgowd7thy"]
+
+[ext_resource type="PackedScene" uid="uid://d1pn0awo34ut7" path="res://prefabs/root.tscn" id="1_swhvt"]
+
+[node name="Root" unique_id=1285881573 instance=ExtResource("1_swhvt")]
+modulate = Color(0.8912906, 4.1873755e-06, 8.663535e-07, 1)
+growth_speed = 1200.0
+max_active_tips = 25
+randomness = 0.25
+root_type = 2
+split_chance = 0.02
