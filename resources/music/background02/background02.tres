@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="MusicTrack" format=3 uid="uid://bolbdg5v1w1q8"]
+
+[ext_resource type="Script" uid="uid://dvj10qorbdyls" path="res://scripts/music/music_track.gd" id="1_ahl0c"]
+[ext_resource type="Script" uid="uid://cjc8kxdys65qm" path="res://scripts/music/music_stem.gd" id="2_wqk75"]
+[ext_resource type="AudioStream" uid="uid://cub4lumq0rlgv" path="res://assets/sound/music/background02/background02_base_120npm.mp3" id="3_q8sni"]
+[ext_resource type="AudioStream" uid="uid://dhtep642ip4km" path="res://assets/sound/music/background02/background02_underground_120bpm.mp3" id="4_vly83"]
+[ext_resource type="AudioStream" uid="uid://b31odxnic4n8w" path="res://assets/sound/music/background02/background02_overground_120npm.mp3" id="5_8vcgl"]
+[ext_resource type="AudioStream" uid="uid://c5xk3gcliksr7" path="res://assets/sound/music/background02/background02_metal_120bpm.mp3" id="6_y1eev"]
+[ext_resource type="AudioStream" uid="uid://b2b3lfetqutuv" path="res://assets/sound/music/background02/background02_basicroot_120bpm.mp3" id="7_k6lmv"]
+
+[sub_resource type="Resource" id="Resource_3tdi2"]
+script = ExtResource("2_wqk75")
+id = &"base"
+audio = ExtResource("3_q8sni")
+volume_db = -8.0
+metadata/_custom_type_script = "uid://cjc8kxdys65qm"
+
+[sub_resource type="Resource" id="Resource_k4wxg"]
+script = ExtResource("2_wqk75")
+id = &"underground"
+audio = ExtResource("4_vly83")
+volume_db = -5.0
+metadata/_custom_type_script = "uid://cjc8kxdys65qm"
+
+[sub_resource type="Resource" id="Resource_lr3xl"]
+script = ExtResource("2_wqk75")
+id = &"overground"
+audio = ExtResource("5_8vcgl")
+volume_db = -10.0
+metadata/_custom_type_script = "uid://cjc8kxdys65qm"
+
+[sub_resource type="Resource" id="Resource_q8sni"]
+script = ExtResource("2_wqk75")
+id = &"metal_root"
+audio = ExtResource("6_y1eev")
+metadata/_custom_type_script = "uid://cjc8kxdys65qm"
+
+[sub_resource type="Resource" id="Resource_vly83"]
+script = ExtResource("2_wqk75")
+id = &"normal_root"
+audio = ExtResource("7_k6lmv")
+volume_db = -8.0
+metadata/_custom_type_script = "uid://cjc8kxdys65qm"
+
+[resource]
+script = ExtResource("1_ahl0c")
+id = &"background02"
+stems = Array[ExtResource("2_wqk75")]([SubResource("Resource_3tdi2"), SubResource("Resource_k4wxg"), SubResource("Resource_lr3xl"), SubResource("Resource_q8sni"), SubResource("Resource_vly83")])
+metadata/_custom_type_script = "uid://dvj10qorbdyls"

@@ -4,7 +4,8 @@ enum RootType {
 	NORMAL,
 	WATER,
 	FIRE,
-	METAL
+	METAL,
+	ALIEN
 }
 
 # -- Refs --
@@ -99,6 +100,8 @@ func setup_root() -> void:
 			MusicManager.register_root("fire");
 		RootType.METAL:
 			MusicManager.register_root("metal");
+		RootType.ALIEN:
+			MusicManager.register_root("alien");
 
 func create_root_line() -> Line2D:
 	var line := Line2D.new();
@@ -264,6 +267,8 @@ func stop_growth() -> void:
 			MusicManager.unregister_root("fire");
 		RootType.METAL:
 			MusicManager.unregister_root("metal");
+		RootType.ALIEN:
+			MusicManager.unregister_root("alien");
 
 func _on_lifetime_finished() -> void:
 	stop_growth();

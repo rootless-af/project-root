@@ -12,7 +12,8 @@ enum SeedType {
 	NORMAL,
 	WATER,
 	FIRE,
-	METAL
+	METAL,
+	ALIEN
 }
 @export var seed_type: SeedType = SeedType.NORMAL;
 
@@ -39,21 +40,30 @@ const GROUND_MASK := 2; # Collision layer
 # -- Resources --
 var root_scene: PackedScene;
 var root_offset := Vector2(0,-115);
+var seed_plant_sfx: AudioShot;
 
 
 @export_group("Seed References")
 # NORMAL 
 @export var seed_basic_texture: Texture2D;
 @export var root_basic_scene: PackedScene;
+@export var seed_basic_plant_sfx: AudioShot;
 # WATER
 @export var seed_water_texture: Texture2D;
 @export var root_water_scene: PackedScene;
+@export var seed_water_plant_sfx: AudioShot;
 # FIRE
 @export var seed_fire_texture: Texture2D;
 @export var root_fire_scene : PackedScene;
+@export var seed_fire_plant_sfx: AudioShot;
 # METAL
 @export var seed_metal_texture: Texture2D;
 @export var root_metal_scene : PackedScene;
+@export var seed_metal_plant_sfx: AudioShot;
+# ALIEN
+@export var seed_alien_texture: Texture2D;
+@export var root_alien_scene : PackedScene;
+@export var seed_alien_plant_sfx: AudioShot;
 
 func _ready() -> void:
 	setup_seed();
@@ -64,18 +74,27 @@ func setup_seed() -> void:
 			seed_sprite.texture = seed_basic_texture;
 			root_scene = root_basic_scene;
 			root_offset = Vector2(0, -115);
+			seed_plant_sfx = seed_basic_plant_sfx;
 		SeedType.WATER:
 			seed_sprite.texture = seed_water_texture;
 			root_scene = root_water_scene;
 			root_offset = Vector2(0,-90);
+			seed_plant_sfx = seed_water_plant_sfx;
 		SeedType.FIRE:
 			seed_sprite.texture = seed_fire_texture;
 			root_scene = root_fire_scene;
 			root_offset = Vector2(0,-90);
+			seed_plant_sfx = seed_fire_plant_sfx;
 		SeedType.METAL:
 			seed_sprite.texture = seed_metal_texture;
 			root_scene = root_metal_scene;
 			root_offset = Vector2(0,-90);
+			seed_plant_sfx = seed_metal_plant_sfx;
+		SeedType.ALIEN:
+			seed_sprite.texture = seed_alien_texture;
+			root_scene = root_alien_scene;
+			root_offset = Vector2(0,-90);
+			seed_plant_sfx = seed_alien_plant_sfx;
 		_:
 			seed_sprite.texture = seed_basic_texture;
 			root_scene = root_basic_scene;
@@ -188,6 +207,7 @@ func plant(ground_position: Vector2) -> void:
 	# Put the seed in da ground contact point
 	global_position = ground_position - Vector2.DOWN * seed_bottom_offset;
 	
+	AudioManager.play(seed_plant_sfx);
 	spawn_root();
 
 func spawn_root() -> void:
