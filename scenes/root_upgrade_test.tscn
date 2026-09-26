@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://prefabs/viewport_camera.tscn" id="1_jgn6e"]
 [ext_resource type="PackedScene" uid="uid://d3ubhvxo26uf0" path="res://prefabs/inventory.tscn" id="3_e477q"]
 [ext_resource type="PackedScene" uid="uid://n5dxx2e4o678" path="res://prefabs/skill_tree.tscn" id="3_jgn6e"]
-[ext_resource type="PackedScene" uid="uid://c6nu82r4fgm0v" path="res://prefabs/custom_button.tscn" id="4_e477q"]
+[ext_resource type="Script" uid="uid://desrbqtmexp6u" path="res://scripts/funds_test_button.gd" id="4_e477q"]
 
 [node name="RootUpgradeTest" type="Node2D" unique_id=620800501]
 
@@ -18,8 +18,21 @@ position = Vector2(0, 36)
 
 [node name="Inventory" parent="." unique_id=1872189339 instance=ExtResource("3_e477q")]
 
-[node name="CustomButton" parent="." unique_id=1944092315 instance=ExtResource("4_e477q")]
-position = Vector2(535, 339)
+[node name="Button" type="Button" parent="." unique_id=656284684]
+offset_left = 1168.0
+offset_top = 144.0
+offset_right = 1258.0
+offset_bottom = 175.0
+text = "Add Funds"
+script = ExtResource("4_e477q")
 
-[node name="CustomButton2" parent="." unique_id=733008112 instance=ExtResource("4_e477q")]
-position = Vector2(632, 339)
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1795547942]
+offset_left = 991.0
+offset_top = 182.0
+offset_right = 1267.0
+offset_bottom = 412.0
+horizontal_alignment = 2
+
+[connection signal="upgrade_purchased" from="SkillTree" to="Inventory" method="_on_skill_tree_upgrade_purchased"]
+[connection signal="mineral_amount_changed" from="Inventory" to="SkillTree" method="_on_inventory_mineral_amount_changed"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
