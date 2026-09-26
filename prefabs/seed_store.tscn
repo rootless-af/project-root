@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://do2p2ws4kn635"]
+
+[ext_resource type="Texture2D" uid="uid://b4bx3uwj2wh26" path="res://assets/textures/prototype_textures/seed_store_panel_proto.png" id="1_wias5"]
+[ext_resource type="PackedScene" uid="uid://bweklfylimun5" path="res://prefabs/bucket.tscn" id="2_6uu7c"]
+
+[node name="SeedStore" type="Node2D" unique_id=419499197]
+
+[node name="SeedStorePanelProto" type="Sprite2D" parent="." unique_id=1059074781]
+position = Vector2(661, 360)
+texture = ExtResource("1_wias5")
+
+[node name="Bucket" parent="." unique_id=544090845 instance=ExtResource("2_6uu7c")]
+position = Vector2(273, 583)
+
+[node name="Bucket2" parent="." unique_id=483295452 instance=ExtResource("2_6uu7c")]
+position = Vector2(475, 583)
+
+[node name="Bucket3" parent="." unique_id=783804066 instance=ExtResource("2_6uu7c")]
+position = Vector2(668, 583)
+
+[node name="Bucket4" parent="." unique_id=30162254 instance=ExtResource("2_6uu7c")]
+position = Vector2(856, 583)
+
+[node name="Bucket5" parent="." unique_id=1571851925 instance=ExtResource("2_6uu7c")]
+position = Vector2(1057, 583)

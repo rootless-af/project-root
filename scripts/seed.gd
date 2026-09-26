@@ -1,3 +1,4 @@
+class_name Seed;
 extends Node2D
 
 # -- Refs --
@@ -11,6 +12,7 @@ enum SeedType {
 	NORMAL,
 	WATER,
 	FIREPLANT,
+	METAL
 }
 @export var seed_type: SeedType = SeedType.NORMAL;
 
