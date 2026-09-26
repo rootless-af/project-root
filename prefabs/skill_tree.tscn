@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://u1tp2dq861pb" path="res://scripts/skill_tree.gd" id="1_wugqu"]
 
-[node name="SkillTree" type="CanvasLayer" unique_id=1913636242]
+[node name="SkillTree" type="Node2D" unique_id=613364986]
 script = ExtResource("1_wugqu")
 
 [node name="BranchAbility" type="CheckButton" parent="." unique_id=382345803]
@@ -123,7 +123,6 @@ offset_right = 1262.0
 offset_bottom = 90.0
 text = "clear root"
 
-[connection signal="button_down" from="BranchAbility" to="." method="_on_branch_ability_button_down"]
 [connection signal="toggled" from="BranchAbility" to="." method="_on_branch_ability_toggled"]
 [connection signal="toggled" from="BranchChance" to="." method="_on_branch_chance_toggled"]
 [connection signal="toggled" from="BranchChance2" to="." method="_on_branch_chance_2_toggled"]

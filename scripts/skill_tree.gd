@@ -1,5 +1,4 @@
-extends CanvasLayer
-
+extends Node2D
 
 
 @onready var branch_ability: CheckButton = $BranchAbility

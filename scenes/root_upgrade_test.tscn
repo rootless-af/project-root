@@ -12,3 +12,4 @@ is_sprint_toggle = true
 zoom_speed_multiplier = 0.6
 
 [node name="SkillTree" parent="." unique_id=1913636242 instance=ExtResource("3_jgn6e")]
+position = Vector2(0, 36)
