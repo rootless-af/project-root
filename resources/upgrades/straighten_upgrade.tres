@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RandomnessUpgrade" format=3 uid="uid://cukw5ijc63gis"]
+
+[ext_resource type="Script" uid="uid://dxbms8nrcuqck" path="res://scripts/upgrades/randomness_upgrade.gd" id="1_jsvo4"]
+
+[resource]
+script = ExtResource("1_jsvo4")
+randomness_upgrade = -0.07
+metadata/_custom_type_script = "uid://dxbms8nrcuqck"

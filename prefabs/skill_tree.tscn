@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://n5dxx2e4o678"]
+
+[ext_resource type="Script" uid="uid://u1tp2dq861pb" path="res://scripts/skill_tree.gd" id="1_wugqu"]
+
+[node name="SkillTree" type="CanvasLayer" unique_id=1913636242]
+script = ExtResource("1_wugqu")
+
+[node name="BranchAbility" type="CheckButton" parent="." unique_id=382345803]
+offset_left = 10.0
+offset_top = 121.0
+offset_right = 167.0
+offset_bottom = 152.0
+text = "Branch Ability"
+alignment = 2
+
+[node name="BranchChance" type="CheckButton" parent="." unique_id=651032495]
+offset_left = 184.0
+offset_top = 61.0
+offset_right = 362.0
+offset_bottom = 92.0
+text = "Branch Chance 1"
+alignment = 2
+
+[node name="BranchChance2" type="CheckButton" parent="." unique_id=712810841]
+offset_left = 382.0
+offset_top = 61.0
+offset_right = 560.0
+offset_bottom = 92.0
+text = "Branch Chance 2"
+alignment = 2
+
+[node name="BranchTips" type="CheckButton" parent="." unique_id=1503805086]
+offset_left = 184.0
+offset_top = 121.0
+offset_right = 362.0
+offset_bottom = 152.0
+text = "Branch Chance 1"
+alignment = 2
+
+[node name="BranchTips2" type="CheckButton" parent="." unique_id=1839401710]
+offset_left = 382.0
+offset_top = 121.0
+offset_right = 560.0
+offset_bottom = 152.0
+text = "Branch Chance 2"
+alignment = 2
+
+[node name="Angle" type="CheckButton" parent="." unique_id=279925325]
+offset_left = 10.0
+offset_top = 176.0
+offset_right = 167.0
+offset_bottom = 207.0
+text = "Angle 1"
+alignment = 2
+
+[node name="Angle2" type="CheckButton" parent="." unique_id=343460054]
+offset_left = 185.0
+offset_top = 176.0
+offset_right = 342.0
+offset_bottom = 207.0
+text = "Angle 2"
+alignment = 2
+
+[node name="Straighten" type="CheckButton" parent="." unique_id=1623320471]
+offset_left = 10.0
+offset_top = 234.0
+offset_right = 167.0
+offset_bottom = 265.0
+text = "Straigthen 1"
+alignment = 2
+
+[node name="Straighten2" type="CheckButton" parent="." unique_id=91340644]
+offset_left = 185.0
+offset_top = 234.0
+offset_right = 342.0
+offset_bottom = 265.0
+text = "Straigthen 2"
+alignment = 2
+
+[node name="Width" type="CheckButton" parent="." unique_id=1176412168]
+offset_left = 324.0
+offset_top = 201.0
+offset_right = 481.0
+offset_bottom = 232.0
+text = "Width"
+alignment = 2
+
+[node name="GrowthDepth" type="CheckButton" parent="." unique_id=328586249]
+offset_left = 205.0
+offset_top = 16.0
+offset_right = 363.0
+offset_bottom = 47.0
+text = "Growth Depth"
+alignment = 2
+
+[node name="GrowthDepth2" type="CheckButton" parent="." unique_id=1626401614]
+offset_left = 388.0
+offset_top = 16.0
+offset_right = 546.0
+offset_bottom = 47.0
+text = "Growth Depth"
+alignment = 2
+
+[node name="GrowthDepth3" type="CheckButton" parent="." unique_id=1097211804]
+offset_left = 571.0
+offset_top = 16.0
+offset_right = 729.0
+offset_bottom = 47.0
+text = "Growth Depth"
+alignment = 2
+
+[node name="TestStartButton" type="Button" parent="." unique_id=771101340]
+offset_left = 1155.0
+offset_top = 10.0
+offset_right = 1261.0
+offset_bottom = 41.0
+text = "start root"
+
+[node name="TestStopButton" type="Button" parent="." unique_id=1044194064]
+offset_left = 1156.0
+offset_top = 59.0
+offset_right = 1262.0
+offset_bottom = 90.0
+text = "clear root"
+
+[connection signal="button_down" from="BranchAbility" to="." method="_on_branch_ability_button_down"]
+[connection signal="toggled" from="BranchAbility" to="." method="_on_branch_ability_toggled"]
+[connection signal="toggled" from="BranchChance" to="." method="_on_branch_chance_toggled"]
+[connection signal="toggled" from="BranchChance2" to="." method="_on_branch_chance_2_toggled"]
+[connection signal="toggled" from="BranchTips" to="." method="_on_branch_tips_toggled"]
+[connection signal="toggled" from="BranchTips2" to="." method="_on_branch_tips_2_toggled"]
+[connection signal="toggled" from="Angle" to="." method="_on_angle_toggled"]
+[connection signal="toggled" from="Angle2" to="." method="_on_angle_2_toggled"]
+[connection signal="toggled" from="Straighten" to="." method="_on_straighten_toggled"]
+[connection signal="toggled" from="Straighten2" to="." method="_on_straighten_2_toggled"]
+[connection signal="toggled" from="Width" to="." method="_on_width_toggled"]
+[connection signal="toggled" from="GrowthDepth" to="." method="_on_growth_depth_toggled"]
+[connection signal="toggled" from="GrowthDepth2" to="." method="_on_growth_depth_2_toggled"]
+[connection signal="toggled" from="GrowthDepth3" to="." method="_on_growth_depth_3_toggled"]
+[connection signal="pressed" from="TestStartButton" to="." method="_on_test_start_button_pressed"]
+[connection signal="pressed" from="TestStopButton" to="." method="_on_test_stop_button_pressed"]
