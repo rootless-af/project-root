@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 signal mineral_amount_changed(minerals)
 signal upgrade_purchased(entivera:int, barbarium:int, rihtocide:int, kviktorium:int)
 

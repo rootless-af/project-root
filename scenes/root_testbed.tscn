@@ -35,6 +35,7 @@ texture = ExtResource("1_n0icb")
 
 [node name="ViewportCamera" parent="." unique_id=1012732459 instance=ExtResource("1_u0w26")]
 position = Vector2(640, 360)
+
 [node name="Area2D" type="Area2D" parent="." unique_id=1847053134]
 position = Vector2(1153.5, 265.25)
 scale = Vector2(1, 0.9999999)
@@ -70,8 +71,3 @@ script = ExtResource("6_gg5g5")
 [node name="MusicManagerTester" type="Node" parent="." unique_id=45235182]
 script = ExtResource("7_05ihm")
 background_track = ExtResource("8_2ni8l")
-[node name="Root" parent="." unique_id=1285881573 instance=ExtResource("2_4bjpm")]
-position = Vector2(639, 74)
-max_active_tips = 100000
-max_depth = 10000.0
-split_chance = 0.4
