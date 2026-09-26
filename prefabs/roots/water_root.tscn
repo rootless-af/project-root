@@ -8,3 +8,4 @@ segment_length = 32.0
 root_texture = ExtResource("2_b37jq")
 root_width = 150.0
 randomness = 0.5
+root_type = 1
