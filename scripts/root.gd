@@ -1,5 +1,12 @@
 extends Node2D
 
+enum RootType {
+	NORMAL,
+	WATER,
+	FIRE,
+	METAL
+}
+
 # -- Refs --
 #@onready var root_path: Path2D = $RootPath;
 @onready var root_lifetime: Timer = $RootLifetime
@@ -26,9 +33,14 @@ extends Node2D
 
 #var root_direction := Vector2(0,1);
 
+# -- Root Identifiers --
+@export var root_type: RootType = RootType.NORMAL;
+
 # -- Genetics -- ( W I P )
 
 @export var max_depth: float = 2000.0;
+@export var min_depth: float = 1000.0;
+
 @export var rock_penetration: float = 0.0;
 @export var clay_penetration: float = 0.0;
 
@@ -70,12 +82,23 @@ func setup_root() -> void:
 	var main_tip := RootTip.new(
 		Vector2.ZERO,
 		Vector2.DOWN,
-		main_line
+		main_line,
+		max_depth
 	)
 	
 	root_tips.append(main_tip)
 	
 	is_growing = true;
+	
+	match(root_type):
+		RootType.NORMAL:
+			MusicManager.register_root("normal");
+		RootType.WATER:
+			MusicManager.register_root("water");
+		RootType.FIRE:
+			MusicManager.register_root("fire");
+		RootType.METAL:
+			MusicManager.register_root("metal");
 
 func create_root_line() -> Line2D:
 	var line := Line2D.new();
@@ -108,6 +131,10 @@ func grow(delta: float) -> void:
 			continue;
 		
 		grow_tip(tip, delta);
+		
+	# Check if all tips finished growing. (Music Manager)
+	if all_tips_finished():
+		stop_growth();
 	
 	#var curve := root_path.curve;
 	
@@ -148,8 +175,8 @@ func grow_tip(tip: RootTip, delta: float) -> void:
 	
 	var next_position := tip.position + movement;
 	
-	# Max depth
-	if next_position.y >= max_depth:
+	
+	if next_position.y >= tip.final_depth:
 		tip.growing = false;
 		return;
 	
@@ -201,7 +228,8 @@ func create_branch(position: Vector2, parent_direction: Vector2) -> void:
 	var branch := RootTip.new(
 		position,
 		branch_direction,
-		branch_line
+		branch_line,
+		randf_range(min_depth,max_depth)
 	);
 	
 	root_tips.append(branch);
@@ -224,10 +252,28 @@ func create_segment(tip: RootTip) -> void:
 		create_branch(tip.position, tip.direction);
 
 func stop_growth() -> void:
+	
 	is_growing = false;
+	
+	match(root_type):
+		RootType.NORMAL:
+			MusicManager.unregister_root("normal");
+		RootType.WATER:
+			MusicManager.unregister_root("water");
+		RootType.FIRE:
+			MusicManager.unregister_root("fire");
+		RootType.METAL:
+			MusicManager.unregister_root("metal");
 
 func _on_lifetime_finished() -> void:
 	stop_growth();
+
+func all_tips_finished() -> bool:
+	for tip in root_tips:
+		if tip.growing:
+			return false;
+		
+	return true;
 
 class RootTip:
 	var position: Vector2;
@@ -237,11 +283,14 @@ class RootTip:
 	var growing: bool = true;
 	var distance_since_segment: float = 0.0;
 	
-	func _init(start_position: Vector2, start_direction: Vector2, start_line: Line2D):
+	var final_depth : float;
+	
+	func _init(start_position: Vector2, start_direction: Vector2, start_line: Line2D, finished_depth: float):
 		position = start_position;
 		previous_position = start_position;
 		direction = start_direction;
 		line = start_line;
+		final_depth = finished_depth;
 
 class RootSegment:
 	var start: Vector2;
