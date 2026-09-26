@@ -1,5 +1,12 @@
 extends Node2D
 
+enum RootType {
+	NORMAL,
+	WATER,
+	FIRE,
+	METAL
+}
+
 # -- Refs --
 #@onready var root_path: Path2D = $RootPath;
 @onready var root_lifetime: Timer = $RootLifetime
@@ -25,6 +32,9 @@ extends Node2D
 @export var randomness: float = 0.15;
 
 #var root_direction := Vector2(0,1);
+
+# -- Root Identifiers --
+@export var root_type: RootType = RootType.NORMAL;
 
 # -- Genetics -- ( W I P )
 
@@ -76,6 +86,16 @@ func setup_root() -> void:
 	root_tips.append(main_tip)
 	
 	is_growing = true;
+	
+	match(root_type):
+		RootType.NORMAL:
+			MusicManager.register_root("normal");
+		RootType.WATER:
+			MusicManager.register_root("water");
+		RootType.FIRE:
+			MusicManager.register_root("fire");
+		RootType.METAL:
+			MusicManager.register_root("metal");
 
 func create_root_line() -> Line2D:
 	var line := Line2D.new();
@@ -108,6 +128,10 @@ func grow(delta: float) -> void:
 			continue;
 		
 		grow_tip(tip, delta);
+		
+	# Check if all tips finished growing. (Music Manager)
+	if all_tips_finished():
+		stop_growth();
 	
 	#var curve := root_path.curve;
 	
@@ -224,10 +248,28 @@ func create_segment(tip: RootTip) -> void:
 		create_branch(tip.position, tip.direction);
 
 func stop_growth() -> void:
+	
 	is_growing = false;
+	
+	match(root_type):
+		RootType.NORMAL:
+			MusicManager.unregister_root("normal");
+		RootType.WATER:
+			MusicManager.unregister_root("water");
+		RootType.FIRE:
+			MusicManager.unregister_root("fire");
+		RootType.METAL:
+			MusicManager.unregister_root("metal");
 
 func _on_lifetime_finished() -> void:
 	stop_growth();
+
+func all_tips_finished() -> bool:
+	for tip in root_tips:
+		if tip.growing:
+			return false;
+		
+	return true;
 
 class RootTip:
 	var position: Vector2;
