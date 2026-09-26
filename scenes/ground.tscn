@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bgr2cyhrkt2hv" path="res://prefabs/mineral_spawner.tscn" id="5_ct7o8"]
 [ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://prefabs/viewport_camera.tscn" id="6_ct7o8"]
 [ext_resource type="PackedScene" uid="uid://dliby6xgc5o06" path="res://scenes/root_testbed.tscn" id="7_vjnaj"]
+[ext_resource type="Texture2D" uid="uid://6fn7fl3fcnke" path="res://assets/textures/background_3_columns.png" id="8_hokwi"]
+[ext_resource type="PackedScene" uid="uid://n5dxx2e4o678" path="res://prefabs/skill_tree.tscn" id="9_6ra5r"]
 
 [sub_resource type="Gradient" id="Gradient_14lh4"]
 interpolation_mode = 2
@@ -25,8 +27,10 @@ color_ramp = SubResource("Gradient_14lh4")
 
 [node name="Ground" type="Node2D" unique_id=1266298725]
 script = ExtResource("1_mi8v4")
+debug_messages = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1264636969]
+visible = false
 position = Vector2(636, 357.5)
 scale = Vector2(2.4960938, 1.3886719)
 texture = SubResource("NoiseTexture2D_b1wkp")
@@ -38,8 +42,20 @@ texture = ExtResource("3_lmksl")
 script = ExtResource("4_1ywih")
 
 [node name="MineralSpawner" parent="." unique_id=1578543460 instance=ExtResource("5_ct7o8")]
+ore_scale = 0.1
 
 [node name="ViewportCamera" parent="." unique_id=1012732459 instance=ExtResource("6_ct7o8")]
+zoom_strength = 0.005
 min_zoom = 0.01
 
 [node name="RootTestbed" parent="." unique_id=1355742889 instance=ExtResource("7_vjnaj")]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1322474083]
+offset_right = 10500.0
+offset_bottom = 9500.0
+texture = ExtResource("8_hokwi")
+stretch_mode = 1
+
+[node name="SkillTree" parent="." unique_id=613364986 instance=ExtResource("9_6ra5r")]
+position = Vector2(1066, -349)

@@ -31,11 +31,9 @@ script = ExtResource("1_wugqu")
 
 [node name="GrowthUpgrade" parent="." unique_id=1944092315 instance=ExtResource("2_y3bw0")]
 position = Vector2(637, 321)
-disabled = false
 upgrade_level = 3
 tooltip_text = "Plant Seed"
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_y3bw0"), SubResource("Resource_wc8jx"), SubResource("Resource_s2ugs")])
-unlocked = false
 
 [node name="TestStartButton" type="Button" parent="." unique_id=771101340]
 offset_left = 1155.0
