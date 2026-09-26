@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://d1pn0awo34ut7"]
 
 [ext_resource type="Script" uid="uid://ircm7q6ths2o" path="res://scripts/root.gd" id="1_734vk"]
-
-[sub_resource type="Curve2D" id="Curve2D_734vk"]
+[ext_resource type="Texture2D" uid="uid://ckhq0drxg1cfm" path="res://assets/textures/roots/Normal_Root_ROTATED.png" id="2_8djqx"]
 
 [node name="Root" type="Node2D" unique_id=1285881573]
 script = ExtResource("1_734vk")
+growth_speed = 650.0
+root_texture = ExtResource("2_8djqx")
+max_depth = 10000.0
 
-[node name="RootPath" type="Path2D" parent="." unique_id=1215080075]
-curve = SubResource("Curve2D_734vk")
+[node name="RootLifetime" type="Timer" parent="." unique_id=714939160]
+
+[node name="RootPath" type="Path2D" parent="." unique_id=222678001]

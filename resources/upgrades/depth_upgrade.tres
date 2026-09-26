@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DepthUpgrade" format=3 uid="uid://dxuhkvs3nfnv8"]
+
+[ext_resource type="Script" uid="uid://d13iq6ggqemqf" path="res://scripts/upgrades/depth_upgrade.gd" id="1_3bi0a"]
+
+[resource]
+script = ExtResource("1_3bi0a")
+depth_upgrade = 1000.0
+metadata/_custom_type_script = "uid://d13iq6ggqemqf"

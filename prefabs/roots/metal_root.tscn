@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cbc0v3s0uxodi"]
+
+[ext_resource type="PackedScene" uid="uid://d1pn0awo34ut7" path="res://prefabs/root.tscn" id="1_bbgio"]
+
+[node name="Root" unique_id=1285881573 instance=ExtResource("1_bbgio")]
+modulate = Color(0.19614312, 0.19614306, 0.19614309, 1)
+growth_speed = 400.0
+segment_length = 200.0
+randomness = 0.05
+root_type = 3
