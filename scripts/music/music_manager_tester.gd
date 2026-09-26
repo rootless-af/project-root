@@ -5,3 +5,4 @@ extends Node
 func _ready() -> void:
 	MusicManager.load_track(background_track);
 	MusicManager.set_stem("base", true);
+	pass

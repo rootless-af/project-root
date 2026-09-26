@@ -1,22 +1,24 @@
 [gd_scene format=3 uid="uid://bweklfylimun5"]
 
 [ext_resource type="Script" uid="uid://ca1xbioukcm1w" path="res://scripts/bucket.gd" id="1_lsg32"]
-[ext_resource type="Texture2D" uid="uid://dhg8rnxca8i8t" path="res://assets/textures/prototype_textures/normal_bucket_proto.png" id="2_3twrn"]
+[ext_resource type="Texture2D" uid="uid://kjffokmjo5su" path="res://assets/textures/seed_bags/Normal_Seed_Bag_CROP.png" id="2_3vcjh"]
 [ext_resource type="Texture2D" uid="uid://bloi5uffcm6rh" path="res://assets/textures/seed_bags/Water_Seed_Bucket_CROP.png" id="2_a5l3r"]
 [ext_resource type="PackedScene" uid="uid://clu7cstpsyyh4" path="res://prefabs/seed.tscn" id="3_m1vms"]
-[ext_resource type="Texture2D" uid="uid://bvxuae6j03wmg" path="res://assets/textures/prototype_textures/fire_bucket_proto.png" id="4_ii2cr"]
-[ext_resource type="Texture2D" uid="uid://b6s0egu547b6t" path="res://assets/textures/prototype_textures/metal_bucket_proto.png" id="5_3vcjh"]
+[ext_resource type="Texture2D" uid="uid://bvlfjqraa2xuk" path="res://assets/textures/seed_bags/Fire_Cage_CROP.png" id="4_3enmx"]
+[ext_resource type="Texture2D" uid="uid://o52jo6o168uh" path="res://assets/textures/seed_bags/Robot_Box_CROP.png" id="5_qld2t"]
 [ext_resource type="Texture2D" uid="uid://bejjkjp7t27wa" path="res://assets/textures/prototype_textures/error_bucket.png" id="6_ii2cr"]
+[ext_resource type="Texture2D" uid="uid://dneqpl3qs4s3h" path="res://assets/textures/seed_bags/Alien_Storage_CROP.png" id="6_w2ipu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5l3r"]
 size = Vector2(166, 159)
 
 [node name="Bucket" type="Node2D" unique_id=544090845]
 script = ExtResource("1_lsg32")
-normal_bucket_texture = ExtResource("2_3twrn")
+normal_bucket_texture = ExtResource("2_3vcjh")
 water_bucket_texture = ExtResource("2_a5l3r")
-fire_bucket_texture = ExtResource("4_ii2cr")
-metal_bucket_texture = ExtResource("5_3vcjh")
+fire_bucket_texture = ExtResource("4_3enmx")
+metal_bucket_texture = ExtResource("5_qld2t")
+alien_bucket_texture = ExtResource("6_w2ipu")
 error_bucket_texture = ExtResource("6_ii2cr")
 seed_scene = ExtResource("3_m1vms")
 

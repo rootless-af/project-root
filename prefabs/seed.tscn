@@ -4,10 +4,45 @@
 [ext_resource type="PackedScene" uid="uid://cnt8r2e1750or" path="res://prefabs/roots/normal_root.tscn" id="3_r5plm"]
 [ext_resource type="Texture2D" uid="uid://bokjk045cjg4w" path="res://assets/textures/seeds/normal_seed.png" id="3_rlkhx"]
 [ext_resource type="Texture2D" uid="uid://ekpht5bjd37h" path="res://assets/textures/seeds/Water_Seed.png" id="4_dqe5w"]
+[ext_resource type="AudioStream" uid="uid://chinkyvn3atx8" path="res://assets/sound/sfx/seed/shaker_808_plant.mp3" id="4_gnht7"]
 [ext_resource type="PackedScene" uid="uid://bakaab88aj1q4" path="res://prefabs/roots/water_root.tscn" id="5_rlkhx"]
+[ext_resource type="Script" uid="uid://bd670dyrr7ib2" path="res://scripts/music/audio_shot.gd" id="5_to1mf"]
 [ext_resource type="PackedScene" uid="uid://bdigkgowd7thy" path="res://prefabs/roots/fire_root.tscn" id="7_bd2gy"]
 [ext_resource type="Texture2D" uid="uid://bi24v6i3cj8ys" path="res://assets/textures/seeds/Robot_Seed.png" id="7_w5w8v"]
+[ext_resource type="AudioStream" uid="uid://yyh708najdio" path="res://assets/sound/sfx/seed/conga_808_plant.mp3" id="8_8wsgf"]
 [ext_resource type="PackedScene" uid="uid://cbc0v3s0uxodi" path="res://prefabs/roots/metal_root.tscn" id="8_w5w8v"]
+[ext_resource type="Texture2D" uid="uid://ibthjxhsdlms" path="res://assets/textures/seeds/Fire_Seed.png" id="9_to1mf"]
+[ext_resource type="AudioStream" uid="uid://c6830kirk30f7" path="res://assets/sound/sfx/seed/cowbell_808_plant.mp3" id="12_nb0kx"]
+[ext_resource type="Texture2D" uid="uid://ctimg2luiuvf5" path="res://assets/textures/seeds/Alien_Seed.png" id="14_8wsgf"]
+[ext_resource type="PackedScene" uid="uid://b0j5otk6wtrap" path="res://prefabs/roots/alien_root.tscn" id="15_nb0kx"]
+
+[sub_resource type="Resource" id="Resource_05ihm"]
+script = ExtResource("5_to1mf")
+audio = ExtResource("4_gnht7")
+volume_db = -10.0
+metadata/_custom_type_script = "uid://bd670dyrr7ib2"
+
+[sub_resource type="Resource" id="Resource_2ni8l"]
+script = ExtResource("5_to1mf")
+audio = ExtResource("8_8wsgf")
+volume_db = -10.0
+metadata/_custom_type_script = "uid://bd670dyrr7ib2"
+
+[sub_resource type="Resource" id="Resource_0thwr"]
+script = ExtResource("5_to1mf")
+audio = ExtResource("8_8wsgf")
+volume_db = -10.0
+metadata/_custom_type_script = "uid://bd670dyrr7ib2"
+
+[sub_resource type="Resource" id="Resource_slbpk"]
+script = ExtResource("5_to1mf")
+audio = ExtResource("12_nb0kx")
+volume_db = -10.0
+metadata/_custom_type_script = "uid://bd670dyrr7ib2"
+
+[sub_resource type="Resource" id="Resource_di48r"]
+script = ExtResource("5_to1mf")
+metadata/_custom_type_script = "uid://bd670dyrr7ib2"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t4pjw"]
 radius = 42.047592
@@ -16,12 +51,19 @@ radius = 42.047592
 script = ExtResource("1_ujo7y")
 seed_basic_texture = ExtResource("3_rlkhx")
 root_basic_scene = ExtResource("3_r5plm")
+seed_basic_plant_sfx = SubResource("Resource_05ihm")
 seed_water_texture = ExtResource("4_dqe5w")
 root_water_scene = ExtResource("5_rlkhx")
-seed_fire_texture = ExtResource("3_rlkhx")
+seed_water_plant_sfx = SubResource("Resource_2ni8l")
+seed_fire_texture = ExtResource("9_to1mf")
 root_fire_scene = ExtResource("7_bd2gy")
+seed_fire_plant_sfx = SubResource("Resource_0thwr")
 seed_metal_texture = ExtResource("7_w5w8v")
 root_metal_scene = ExtResource("8_w5w8v")
+seed_metal_plant_sfx = SubResource("Resource_slbpk")
+seed_alien_texture = ExtResource("14_8wsgf")
+root_alien_scene = ExtResource("15_nb0kx")
+seed_alien_plant_sfx = SubResource("Resource_di48r")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1505769138]
 

@@ -5,6 +5,7 @@ enum BucketType {
 	WATER,
 	FIRE,
 	METAL,
+	ALIEN
 }
 
 # -- Refs --
@@ -19,6 +20,7 @@ enum BucketType {
 @export var water_bucket_texture: Texture2D;
 @export var fire_bucket_texture: Texture2D;
 @export var metal_bucket_texture: Texture2D;
+@export var alien_bucket_texture: Texture2D;
 
 @export var error_bucket_texture: Texture2D;
 
@@ -40,6 +42,8 @@ func _ready() -> void:
 			bucket_sprite.texture = fire_bucket_texture;
 		BucketType.METAL:
 			bucket_sprite.texture = metal_bucket_texture;
+		BucketType.ALIEN:
+			bucket_sprite.texture = alien_bucket_texture;
 		_:
 			bucket_sprite.texture = error_bucket_texture;
 
@@ -65,6 +69,8 @@ func grab_seed() -> void:
 			seed.seed_type = Seed.SeedType.FIRE;
 		BucketType.METAL:
 			seed.seed_type = Seed.SeedType.METAL;
+		BucketType.ALIEN:
+			seed.seed_type = Seed.SeedType.ALIEN;
 	
 	get_parent().add_child(seed);
 	var mouse_position := get_global_mouse_position();

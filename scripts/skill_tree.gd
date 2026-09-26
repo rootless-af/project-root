@@ -15,6 +15,10 @@ func _ready() -> void:
 	root_instance = ROOT.instantiate()
 	root_instance.max_active_tips = 1
 	root_instance.root_width = 50
+<<<<<<< HEAD
+=======
+	root_instance.growth_speed = 200
+>>>>>>> e930231304864a6cc72b17cafc36588fdb938dfc
 	root_instance.max_depth = 1000
 	root_instance.min_depth = 500
 

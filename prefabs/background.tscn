@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dmf6gdhkwebhn"]
+
+[ext_resource type="Texture2D" uid="uid://6fn7fl3fcnke" path="res://assets/textures/background_3_columns.png" id="1_7o46m"]
+[ext_resource type="Script" uid="uid://b35tvrrb8u0wk" path="res://scripts/texture_rect.gd" id="2_mgwus"]
+
+[node name="Background" type="TextureRect" unique_id=340771107]
+offset_right = 1500.0
+offset_bottom = 9500.0
+texture = ExtResource("1_7o46m")
+stretch_mode = 1
+script = ExtResource("2_mgwus")

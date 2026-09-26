@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0847gdofgre5"
-path="res://.godot/imported/bg_tilemap_quarter.png-167488fc597445a76f7823dfdc83ab96.ctex"
+uid="uid://dneqpl3qs4s3h"
+path="res://.godot/imported/Alien_Storage_CROP.png-b80b78a175f31d39e4153518d02094ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/bg_tilemap/bg_tilemap_quarter.png"
-dest_files=["res://.godot/imported/bg_tilemap_quarter.png-167488fc597445a76f7823dfdc83ab96.ctex"]
+source_file="res://assets/textures/seed_bags/Alien_Storage_CROP.png"
+dest_files=["res://.godot/imported/Alien_Storage_CROP.png-b80b78a175f31d39e4153518d02094ba.ctex"]
 
 [params]
 

@@ -11,7 +11,8 @@ var active_roots := {
 	"normal": 0,
 	"water": 0,
 	"fire": 0,
-	"metal": 0
+	"metal": 0,
+	"alien": 0
 }
 
 var is_camera_underground: bool = false;
@@ -258,6 +259,8 @@ func _root_type_to_stem(root_type: StringName) -> StringName:
 			return "fire_root";
 		"metal":
 			return "metal_root";
+		"alien":
+			return "alien_root";
 	
 	return "";
 

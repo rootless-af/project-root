@@ -26,7 +26,7 @@ barbanium = 100
 rihtocide = 100
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
-[node name="SkillTree" type="Node2D" unique_id=613364986]
+[node name="SkillTree" type="Node2D" unique_id=1946057991]
 script = ExtResource("1_wugqu")
 
 [node name="GrowthUpgrade" parent="." unique_id=1944092315 instance=ExtResource("2_y3bw0")]

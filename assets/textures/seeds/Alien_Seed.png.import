@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://balcycml4rkxm"
-path="res://.godot/imported/bg_tilemap_half.png-0322b0d5d86f3dafa53a1aa0e4e1f657.ctex"
+uid="uid://ctimg2luiuvf5"
+path="res://.godot/imported/Alien_Seed.png-ef8870429011beb8f415c44c269562ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/bg_tilemap/bg_tilemap_half.png"
-dest_files=["res://.godot/imported/bg_tilemap_half.png-0322b0d5d86f3dafa53a1aa0e4e1f657.ctex"]
+source_file="res://assets/textures/seeds/Alien_Seed.png"
+dest_files=["res://.godot/imported/Alien_Seed.png-ef8870429011beb8f415c44c269562ef.ctex"]
 
 [params]
 

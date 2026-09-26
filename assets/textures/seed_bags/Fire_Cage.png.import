@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bru7g6777plfa"
-path="res://.godot/imported/bg_tilemap.png-61f2c4bde49c5d6e95b7562a34f6a982.ctex"
+uid="uid://dn7rrhhvyitt4"
+path="res://.godot/imported/Fire_Cage.png-141f69bdf3500ecba15cb843b3ddcbee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/bg_tilemap/bg_tilemap.png"
-dest_files=["res://.godot/imported/bg_tilemap.png-61f2c4bde49c5d6e95b7562a34f6a982.ctex"]
+source_file="res://assets/textures/seed_bags/Fire_Cage.png"
+dest_files=["res://.godot/imported/Fire_Cage.png-141f69bdf3500ecba15cb843b3ddcbee.ctex"]
 
 [params]
 
