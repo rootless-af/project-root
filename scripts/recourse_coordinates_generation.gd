@@ -1,5 +1,8 @@
 extends Node
 
+@export_group("DEBUG")
+@export var debug_messages: bool = false;
+
 var map_width = GLOBALS.map_width
 var viewport_y = GLOBALS.map_height
 
@@ -86,7 +89,11 @@ func find_resource_deposits() -> void:
 				var ore_deposit = deposit_generator.couple_ore_vein(noise_volume_value, Vector2i(x, y))
 				if not ore_deposit.is_empty() :
 					deep_surface_resource_positions.append(ore_deposit)
-
+	if debug_messages:
+		var low_surface_pos_string := "";
+		for resource in low_surface_resource_positions:
+			low_surface_pos_string += str(resource.coordinates) + ", ";
+		print("[Terrain Generator] low_surface_resource_positions: [", low_surface_pos_string, "]");
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#Currently not used for anything
