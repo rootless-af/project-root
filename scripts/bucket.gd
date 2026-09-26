@@ -62,7 +62,7 @@ func grab_seed() -> void:
 		BucketType.WATER:
 			seed.seed_type = Seed.SeedType.WATER;
 		BucketType.FIRE:
-			seed.seed_type = Seed.SeedType.FIREPLANT;
+			seed.seed_type = Seed.SeedType.FIRE;
 		BucketType.METAL:
 			seed.seed_type = Seed.SeedType.METAL;
 	

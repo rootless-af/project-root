@@ -10,6 +10,9 @@ enum CameraMotion {LEFT, RIGHT, UP, DOWN, STATIC}
 @export var is_sprint_toggle:bool = false
 @export var zoom_speed_multiplier: float = 1.0
 
+@export_group("DEBUG")
+@export var debug_messages: bool = false;
+
 var is_sprinting:bool = false;
 var speed:float;
 var can_alter_camera:bool = true;
@@ -21,6 +24,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	
+	if debug_messages:
+		print("[Camera] Position: ", position);
+	
 	if can_alter_camera:
 		# -- Camera Movement --
 		if not speed:
@@ -69,11 +76,12 @@ func _process(delta: float) -> void:
 				zoom = Vector2(min_zoom, min_zoom)
 			else:
 				zoom -= Vector2(zoom_strength, zoom_strength);
+	MusicManager.set_camera_depth(global_position.y);
 
 func move_camera(motion:CameraMotion, delta: float):
 	is_moving = true;
 	var current_speed = speed * (1.0 / zoom.x) * zoom_speed_multiplier
-	print(current_speed)
+	#print(current_speed)
 	match motion:
 		CameraMotion.LEFT:
 			"""

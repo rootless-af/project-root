@@ -11,7 +11,7 @@ extends Node2D
 enum SeedType {
 	NORMAL,
 	WATER,
-	FIREPLANT,
+	FIRE,
 	METAL
 }
 @export var seed_type: SeedType = SeedType.NORMAL;
@@ -51,7 +51,9 @@ var root_offset := Vector2(0,-115);
 # FIRE
 @export var seed_fire_texture: Texture2D;
 @export var root_fire_scene : PackedScene;
-
+# METAL
+@export var seed_metal_texture: Texture2D;
+@export var root_metal_scene : PackedScene;
 
 func _ready() -> void:
 	setup_seed();
@@ -66,8 +68,14 @@ func setup_seed() -> void:
 			seed_sprite.texture = seed_water_texture;
 			root_scene = root_water_scene;
 			root_offset = Vector2(0,-90);
-		SeedType.FIREPLANT:
-			pass
+		SeedType.FIRE:
+			seed_sprite.texture = seed_fire_texture;
+			root_scene = root_fire_scene;
+			root_offset = Vector2(0,-90);
+		SeedType.METAL:
+			seed_sprite.texture = seed_metal_texture;
+			root_scene = root_metal_scene;
+			root_offset = Vector2(0,-90);
 		_:
 			seed_sprite.texture = seed_basic_texture;
 			root_scene = root_basic_scene;

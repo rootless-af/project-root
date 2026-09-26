@@ -2,9 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://bk7cw2giy0f8h" path="res://assets/textures/prototype_textures/sky-background-sky-and-clouds-background-1313033389.jpg" id="1_n0icb"]
 [ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://prefabs/viewport_camera.tscn" id="1_u0w26"]
-[ext_resource type="PackedScene" uid="uid://d1pn0awo34ut7" path="res://prefabs/root.tscn" id="2_4bjpm"]
 [ext_resource type="PackedScene" uid="uid://bweklfylimun5" path="res://prefabs/bucket.tscn" id="4_n0icb"]
-[ext_resource type="Texture2D" uid="uid://c3j0236bv82mo" path="res://assets/textures/roots/Water_Root_ROTATED.png" id="4_ykmvj"]
+[ext_resource type="Script" uid="uid://drr54ke5ijsig" path="res://scripts/music/music_manager.gd" id="6_gg5g5"]
+[ext_resource type="Script" uid="uid://b8g8udnyp4pyf" path="res://scripts/music/music_manager_tester.gd" id="7_05ihm"]
+[ext_resource type="Resource" uid="uid://b4ovhllyj3ex5" path="res://resources/music/background01/background01.tres" id="8_2ni8l"]
 
 [sub_resource type="Gradient" id="Gradient_4bjpm"]
 offsets = PackedFloat32Array(0.32985553, 0.63322634)
@@ -49,25 +50,24 @@ texture = SubResource("NoiseTexture2D_t4pjw")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1904284498]
 shape = SubResource("RectangleShape2D_t4pjw")
 
-[node name="water_root" parent="." unique_id=1274338579 instance=ExtResource("2_4bjpm")]
-visible = false
-position = Vector2(658, 247)
-growth_speed = 800.0
-root_texture = ExtResource("4_ykmvj")
-root_width = 150.0
-randomness = 0.05
-
-[node name="normal_root" parent="." unique_id=1285881573 instance=ExtResource("2_4bjpm")]
-visible = false
-position = Vector2(429, 247)
-growth_speed = 800.0
-segment_length = 32.0
-root_width = 150.0
-randomness = 0.25
-
-[node name="Bucket" parent="." unique_id=544090845 instance=ExtResource("4_n0icb")]
+[node name="WaterBucket" parent="." unique_id=544090845 instance=ExtResource("4_n0icb")]
 position = Vector2(1167, 111)
 bucket_type = 1
 
-[node name="Bucket2" parent="." unique_id=944378662 instance=ExtResource("4_n0icb")]
+[node name="NormalBucket" parent="." unique_id=944378662 instance=ExtResource("4_n0icb")]
 position = Vector2(985, 111)
+
+[node name="FireBucket" parent="." unique_id=361972041 instance=ExtResource("4_n0icb")]
+position = Vector2(780, 111)
+bucket_type = 2
+
+[node name="MetalBucket" parent="." unique_id=637135922 instance=ExtResource("4_n0icb")]
+position = Vector2(576, 111)
+bucket_type = 3
+
+[node name="MusicManager" type="Node" parent="." unique_id=1907065918]
+script = ExtResource("6_gg5g5")
+
+[node name="MusicManagerTester" type="Node" parent="." unique_id=45235182]
+script = ExtResource("7_05ihm")
+background_track = ExtResource("8_2ni8l")
