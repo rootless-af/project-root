@@ -100,18 +100,16 @@ func find_resource_deposits() -> void:
 			if noise_volume_value > deep_resource_threshold:
 				var ore_deposit = deposit_generator.couple_ore_vein(noise_volume_value, Vector2i(x, y))
 				if not ore_deposit.is_empty() :
-<<<<<<< HEAD:scripts/mineral_generation/recourse_coordinates_generation.gd
+
 					#deep_surface_resource_positions.append(ore_deposit)
 					mineral_deposits.append(ore_deposit)
 
-=======
 					deep_surface_resource_positions.append(ore_deposit)
 	if debug_messages:
 		var low_surface_pos_string := "";
 		for resource in low_surface_resource_positions:
 			low_surface_pos_string += str(resource.coordinates) + ", ";
 		print("[Terrain Generator] low_surface_resource_positions: [", low_surface_pos_string, "]");
->>>>>>> 26cc959f095c6117c348433b86a6f8b339eeafb4:scripts/recourse_coordinates_generation.gd
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#Currently not used for anything
