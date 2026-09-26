@@ -4,12 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://d3ubhvxo26uf0" path="res://prefabs/inventory.tscn" id="3_e477q"]
 [ext_resource type="PackedScene" uid="uid://n5dxx2e4o678" path="res://prefabs/skill_tree.tscn" id="3_jgn6e"]
 [ext_resource type="Script" uid="uid://desrbqtmexp6u" path="res://scripts/funds_test_button.gd" id="4_e477q"]
-[ext_resource type="PackedScene" uid="uid://datbutuup3ue5" path="res://prefabs/tile_map_layer.tscn" id="5_vax7y"]
 
 [node name="RootUpgradeTest" type="Node2D" unique_id=620800501]
-
-[node name="TileMapLayer" parent="." unique_id=761766746 instance=ExtResource("5_vax7y")]
-z_index = -1
 
 [node name="ViewportCamera" parent="." unique_id=1012732459 instance=ExtResource("1_jgn6e")]
 position = Vector2(640, 360)
