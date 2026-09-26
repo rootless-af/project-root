@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bgr2cyhrkt2hv"]
+
+[ext_resource type="Script" uid="uid://jaxpqs2dv5i1" path="res://scripts/mineral_generation/mineral_spawner.gd" id="1_fop4d"]
+[ext_resource type="Script" uid="uid://dhyimdx50cbwb" path="res://prefabs/ore_2d.gd" id="2_ervow"]
+
+[node name="MineralSpawner" type="Node2D" unique_id=1578543460]
+script = ExtResource("1_fop4d")
+
+[node name="Ore2D" type="Sprite2D" parent="." unique_id=1542849336]
+script = ExtResource("2_ervow")

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://m28neimafqeu"]
+
+[ext_resource type="Script" uid="uid://mk4p5kksauwi" path="res://scripts/mineral_ore.gd" id="1_5gd4m"]
+[ext_resource type="Texture2D" uid="uid://v1g2gio2dlfr" path="res://icon.svg" id="2_rk2xv"]
+
+[node name="MineralOre" type="Node2D" unique_id=1686280603]
+script = ExtResource("1_5gd4m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1236444070]
+texture = ExtResource("2_rk2xv")
