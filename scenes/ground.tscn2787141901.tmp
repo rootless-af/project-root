@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bijhh1d7ipppv"]
 
-[ext_resource type="Script" uid="uid://bx8736t6ynf6a" path="res://scripts/recourse_coordinates_generation.gd" id="1_mi8v4"]
+[ext_resource type="Script" uid="uid://hjgmkiwclctm" path="res://scenes/ground.gd" id="1_mi8v4"]
 [ext_resource type="Script" uid="uid://bibr0txprl21m" path="res://scenes/terrain_generator.gd" id="2_lmksl"]
 
 [sub_resource type="Gradient" id="Gradient_14lh4"]
@@ -8,9 +8,9 @@ interpolation_mode = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4pira"]
 noise_type = 3
-seed = 720343699
-frequency = 0.0412
-offset = Vector3(821.43, -210.53, 0)
+seed = 4
+frequency = 0.0338
+offset = Vector3(107.14, -210.53, 0)
 fractal_octaves = 7
 metadata/_preview_in_3d_space_ = true
 
@@ -22,8 +22,7 @@ color_ramp = SubResource("Gradient_14lh4")
 script = ExtResource("1_mi8v4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1264636969]
-visible = false
-position = Vector2(636, 357.5)
-scale = Vector2(2.4960938, 1.3886719)
+position = Vector2(505, 227)
+scale = Vector2(2.9726563, 1.8867188)
 texture = SubResource("NoiseTexture2D_b1wkp")
 script = ExtResource("2_lmksl")

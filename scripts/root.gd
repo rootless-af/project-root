@@ -39,6 +39,8 @@ enum RootType {
 # -- Genetics -- ( W I P )
 
 @export var max_depth: float = 2000.0;
+@export var min_depth: float = 1000.0;
+
 @export var rock_penetration: float = 0.0;
 @export var clay_penetration: float = 0.0;
 
@@ -80,7 +82,8 @@ func setup_root() -> void:
 	var main_tip := RootTip.new(
 		Vector2.ZERO,
 		Vector2.DOWN,
-		main_line
+		main_line,
+		max_depth
 	)
 	
 	root_tips.append(main_tip)
@@ -172,8 +175,8 @@ func grow_tip(tip: RootTip, delta: float) -> void:
 	
 	var next_position := tip.position + movement;
 	
-	# Max depth
-	if next_position.y >= max_depth:
+	
+	if next_position.y >= tip.final_depth:
 		tip.growing = false;
 		return;
 	
@@ -225,7 +228,8 @@ func create_branch(position: Vector2, parent_direction: Vector2) -> void:
 	var branch := RootTip.new(
 		position,
 		branch_direction,
-		branch_line
+		branch_line,
+		randf_range(min_depth,max_depth)
 	);
 	
 	root_tips.append(branch);
@@ -279,11 +283,14 @@ class RootTip:
 	var growing: bool = true;
 	var distance_since_segment: float = 0.0;
 	
-	func _init(start_position: Vector2, start_direction: Vector2, start_line: Line2D):
+	var final_depth : float;
+	
+	func _init(start_position: Vector2, start_direction: Vector2, start_line: Line2D, finished_depth: float):
 		position = start_position;
 		previous_position = start_position;
 		direction = start_direction;
 		line = start_line;
+		final_depth = finished_depth;
 
 class RootSegment:
 	var start: Vector2;

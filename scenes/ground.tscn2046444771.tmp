@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bx8736t6ynf6a" path="res://scripts/recourse_coordinates_generation.gd" id="1_mi8v4"]
 [ext_resource type="Script" uid="uid://bibr0txprl21m" path="res://scenes/terrain_generator.gd" id="2_lmksl"]
+[ext_resource type="PackedScene" uid="uid://d0q6wcy3ydcde" path="res://prefabs/test_mineral.tscn" id="2_w5yvf"]
 
 [sub_resource type="Gradient" id="Gradient_14lh4"]
 interpolation_mode = 2
@@ -20,6 +21,7 @@ color_ramp = SubResource("Gradient_14lh4")
 
 [node name="Ground" type="Node2D" unique_id=1266298725]
 script = ExtResource("1_mi8v4")
+test_mineral = ExtResource("2_w5yvf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1264636969]
 visible = false

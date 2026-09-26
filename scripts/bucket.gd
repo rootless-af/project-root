@@ -4,7 +4,7 @@ enum BucketType {
 	NORMAL,
 	WATER,
 	FIRE,
-	METAL
+	METAL,
 }
 
 # -- Refs --
