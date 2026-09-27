@@ -134,156 +134,224 @@ turbulence_influence_over_life = SubResource("CurveTexture_slbpk")
 [sub_resource type="Resource" id="Resource_n3oq1"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("8_dpic0")
+entivera = 150
+barbanium = 25
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_nkv23"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("9_wpqac")
+entivera = 50
+barbanium = 5
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_bhdf1"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("9_wpqac")
+entivera = 100
+barbanium = 15
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_wt88y"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("10_rhwlh")
+entivera = 50
+barbanium = 5
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_byysx"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("10_rhwlh")
+entivera = 100
+barbanium = 15
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_wpqac"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("11_hh1uo")
+entivera = 125
+barbanium = 20
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_p26pw"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("12_rnqda")
+entivera = 75
+barbanium = 10
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_2qdpj"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("12_rnqda")
+entivera = 125
+barbanium = 20
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_8knmp"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("12_rnqda")
+entivera = 200
+barbanium = 30
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_0acac"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("12_rnqda")
+entivera = 300
+barbanium = 45
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_qikkt"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("12_rnqda")
+entivera = 425
+barbanium = 65
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_hclpu"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("13_rwy5a")
+entivera = 100
+barbanium = 15
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_e2dpr"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("13_rwy5a")
+entivera = 175
+barbanium = 25
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_va71d"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("13_rwy5a")
+entivera = 275
+barbanium = 40
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_kp1j3"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("13_rwy5a")
+entivera = 400
+barbanium = 60
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_jgpjt"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("13_rwy5a")
+entivera = 600
+barbanium = 100
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_rhwlh"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("4_k4kkx")
+entivera = 75
+barbanium = 10
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_hh1uo"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("4_k4kkx")
+entivera = 110
+barbanium = 15
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_rnqda"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("15_rhwlh")
+entivera = 160
+barbanium = 20
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_rwy5a"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("4_k4kkx")
+entivera = 225
+barbanium = 30
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_8ywc3"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("4_k4kkx")
+entivera = 310
+barbanium = 40
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_5fqge"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("15_rhwlh")
+entivera = 425
+barbanium = 55
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_q50to"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("4_k4kkx")
+entivera = 575
+barbanium = 75
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_seow5"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("67_seow5")
+entivera = 75
+barbanium = 10
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_upe6w"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("67_seow5")
+entivera = 150
+barbanium = 20
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_mxfui"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("73_upe6w")
+entivera = 75
+barbanium = 10
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_vpgdj"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("73_upe6w")
+entivera = 150
+barbanium = 20
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_wgcxw"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("16_rnqda")
+entivera = 200
+barbanium = 40
+rihtocide = 10
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_mt3fx"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("16_rnqda")
+entivera = 300
+barbanium = 50
+rihtocide = 15
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_4b8g4"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("17_rwy5a")
+entivera = 350
+barbanium = 75
+rihtocide = 20
+kviktorium = 3
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [sub_resource type="Resource" id="Resource_mbrjb"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("17_rwy5a")
+entivera = 500
+barbanium = 100
+rihtocide = 30
+kviktorium = 5
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [node name="SkillTree" type="Node2D" unique_id=1946057991]
