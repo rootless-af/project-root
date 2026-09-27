@@ -1,5 +1,7 @@
 extends Node2D
 
+signal reached_threshold(threshold: GLOBALS.Levels)
+
 enum RootType {
 	NORMAL,
 	WATER,
@@ -11,6 +13,7 @@ enum RootType {
 # -- Refs --
 #@onready var root_path: Path2D = $RootPath;
 @onready var root_lifetime: Timer = $RootLifetime
+@onready var game_manager: Node2D = $"../GameManager"
 #@onready var root_line: Line2D = $RootPath/RootLine
 
 # -- Health --
@@ -61,6 +64,11 @@ var root_tips: Array[RootTip] = [];
 var segments: Array[RootSegment] = [];
 
 var current_depth: float = 0.0;
+var reached_mid_level:= false
+var reached_mid_deep_level:= false
+var reached_deep_level:= false
+var reached_core_level:= false
+
 var total_length: float = 0.0;
 var is_growing: bool = false;
 
@@ -75,6 +83,7 @@ var mining_operations: Array[MiningOperation] = []
 #var current_direction := Vector2(0,1);
 
 func _ready() -> void:
+	reached_threshold.connect(game_manager._on_root_reached_threshold)
 	setup_root();
 	root_lifetime.timeout.connect(_on_lifetime_finished)
 
@@ -136,8 +145,27 @@ func set_minerals(value: Array[MineralOre]) -> void:
 func _process(delta: float) -> void:
 	if not is_growing:
 		return;
-	
 	grow(delta);
+	check_depth_progress()
+	
+
+func check_depth_progress():
+	if !reached_mid_level:
+		if current_depth >= GLOBALS.level_depths.get(GLOBALS.Levels.MID_LEVEL):
+			reached_mid_level = true
+			reached_threshold.emit(GLOBALS.Levels.MID_LEVEL)
+	if !reached_mid_deep_level:
+		if current_depth >= GLOBALS.level_depths.get(GLOBALS.Levels.MID_DEEP_LEVEL) and not reached_mid_deep_level:
+			reached_mid_deep_level = true
+			reached_threshold.emit(GLOBALS.Levels.MID_DEEP_LEVEL)
+	if !reached_deep_level:
+		if current_depth >= GLOBALS.level_depths.get(GLOBALS.Levels.DEEP_LEVEL) and not reached_deep_level:
+			reached_deep_level = true;
+			reached_threshold.emit(GLOBALS.Levels.DEEP_LEVEL)
+	if !reached_core_level:
+		if current_depth >= GLOBALS.level_depths.get(GLOBALS.Levels.CORE) and not reached_core_level:
+			reached_core_level = true;
+			reached_threshold.emit(GLOBALS.Levels.CORE)
 
 func grow(delta: float) -> void:
 	var tip_count := root_tips.size();
