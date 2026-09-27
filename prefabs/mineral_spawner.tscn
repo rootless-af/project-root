@@ -4,3 +4,4 @@
 
 [node name="MineralSpawner" type="Node2D" unique_id=1578543460]
 script = ExtResource("1_fop4d")
+tile_size = null

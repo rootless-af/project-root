@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GatherSpeedUpgrade" format=3 uid="uid://drqn1j1wkbsd6"]
+
+[ext_resource type="Script" uid="uid://br2l44x0xtb8r" path="res://scripts/upgrades/gather_speed_upgrade.gd" id="1_hgnbu"]
+
+[resource]
+script = ExtResource("1_hgnbu")
+gather_speed_upgrade = -0.2
+metadata/_custom_type_script = "uid://br2l44x0xtb8r"

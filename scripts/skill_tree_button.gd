@@ -13,10 +13,12 @@ signal upgrade_started
 @export var upgrade_level := 1
 @export var tooltip_text: String = ""
 
-@export var can_upgrade_hover_texture: Texture2D
-@export var can_upgrade_texture: Texture2D
 @export var disabled_texture: Texture2D
 @export var insufficient_funds_texture: Texture2D
+@export var can_upgrade_hover_texture: Texture2D
+@export var completed_texture: Texture2D
+@export var can_upgrade_texture: Texture2D
+
 
 @export var material_costs: Array[UpgradeWithCosts] = []
 @export var unlocked: bool
@@ -113,9 +115,9 @@ func update_visual_state() -> void:
 		set_cursor(false)
 		return
 
-	# Already fully upgraded.
+	# Fully completed.
 	if unlocked or unlocked_level >= upgrade_level:
-		sprite.texture = can_upgrade_texture
+		sprite.texture = completed_texture
 		set_cursor(false)
 		return
 

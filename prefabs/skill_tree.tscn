@@ -2,21 +2,99 @@
 
 [ext_resource type="Script" uid="uid://u1tp2dq861pb" path="res://scripts/skill_tree.gd" id="1_wugqu"]
 [ext_resource type="PackedScene" uid="uid://c6nu82r4fgm0v" path="res://prefabs/skill_tree_button.tscn" id="2_y3bw0"]
-[ext_resource type="Texture2D" uid="uid://x1yis73dg6yd" path="res://assets/textures/prototype_textures/skill_tree_icons/can_upgrade_hover.png" id="3_n3oq1"]
+[ext_resource type="Texture2D" uid="uid://cg441rjdm8dh8" path="res://assets/textures/skill_tree_icons/skill_tree/plant_01.png" id="3_mxfui"]
 [ext_resource type="Script" uid="uid://cv6w68fd80511" path="res://scripts/upgrade_with_costs.gd" id="3_wc8jx"]
-[ext_resource type="Texture2D" uid="uid://dnm44qgj6y215" path="res://assets/textures/prototype_textures/skill_tree_icons/can_upgrade_default.png" id="4_dpic0"]
 [ext_resource type="Resource" uid="uid://dxuhkvs3nfnv8" path="res://resources/upgrades/depth_upgrade_no_min.tres" id="4_k4kkx"]
-[ext_resource type="Texture2D" uid="uid://ca57cq4tkaen2" path="res://assets/textures/prototype_textures/skill_tree_icons/disabled.png" id="5_nkv23"]
-[ext_resource type="Texture2D" uid="uid://baewq13xc33yo" path="res://assets/textures/prototype_textures/skill_tree_icons/insufficient_funds.png" id="6_bhdf1"]
+[ext_resource type="Texture2D" uid="uid://cd25mt0p7wjx5" path="res://assets/textures/skill_tree_icons/skill_tree/plant_02.png" id="4_seow5"]
+[ext_resource type="Texture2D" uid="uid://dby7lr1fkg5bd" path="res://assets/textures/skill_tree_icons/skill_tree/plant_03.png" id="5_upe6w"]
+[ext_resource type="Texture2D" uid="uid://1hfbgnf0ghli" path="res://assets/textures/skill_tree_icons/skill_tree/plant_04.png" id="6_vpgdj"]
+[ext_resource type="Texture2D" uid="uid://chbv37ulo1wsx" path="res://assets/textures/skill_tree_icons/skill_tree/plant_05.png" id="7_08smd"]
+[ext_resource type="Texture2D" uid="uid://lt25616v7s5x" path="res://assets/textures/skill_tree_icons/skill_tree/gather_res_01.png" id="8_aao7a"]
 [ext_resource type="Resource" uid="uid://fxfp6ac5cajy" path="res://resources/upgrades/branch_ability_upgrade.tres" id="8_dpic0"]
+[ext_resource type="Texture2D" uid="uid://dsipynqk84dac" path="res://assets/textures/skill_tree_icons/skill_tree/gather_res_02.png" id="9_porqx"]
 [ext_resource type="Resource" uid="uid://df6dfebnjccbh" path="res://resources/upgrades/angle_upgrade.tres" id="9_wpqac"]
+[ext_resource type="Texture2D" uid="uid://dfa6g48h86ej1" path="res://assets/textures/skill_tree_icons/skill_tree/gather_res_03.png" id="10_ahepd"]
 [ext_resource type="Resource" uid="uid://cukw5ijc63gis" path="res://resources/upgrades/straighten_upgrade.tres" id="10_rhwlh"]
+[ext_resource type="Texture2D" uid="uid://d2x0x3th6w631" path="res://assets/textures/skill_tree_icons/skill_tree/gather_res_04.png" id="11_fcsft"]
 [ext_resource type="Resource" uid="uid://oyi56l1p0qru" path="res://resources/upgrades/width_upgrade.tres" id="11_hh1uo"]
+[ext_resource type="Texture2D" uid="uid://bj5ltn5i41w2v" path="res://assets/textures/skill_tree_icons/skill_tree/gather_res_05.png" id="12_o78vw"]
 [ext_resource type="Resource" uid="uid://c1dd5r1p82meg" path="res://resources/upgrades/branch_tips_upgrade.tres" id="12_rnqda"]
+[ext_resource type="Texture2D" uid="uid://cxjt2qyxuqj7r" path="res://assets/textures/skill_tree_icons/skill_tree/grow_01.png" id="13_5qfi1"]
 [ext_resource type="Resource" uid="uid://mharjf5qjxw8" path="res://resources/upgrades/branch_chance_upgrade.tres" id="13_rwy5a"]
+[ext_resource type="Texture2D" uid="uid://5rawarr1buwk" path="res://assets/textures/skill_tree_icons/skill_tree/grow_02.png" id="14_yi4w8"]
+[ext_resource type="Texture2D" uid="uid://c5j3ejcx6nwqp" path="res://assets/textures/skill_tree_icons/skill_tree/grow_03.png" id="15_d2n7g"]
 [ext_resource type="Resource" uid="uid://cilcysunr4ca5" path="res://resources/upgrades/depth_upgrade_with_min.tres" id="15_rhwlh"]
+[ext_resource type="Texture2D" uid="uid://bv3wdgsar801q" path="res://assets/textures/skill_tree_icons/skill_tree/grow_04.png" id="16_olync"]
 [ext_resource type="Resource" uid="uid://c5ie483ajvql1" path="res://resources/upgrades/clay_penetration_upgrade.tres" id="16_rnqda"]
+[ext_resource type="Texture2D" uid="uid://b4l2royjap45u" path="res://assets/textures/skill_tree_icons/skill_tree/grow_05.png" id="17_r6b5m"]
 [ext_resource type="Resource" uid="uid://d08wwi3d3xnqv" path="res://resources/upgrades/rock_penetration_upgrade.tres" id="17_rwy5a"]
+[ext_resource type="Texture2D" uid="uid://c4wwctmot12ep" path="res://assets/textures/skill_tree_icons/skill_tree/branch_abil_01.png" id="18_2wnci"]
+[ext_resource type="Texture2D" uid="uid://dia7c55bwwt57" path="res://assets/textures/skill_tree_icons/skill_tree/branch_abil_02.png" id="19_yuxwf"]
+[ext_resource type="Texture2D" uid="uid://b0g3vvargdohl" path="res://assets/textures/skill_tree_icons/skill_tree/branch_abil_03.png" id="20_l76ap"]
+[ext_resource type="Texture2D" uid="uid://blqb03bn6bkvl" path="res://assets/textures/skill_tree_icons/skill_tree/branch_abil_04.png" id="21_qvp2v"]
+[ext_resource type="Texture2D" uid="uid://bxerpvu3pgfir" path="res://assets/textures/skill_tree_icons/skill_tree/branch_abil_05.png" id="22_o883r"]
+[ext_resource type="Texture2D" uid="uid://b8b1grq5mnhx" path="res://assets/textures/skill_tree_icons/skill_tree/angle_01.png" id="25_cvec4"]
+[ext_resource type="Texture2D" uid="uid://8tnhm58oo8rf" path="res://assets/textures/skill_tree_icons/skill_tree/angle_02.png" id="26_hcvwv"]
+[ext_resource type="Texture2D" uid="uid://h72myqykv533" path="res://assets/textures/skill_tree_icons/skill_tree/angle_03.png" id="27_djbpk"]
+[ext_resource type="Texture2D" uid="uid://cuefc2g2w8372" path="res://assets/textures/skill_tree_icons/skill_tree/angle_04.png" id="28_ib5gg"]
+[ext_resource type="Texture2D" uid="uid://dy7oj32wayuiw" path="res://assets/textures/skill_tree_icons/skill_tree/angle_05.png" id="29_incmo"]
+[ext_resource type="Texture2D" uid="uid://bti2jnsj5tnp" path="res://assets/textures/skill_tree_icons/skill_tree/non_gayness_01.png" id="31_y615r"]
+[ext_resource type="Texture2D" uid="uid://bt4iyhgr3513x" path="res://assets/textures/skill_tree_icons/skill_tree/non_gayness_02.png" id="32_whts6"]
+[ext_resource type="Texture2D" uid="uid://lbgf5lqrwrm0" path="res://assets/textures/skill_tree_icons/skill_tree/non_gayness_03.png" id="33_fu5i2"]
+[ext_resource type="Texture2D" uid="uid://be7roc7vs81l7" path="res://assets/textures/skill_tree_icons/skill_tree/non_gayness_04.png" id="34_bbxub"]
+[ext_resource type="Texture2D" uid="uid://dorgjebaxwjjo" path="res://assets/textures/skill_tree_icons/skill_tree/non_gayness_05.png" id="35_mmblx"]
+[ext_resource type="Texture2D" uid="uid://cgaonxu6ehl2" path="res://assets/textures/skill_tree_icons/skill_tree/width_01.png" id="37_837vv"]
+[ext_resource type="Texture2D" uid="uid://uquwfrx5tjxn" path="res://assets/textures/skill_tree_icons/skill_tree/width_02.png" id="38_53mrv"]
+[ext_resource type="Texture2D" uid="uid://0tdvlejvhqh7" path="res://assets/textures/skill_tree_icons/skill_tree/width_03.png" id="39_r3kku"]
+[ext_resource type="Texture2D" uid="uid://ds6ayd1nbqnu2" path="res://assets/textures/skill_tree_icons/skill_tree/width_04.png" id="40_pdru0"]
+[ext_resource type="Texture2D" uid="uid://ba2w4yyei52b7" path="res://assets/textures/skill_tree_icons/skill_tree/width_05.png" id="41_eryjl"]
+[ext_resource type="Texture2D" uid="uid://cbohnf3qbfq6w" path="res://assets/textures/skill_tree_icons/skill_tree/branch_tips_01.png" id="43_tl5om"]
+[ext_resource type="Texture2D" uid="uid://cfr8dmekj4mry" path="res://assets/textures/skill_tree_icons/skill_tree/branch_tips_02.png" id="44_8u87w"]
+[ext_resource type="Texture2D" uid="uid://bhh06fobuqm1s" path="res://assets/textures/skill_tree_icons/skill_tree/branch_tips_03.png" id="45_wxmgi"]
+[ext_resource type="Texture2D" uid="uid://dfq6cl3arm3me" path="res://assets/textures/skill_tree_icons/skill_tree/branch_tips_04.png" id="46_vimc2"]
+[ext_resource type="Texture2D" uid="uid://bqkba1uejam6" path="res://assets/textures/skill_tree_icons/skill_tree/branch_tips_05.png" id="47_3loy3"]
+[ext_resource type="Texture2D" uid="uid://clvcwsj6qb4uk" path="res://assets/textures/skill_tree_icons/skill_tree/branch_chance_01.png" id="49_ohmjp"]
+[ext_resource type="Texture2D" uid="uid://c8yo4deudsbem" path="res://assets/textures/skill_tree_icons/skill_tree/branch_chance_02.png" id="50_beohy"]
+[ext_resource type="Texture2D" uid="uid://c45xjyb5csmn8" path="res://assets/textures/skill_tree_icons/skill_tree/branch_chance_03.png" id="51_k3xce"]
+[ext_resource type="Texture2D" uid="uid://bx18fv223vln0" path="res://assets/textures/skill_tree_icons/skill_tree/branch_chance_04.png" id="52_07xig"]
+[ext_resource type="Texture2D" uid="uid://cphodwi3831os" path="res://assets/textures/skill_tree_icons/skill_tree/branch_chance_05.png" id="53_uukx2"]
+[ext_resource type="Texture2D" uid="uid://bf7p56btbumjb" path="res://assets/textures/skill_tree_icons/skill_tree/growth_depth_01.png" id="55_fwl31"]
+[ext_resource type="Texture2D" uid="uid://c1r80pgpftg4a" path="res://assets/textures/skill_tree_icons/skill_tree/growth_depth_02.png" id="56_rk7g1"]
+[ext_resource type="Texture2D" uid="uid://bmm3msn0ad35e" path="res://assets/textures/skill_tree_icons/skill_tree/growth_depth_03.png" id="57_rmcem"]
+[ext_resource type="Texture2D" uid="uid://b48e71psuwg8j" path="res://assets/textures/skill_tree_icons/skill_tree/growth_depth_04.png" id="58_ra2sy"]
+[ext_resource type="Texture2D" uid="uid://4iehb6k1dkh3" path="res://assets/textures/skill_tree_icons/skill_tree/growth_depth_05.png" id="59_1rk54"]
+[ext_resource type="Texture2D" uid="uid://duvti2a1mvdvl" path="res://assets/textures/skill_tree_icons/skill_tree/gather_amount_01.png" id="62_65qk7"]
+[ext_resource type="Texture2D" uid="uid://co0wqvvnstu0n" path="res://assets/textures/skill_tree_icons/skill_tree/gather_amount_02.png" id="63_nqg7d"]
+[ext_resource type="Texture2D" uid="uid://c3u5keqbefab1" path="res://assets/textures/skill_tree_icons/skill_tree/gather_amount_03.png" id="64_06hjw"]
+[ext_resource type="Texture2D" uid="uid://cxw8876j4w6o1" path="res://assets/textures/skill_tree_icons/skill_tree/gather_amount_04.png" id="65_opxb6"]
+[ext_resource type="Texture2D" uid="uid://ce8jo2qghkg0j" path="res://assets/textures/skill_tree_icons/skill_tree/gather_amount_05.png" id="66_ywwcc"]
+[ext_resource type="Texture2D" uid="uid://c3vhtmiql32el" path="res://assets/textures/skill_tree_icons/skill_tree/gather_speed_01.png" id="67_e22ml"]
+[ext_resource type="Resource" uid="uid://cct7t1n32j3mo" path="res://resources/upgrades/gather_amount_upgrade.tres" id="67_seow5"]
+[ext_resource type="Texture2D" uid="uid://csxiti1lnapt3" path="res://assets/textures/skill_tree_icons/skill_tree/gather_speed_02.png" id="68_qkoj1"]
+[ext_resource type="Texture2D" uid="uid://qcs6hqykf4tl" path="res://assets/textures/skill_tree_icons/skill_tree/gather_speed_03.png" id="69_3l8pd"]
+[ext_resource type="Texture2D" uid="uid://ce16hblum82hr" path="res://assets/textures/skill_tree_icons/skill_tree/gather_speed_04.png" id="70_d4ywa"]
+[ext_resource type="Texture2D" uid="uid://dcq6bxh5snrv" path="res://assets/textures/skill_tree_icons/skill_tree/gather_speed_05.png" id="71_8mc28"]
+[ext_resource type="Texture2D" uid="uid://c7sree0hiln46" path="res://assets/textures/skill_tree_icons/skill_tree/pen_clay_01.png" id="72_rgkcp"]
+[ext_resource type="Texture2D" uid="uid://jrp4uhavou2c" path="res://assets/textures/skill_tree_icons/skill_tree/pen_clay_02.png" id="73_pd7s7"]
+[ext_resource type="Resource" uid="uid://drqn1j1wkbsd6" path="res://resources/upgrades/gather_speed_upgrade.tres" id="73_upe6w"]
+[ext_resource type="Texture2D" uid="uid://bkkg206k2h6cv" path="res://assets/textures/skill_tree_icons/skill_tree/pen_clay_03.png" id="74_ad8ut"]
+[ext_resource type="Texture2D" uid="uid://f2yopllv0463" path="res://assets/textures/skill_tree_icons/skill_tree/pen_clay_04.png" id="75_fhin7"]
+[ext_resource type="Texture2D" uid="uid://colgsra2if72i" path="res://assets/textures/skill_tree_icons/skill_tree/pen_clay_05.png" id="76_cuypa"]
+[ext_resource type="Texture2D" uid="uid://tbputgg3thd2" path="res://assets/textures/skill_tree_icons/skill_tree/pen_clay_speed_01.png" id="78_hgkb6"]
+[ext_resource type="Texture2D" uid="uid://hsa2xix150r4" path="res://assets/textures/skill_tree_icons/skill_tree/pen_clay_speed_02.png" id="79_0fqxr"]
+[ext_resource type="Texture2D" uid="uid://4edgp236f7jy" path="res://assets/textures/skill_tree_icons/skill_tree/pen_clay_speed_03.png" id="80_6uuyy"]
+[ext_resource type="Texture2D" uid="uid://clg501otkiqng" path="res://assets/textures/skill_tree_icons/skill_tree/pen_clay_speed_04.png" id="81_ntu13"]
+[ext_resource type="Texture2D" uid="uid://cilp1wd6flc7r" path="res://assets/textures/skill_tree_icons/skill_tree/pen_clay_speed_05.png" id="82_6x04k"]
+[ext_resource type="Texture2D" uid="uid://c0mhglp73up26" path="res://assets/textures/skill_tree_icons/skill_tree/pen_rock_01.png" id="83_2y67t"]
+[ext_resource type="Texture2D" uid="uid://dcjt2vqtqws56" path="res://assets/textures/skill_tree_icons/skill_tree/pen_rock_02.png" id="84_33s7q"]
+[ext_resource type="Texture2D" uid="uid://23nf3c17iln2" path="res://assets/textures/skill_tree_icons/skill_tree/pen_rock_03.png" id="85_yqc7j"]
+[ext_resource type="Texture2D" uid="uid://dj85ssj4ny7gj" path="res://assets/textures/skill_tree_icons/skill_tree/pen_rock_04.png" id="86_bo6ma"]
+[ext_resource type="Texture2D" uid="uid://csckdr4k2661t" path="res://assets/textures/skill_tree_icons/skill_tree/pen_rock_05.png" id="87_m2qau"]
+[ext_resource type="Texture2D" uid="uid://84e1yls3s4uw" path="res://assets/textures/skill_tree_icons/skill_tree/pen_rock_speed_01.png" id="89_w18ui"]
+[ext_resource type="Texture2D" uid="uid://dxf0mp4hpc22a" path="res://assets/textures/skill_tree_icons/skill_tree/pen_rock_speed_02.png" id="90_hjj25"]
+[ext_resource type="Texture2D" uid="uid://p4iet1iyacgb" path="res://assets/textures/skill_tree_icons/skill_tree/pen_rock_speed_03.png" id="91_oswo0"]
+[ext_resource type="Texture2D" uid="uid://b80kdblbia203" path="res://assets/textures/skill_tree_icons/skill_tree/pen_rock_speed_04.png" id="92_3ix0l"]
+[ext_resource type="Texture2D" uid="uid://bywqai1uuy43q" path="res://assets/textures/skill_tree_icons/skill_tree/pen_rock_speed_05.png" id="93_kwkn2"]
 
 [sub_resource type="Resource" id="Resource_n3oq1"]
 script = ExtResource("3_wc8jx")
@@ -133,6 +211,26 @@ script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("4_k4kkx")
 metadata/_custom_type_script = "uid://cv6w68fd80511"
 
+[sub_resource type="Resource" id="Resource_seow5"]
+script = ExtResource("3_wc8jx")
+upgrade_type = ExtResource("67_seow5")
+metadata/_custom_type_script = "uid://cv6w68fd80511"
+
+[sub_resource type="Resource" id="Resource_upe6w"]
+script = ExtResource("3_wc8jx")
+upgrade_type = ExtResource("67_seow5")
+metadata/_custom_type_script = "uid://cv6w68fd80511"
+
+[sub_resource type="Resource" id="Resource_mxfui"]
+script = ExtResource("3_wc8jx")
+upgrade_type = ExtResource("73_upe6w")
+metadata/_custom_type_script = "uid://cv6w68fd80511"
+
+[sub_resource type="Resource" id="Resource_vpgdj"]
+script = ExtResource("3_wc8jx")
+upgrade_type = ExtResource("73_upe6w")
+metadata/_custom_type_script = "uid://cv6w68fd80511"
+
 [sub_resource type="Resource" id="Resource_wgcxw"]
 script = ExtResource("3_wc8jx")
 upgrade_type = ExtResource("16_rnqda")
@@ -159,150 +257,168 @@ script = ExtResource("1_wugqu")
 [node name="PlantSeedsUpgrade" parent="." unique_id=1944092315 instance=ExtResource("2_y3bw0")]
 position = Vector2(553, 546)
 tooltip_text = "Plant seeds on soil."
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+disabled_texture = ExtResource("3_mxfui")
+insufficient_funds_texture = ExtResource("4_seow5")
+can_upgrade_hover_texture = ExtResource("5_upe6w")
+completed_texture = ExtResource("6_vpgdj")
+can_upgrade_texture = ExtResource("7_08smd")
 unlocked = true
 
 [node name="GatherResourcesUpgrade" parent="." unique_id=1470648050 instance=ExtResource("2_y3bw0")]
 position = Vector2(450, 457)
 tooltip_text = "Gather minerals underground."
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+disabled_texture = ExtResource("8_aao7a")
+insufficient_funds_texture = ExtResource("9_porqx")
+can_upgrade_hover_texture = ExtResource("10_ahepd")
+completed_texture = ExtResource("11_fcsft")
+can_upgrade_texture = ExtResource("12_o78vw")
 unlocked = true
 
 [node name="GrowUpgrade" parent="." unique_id=216369451 instance=ExtResource("2_y3bw0")]
 position = Vector2(646, 472)
 tooltip_text = "Grow roots underground."
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+disabled_texture = ExtResource("13_5qfi1")
+insufficient_funds_texture = ExtResource("14_yi4w8")
+can_upgrade_hover_texture = ExtResource("15_d2n7g")
+completed_texture = ExtResource("16_olync")
+can_upgrade_texture = ExtResource("17_r6b5m")
 unlocked = true
 
 [node name="BranchAbility" parent="." unique_id=1679841028 instance=ExtResource("2_y3bw0")]
 position = Vector2(670, 367)
 tooltip_text = "Ability to branch out roots."
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+disabled_texture = ExtResource("18_2wnci")
+insufficient_funds_texture = ExtResource("19_yuxwf")
+can_upgrade_hover_texture = ExtResource("20_l76ap")
+completed_texture = ExtResource("21_qvp2v")
+can_upgrade_texture = ExtResource("22_o883r")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_n3oq1")])
 
 [node name="AngleUpgrade" parent="." unique_id=447204229 instance=ExtResource("2_y3bw0")]
 position = Vector2(756, 393)
 upgrade_level = 2
 tooltip_text = "Increases randomness of root angle."
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+disabled_texture = ExtResource("25_cvec4")
+insufficient_funds_texture = ExtResource("26_hcvwv")
+can_upgrade_hover_texture = ExtResource("27_djbpk")
+completed_texture = ExtResource("28_ib5gg")
+can_upgrade_texture = ExtResource("29_incmo")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_nkv23"), SubResource("Resource_bhdf1")])
 
 [node name="StraightenUpgrade" parent="." unique_id=1265112158 instance=ExtResource("2_y3bw0")]
 position = Vector2(837, 386)
 upgrade_level = 2
 tooltip_text = "Decreases randomness of root angle."
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+disabled_texture = ExtResource("31_y615r")
+insufficient_funds_texture = ExtResource("32_whts6")
+can_upgrade_hover_texture = ExtResource("33_fu5i2")
+completed_texture = ExtResource("34_bbxub")
+can_upgrade_texture = ExtResource("35_mmblx")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_wt88y"), SubResource("Resource_byysx")])
 
 [node name="WidthUpgrade" parent="." unique_id=941389989 instance=ExtResource("2_y3bw0")]
 position = Vector2(822, 292)
 tooltip_text = "Increases the width of the root."
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+disabled_texture = ExtResource("37_837vv")
+insufficient_funds_texture = ExtResource("38_53mrv")
+can_upgrade_hover_texture = ExtResource("39_r3kku")
+completed_texture = ExtResource("40_pdru0")
+can_upgrade_texture = ExtResource("41_eryjl")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_wpqac")])
 
 [node name="BranchingTipsUpgrade" parent="." unique_id=587880139 instance=ExtResource("2_y3bw0")]
 position = Vector2(735, 236)
 upgrade_level = 5
 tooltip_text = "Increases the amount of possible branches."
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+disabled_texture = ExtResource("43_tl5om")
+insufficient_funds_texture = ExtResource("44_8u87w")
+can_upgrade_hover_texture = ExtResource("45_wxmgi")
+completed_texture = ExtResource("46_vimc2")
+can_upgrade_texture = ExtResource("47_3loy3")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_p26pw"), SubResource("Resource_2qdpj"), SubResource("Resource_8knmp"), SubResource("Resource_0acac"), SubResource("Resource_qikkt")])
 
 [node name="BranchingChanceUpgrade" parent="." unique_id=1416560625 instance=ExtResource("2_y3bw0")]
 position = Vector2(660, 276)
 upgrade_level = 5
 tooltip_text = "Increases the chance of branching."
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+disabled_texture = ExtResource("49_ohmjp")
+insufficient_funds_texture = ExtResource("50_beohy")
+can_upgrade_hover_texture = ExtResource("51_k3xce")
+completed_texture = ExtResource("52_07xig")
+can_upgrade_texture = ExtResource("53_uukx2")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_hclpu"), SubResource("Resource_e2dpr"), SubResource("Resource_va71d"), SubResource("Resource_kp1j3"), SubResource("Resource_jgpjt")])
 
 [node name="GrowthDepthUpgrade" parent="." unique_id=1570573617 instance=ExtResource("2_y3bw0")]
 position = Vector2(573, 254)
 upgrade_level = 7
 tooltip_text = "Increases the possibility of the root going deeper."
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+disabled_texture = ExtResource("55_fwl31")
+insufficient_funds_texture = ExtResource("56_rk7g1")
+can_upgrade_hover_texture = ExtResource("57_rmcem")
+completed_texture = ExtResource("58_ra2sy")
+can_upgrade_texture = ExtResource("59_1rk54")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_rhwlh"), SubResource("Resource_hh1uo"), SubResource("Resource_rnqda"), SubResource("Resource_rwy5a"), SubResource("Resource_8ywc3"), SubResource("Resource_5fqge"), SubResource("Resource_q50to")])
 
 [node name="GatherAmountUpgrade" parent="." unique_id=1892698781 instance=ExtResource("2_y3bw0")]
 position = Vector2(442, 375)
-disabled = true
-tooltip_text = "Plant Seed"
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+upgrade_level = 2
+tooltip_text = "Increase the amount you gather minerals per interval."
+disabled_texture = ExtResource("62_65qk7")
+insufficient_funds_texture = ExtResource("63_nqg7d")
+can_upgrade_hover_texture = ExtResource("64_06hjw")
+completed_texture = ExtResource("65_opxb6")
+can_upgrade_texture = ExtResource("66_ywwcc")
+material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_seow5"), SubResource("Resource_upe6w")])
 
 [node name="GatherSpeedUpgrade" parent="." unique_id=1123628164 instance=ExtResource("2_y3bw0")]
 position = Vector2(527, 378)
-disabled = true
-tooltip_text = "Plant Seed"
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+upgrade_level = 2
+tooltip_text = "Increase the speed in which you gather minerals."
+disabled_texture = ExtResource("67_e22ml")
+insufficient_funds_texture = ExtResource("68_qkoj1")
+can_upgrade_hover_texture = ExtResource("69_3l8pd")
+completed_texture = ExtResource("70_d4ywa")
+can_upgrade_texture = ExtResource("71_8mc28")
+material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_mxfui"), SubResource("Resource_vpgdj")])
 
 [node name="PenetrateClayAbility" parent="." unique_id=273158056 instance=ExtResource("2_y3bw0")]
 position = Vector2(355, 374)
 tooltip_text = "Ability to destroy clay in the root's way."
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+disabled_texture = ExtResource("72_rgkcp")
+insufficient_funds_texture = ExtResource("73_pd7s7")
+can_upgrade_hover_texture = ExtResource("74_ad8ut")
+completed_texture = ExtResource("75_fhin7")
+can_upgrade_texture = ExtResource("76_cuypa")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_wgcxw")])
 
 [node name="PenetrateClaySpeedUpgrade" parent="." unique_id=1649848820 instance=ExtResource("2_y3bw0")]
 position = Vector2(382, 292)
 tooltip_text = "Increases the speed that the root destroys clay."
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+disabled_texture = ExtResource("78_hgkb6")
+insufficient_funds_texture = ExtResource("79_0fqxr")
+can_upgrade_hover_texture = ExtResource("80_6uuyy")
+completed_texture = ExtResource("81_ntu13")
+can_upgrade_texture = ExtResource("82_6x04k")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_mt3fx")])
 
 [node name="PenetrateRockAbility" parent="." unique_id=1293181885 instance=ExtResource("2_y3bw0")]
 position = Vector2(289, 290)
 tooltip_text = "Ability to destroy rocks in the root's way."
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+disabled_texture = ExtResource("83_2y67t")
+insufficient_funds_texture = ExtResource("84_33s7q")
+can_upgrade_hover_texture = ExtResource("85_yqc7j")
+completed_texture = ExtResource("86_bo6ma")
+can_upgrade_texture = ExtResource("87_m2qau")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_4b8g4")])
 
 [node name="PenetrateRockSpeedUpgrade" parent="." unique_id=1870351981 instance=ExtResource("2_y3bw0")]
 position = Vector2(283, 218)
 tooltip_text = "Increases the speed that the root destroys rocks."
-can_upgrade_hover_texture = ExtResource("3_n3oq1")
-can_upgrade_texture = ExtResource("4_dpic0")
-disabled_texture = ExtResource("5_nkv23")
-insufficient_funds_texture = ExtResource("6_bhdf1")
+disabled_texture = ExtResource("89_w18ui")
+insufficient_funds_texture = ExtResource("90_hjj25")
+can_upgrade_hover_texture = ExtResource("91_oswo0")
+completed_texture = ExtResource("92_3ix0l")
+can_upgrade_texture = ExtResource("93_kwkn2")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_mbrjb")])
 
 [node name="TestStartButton" type="Button" parent="." unique_id=771101340]

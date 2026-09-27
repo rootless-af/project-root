@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GatherAmountUpgrade" format=3 uid="uid://cct7t1n32j3mo"]
+
+[ext_resource type="Script" uid="uid://cpp7j5lqkrhdy" path="res://scripts/upgrades/gather_amount_upgrade.gd" id="1_a8agl"]
+
+[resource]
+script = ExtResource("1_a8agl")
+gather_amount_upgrade = 2
+metadata/_custom_type_script = "uid://cpp7j5lqkrhdy"
