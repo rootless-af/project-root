@@ -34,7 +34,6 @@ var depleted := false
 
 
 func _ready() -> void:
-
 	match mineral_type:
 		GLOBALS.Minerals.Entivera:
 			damage_dealt = 5
@@ -47,12 +46,16 @@ func _ready() -> void:
 
 		GLOBALS.Minerals.Kviktorium:
 			damage_dealt = 50
+
+	if amount <= 0:
+		amount = MAX_AMOUNT
+
 	update_texture()
 
 
 func mine_material(mined_amount: int) -> void:
 	var actual_amount_mined: int
-
+	
 	if amount - mined_amount <= 0:
 		actual_amount_mined = amount
 		amount = 0

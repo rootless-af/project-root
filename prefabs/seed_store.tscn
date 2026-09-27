@@ -85,39 +85,33 @@ position = Vector2(55.929268, -71)
 shape = SubResource("RectangleShape2D_t4pjw")
 
 [node name="Buckets" type="Node2D" parent="." unique_id=1731847054]
+position = Vector2(6.1035156e-05, 3.0517578e-05)
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="NormalBucket" parent="Buckets" unique_id=544090845 instance=ExtResource("2_6uu7c")]
+z_index = 5
 position = Vector2(273, 583)
+tooltip_text = "Seed"
 
 [node name="WaterBucket" parent="Buckets" unique_id=483295452 instance=ExtResource("2_6uu7c")]
 position = Vector2(475, 583)
 bucket_type = 1
-unlock_cost = Dictionary[int, int]({
-1: 100
-})
+tooltip_text = "Water"
 
 [node name="FireBucket" parent="Buckets" unique_id=783804066 instance=ExtResource("2_6uu7c")]
 position = Vector2(668, 583)
 bucket_type = 2
-unlock_cost = Dictionary[int, int]({
-2: 100
-})
+tooltip_text = "Fire"
 
 [node name="MetalBucket" parent="Buckets" unique_id=30162254 instance=ExtResource("2_6uu7c")]
 position = Vector2(856, 583)
 bucket_type = 3
-unlock_cost = Dictionary[int, int]({
-3: 100
-})
+tooltip_text = "Metal"
 
 [node name="AlienBucket" parent="Buckets" unique_id=1571851925 instance=ExtResource("2_6uu7c")]
 position = Vector2(1057, 583)
 bucket_type = 4
-unlock_cost = Dictionary[int, int]({
-1: 250,
-2: 150,
-3: 100
-})
+tooltip_text = "Alien"
 
 [connection signal="alien_tree_applied_upgrade" from="." to="Buckets/AlienBucket" method="_on_store_alien_tree_applied_upgrade"]
 [connection signal="alien_tree_minerals_initialized" from="." to="Buckets/AlienBucket" method="_on_store_alien_tree_minerals_initialized"]

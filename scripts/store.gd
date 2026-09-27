@@ -163,3 +163,7 @@ func _on_mineral_spawner_obstacles_initialized(
 	fire_tree_obstacles_initialized.emit(obstacles)
 	metal_tree_obstacles_initialized.emit(obstacles)
 	alien_tree_obstacles_initialized.emit(obstacles)
+
+
+func _on_inventory_mineral_amount_changed(minerals: Variant) -> void:
+	pass # Replace with function body.

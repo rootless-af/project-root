@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://ukb2k2pq7w1e" path="res://assets/sound/sfx/fire_bucket.mp3" id="7_p1uuw"]
 [ext_resource type="AudioStream" uid="uid://c47yh6fvaalro" path="res://assets/sound/sfx/robot_cardboard_grab.mp3" id="9_rcc1x"]
 [ext_resource type="AudioStream" uid="uid://brivoncweo4gb" path="res://assets/sound/sfx/seed/alien_grab.mp3" id="11_pko00"]
+[ext_resource type="PackedScene" uid="uid://js5wemejkwyy" path="res://prefabs/tool_tip.tscn" id="15_pko00"]
 
 [sub_resource type="Resource" id="Resource_slbpk"]
 script = ExtResource("3_qld2t")
@@ -70,4 +71,11 @@ texture = ExtResource("2_a5l3r")
 position = Vector2(2, 30.5)
 shape = SubResource("RectangleShape2D_a5l3r")
 
+[node name="ToolTip" parent="." unique_id=9652994 instance=ExtResource("15_pko00")]
+process_priority = 5
+visible = false
+
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="visibility_changed" from="ToolTip" to="." method="_on_tool_tip_visibility_changed"]

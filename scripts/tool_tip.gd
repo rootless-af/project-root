@@ -3,18 +3,19 @@ extends CanvasLayer
 
 @export var text:String = "Sample" 
 
-@onready var upgrade_text: Label = $PanelContainer/VBoxContainer/UpgradeText
-@onready var panel_container: PanelContainer = $PanelContainer
-@onready var entivera_amount_label: Label = $PanelContainer/VBoxContainer/VBoxContainer/EntiveraContainer/Label
-@onready var barbanium_amount_label: Label = $PanelContainer/VBoxContainer/VBoxContainer/BarbaniumContainer/Label
-@onready var rihtocide_amount_label: Label = $PanelContainer/VBoxContainer/VBoxContainer/RihtocideContainer/Label
-@onready var kviktorium_amount_label: Label = $PanelContainer/VBoxContainer/VBoxContainer/KviktoriumContainer/Label
 @onready var entivera_container: HBoxContainer = $PanelContainer/VBoxContainer/VBoxContainer/EntiveraContainer
 @onready var barbanium_container: HBoxContainer = $PanelContainer/VBoxContainer/VBoxContainer/BarbaniumContainer
 @onready var rihtocide_container: HBoxContainer = $PanelContainer/VBoxContainer/VBoxContainer/RihtocideContainer
 @onready var kviktorium_container: HBoxContainer = $PanelContainer/VBoxContainer/VBoxContainer/KviktoriumContainer
+@onready var kviktorium_amount_label: Label = $PanelContainer/VBoxContainer/VBoxContainer/KviktoriumContainer/Label
+@onready var entivera_amount_label: Label = $PanelContainer/VBoxContainer/VBoxContainer/EntiveraContainer/Label
+@onready var barbanium_amount_label: Label = $PanelContainer/VBoxContainer/VBoxContainer/BarbaniumContainer/Label
+@onready var rihtocide_amount_label: Label = $PanelContainer/VBoxContainer/VBoxContainer/RihtocideContainer/Label
+@onready var upgrade_text: Label = $PanelContainer/VBoxContainer/UpgradeText
+@onready var panel_container: PanelContainer = $PanelContainer
 @onready var h_separator: HSeparator = $PanelContainer/VBoxContainer/HSeparator
 @onready var v_box_container: VBoxContainer = $PanelContainer/VBoxContainer/VBoxContainer
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
