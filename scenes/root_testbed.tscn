@@ -54,6 +54,7 @@ texture = ExtResource("1_di48r")
 [node name="NormalTree" parent="." unique_id=1946057991 instance=ExtResource("11_r6od6")]
 position = Vector2(827, -703)
 tree_name = "Normal"
+this_tree_type = 0
 
 [node name="WaterTree" parent="." unique_id=1667299626 instance=ExtResource("11_r6od6")]
 position = Vector2(2382, -703)

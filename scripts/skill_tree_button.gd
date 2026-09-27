@@ -205,11 +205,11 @@ func check_minerals_amount(minerals: Dictionary) -> void:
 
 	# Normal upgrade with a cost.
 	can_unlock = (
-		minerals.get(0, 0) >= cost.entivera
-		and minerals.get(1, 0) >= cost.barbanium
-		and minerals.get(2, 0) >= cost.rihtocide
-		and minerals.get(3, 0) >= cost.kviktorium
-	)
+	minerals.get(GLOBALS.Minerals.Entivera, 0) >= cost.entivera
+	and minerals.get(GLOBALS.Minerals.Barbanium, 0) >= cost.barbanium
+	and minerals.get(GLOBALS.Minerals.Rihtocide, 0) >= cost.rihtocide
+	and minerals.get(GLOBALS.Minerals.Kviktorium, 0) >= cost.kviktorium
+)
 
 	update_visual_state()
 

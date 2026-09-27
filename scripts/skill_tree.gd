@@ -46,7 +46,29 @@ const ROOT = preload("uid://d1pn0awo34ut7")
 var root_instance = null;
 var root = null;
 
+func _on_inventory_mineral_amount_changed(minerals) -> void:
+	mineral_amount_changed.emit(minerals)
+
+	branch_ability.check_minerals_amount(minerals)
+	angle_upgrade.check_minerals_amount(minerals)
+	straighten_upgrade.check_minerals_amount(minerals)
+	width_upgrade.check_minerals_amount(minerals)
+	branching_tips_upgrade.check_minerals_amount(minerals)
+	branching_chance_upgrade.check_minerals_amount(minerals)
+	growth_depth_upgrade.check_minerals_amount(minerals)
+	gather_amount_upgrade.check_minerals_amount(minerals)
+	gather_speed_upgrade.check_minerals_amount(minerals)
+	penetrate_clay_ability.check_minerals_amount(minerals)
+	penetrate_clay_speed_upgrade.check_minerals_amount(minerals)
+	penetrate_rock_ability.check_minerals_amount(minerals)
+	penetrate_rock_speed_upgrade.check_minerals_amount(minerals)
+
 func _ready() -> void:
+	var inventory = get_parent().get_node("Inventory")
+
+	inventory.mineral_amount_changed.connect(
+		_on_inventory_mineral_amount_changed
+	)
 	
 	match (this_tree_type):
 		TreeType.NORMAL:
@@ -128,9 +150,6 @@ func _on_test_stop_button_pressed() -> void:
 		root.queue_free()
 		root = null;
 
-func _on_inventory_mineral_amount_changed(minerals) -> void:
-	mineral_amount_changed.emit(minerals)
-
 
 func _on_upgrade_purchased(upgrade_with_cost: UpgradeWithCosts) -> void:
 	apply_upgrade(upgrade_with_cost.upgrade_type)
@@ -179,3 +198,7 @@ func _on_mineral_spawner_minerals_initialized(minerals: Array[MineralOre]) -> vo
 
 func _on_mineral_spawner_obstacles_initialized(obstacles: Array[Obstacle]) -> void:
 	root_instance.set_obstacles(obstacles)
+
+
+func _on_gather_resources_upgrade_upgrade_purchased(upgrade_with_cost: UpgradeWithCosts) -> void:
+	pass # Replace with function body.

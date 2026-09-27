@@ -361,6 +361,8 @@ water_tree_texture = ExtResource("3_fcsft")
 fire_tree_texture = ExtResource("4_o78vw")
 metal_tree_texture = ExtResource("5_5qfi1")
 alien_tree_texture = ExtResource("6_yi4w8")
+tree_name = null
+this_tree_type = null
 
 [node name="TreeTexture" type="Sprite2D" parent="." unique_id=900621899]
 position = Vector2(392, 392)
