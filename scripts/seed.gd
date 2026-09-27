@@ -242,7 +242,6 @@ func spawn_root() -> void:
 			apply_upgrades(root, metal_upgrades)
 		SeedType.ALIEN:
 			apply_upgrades(root, alien_upgrades)
-	
 	# Root and seed should be siblings. (Sweet home alabama)
 	get_parent().add_child(root);
 	

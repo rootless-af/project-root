@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://do2p2ws4kn635" path="res://prefabs/seed_store.tscn" id="8_2ni8l"]
 [ext_resource type="PackedScene" uid="uid://d3ubhvxo26uf0" path="res://prefabs/inventory.tscn" id="10_0bbw8"]
 [ext_resource type="PackedScene" uid="uid://n5dxx2e4o678" path="res://prefabs/skill_tree.tscn" id="11_r6od6"]
+[ext_resource type="PackedScene" uid="uid://33excjcr7cbc" path="res://prefabs/game_manager.tscn" id="12_0bbw8"]
 
 [sub_resource type="Gradient" id="Gradient_4bjpm"]
 offsets = PackedFloat32Array(0.32985553, 0.63322634)
@@ -126,6 +127,8 @@ tree_name = "Metal"
 [node name="AlienTree" parent="." unique_id=1846135072 instance=ExtResource("11_r6od6")]
 position = Vector2(4235, -945)
 tree_name = "Alien"
+
+[node name="GameManager" parent="." unique_id=459991247 instance=ExtResource("12_0bbw8")]
 
 [connection signal="appled_upgrade" from="NormalTree" to="StoreCanvas/Store" method="_on_normal_tree_appled_upgrade"]
 [connection signal="appled_upgrade" from="WaterTree" to="StoreCanvas/Store" method="_on_water_tree_appled_upgrade"]

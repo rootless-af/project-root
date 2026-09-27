@@ -26,6 +26,22 @@ enum Minerals {
 		Kviktorium, # Rarest
 	}
 
+enum Levels {
+	LOW_LEVEL,
+	MID_LEVEL,
+	MID_DEEP_LEVEL,
+	DEEP_LEVEL,
+	CORE
+}
+
+var level_depths = {
+	Levels.LOW_LEVEL: 0,
+	Levels.MID_LEVEL: 2650,
+	Levels.MID_DEEP_LEVEL: 4900,
+	Levels.DEEP_LEVEL: 7050,
+	Levels.CORE: 9150,
+}
+
 
 enum SkillTreeUpgrades {
 	BRANCH_ABILITY,

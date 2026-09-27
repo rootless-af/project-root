@@ -203,7 +203,7 @@ insufficient_funds_texture = ExtResource("6_bhdf1")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_nkv23"), SubResource("Resource_bhdf1")])
 
 [node name="StraightenUpgrade" parent="." unique_id=1265112158 instance=ExtResource("2_y3bw0")]
-position = Vector2(840, 371)
+position = Vector2(837, 386)
 upgrade_level = 2
 tooltip_text = "Decreases randomness of root angle."
 can_upgrade_hover_texture = ExtResource("3_n3oq1")
@@ -270,7 +270,7 @@ disabled_texture = ExtResource("5_nkv23")
 insufficient_funds_texture = ExtResource("6_bhdf1")
 
 [node name="PenetrateClayAbility" parent="." unique_id=273158056 instance=ExtResource("2_y3bw0")]
-position = Vector2(354, 370)
+position = Vector2(355, 374)
 tooltip_text = "Ability to destroy clay in the root's way."
 can_upgrade_hover_texture = ExtResource("3_n3oq1")
 can_upgrade_texture = ExtResource("4_dpic0")
