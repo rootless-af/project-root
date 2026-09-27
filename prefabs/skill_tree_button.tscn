@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c6nu82r4fgm0v"]
 
 [ext_resource type="Script" uid="uid://esjau0uur1tl" path="res://scripts/skill_tree_button.gd" id="1_hkt20"]
-[ext_resource type="Texture2D" uid="uid://dnm44qgj6y215" path="res://assets/textures/prototype_textures/skill_tree_icons/can_upgrade_default.png" id="2_h5gdk"]
+[ext_resource type="Texture2D" uid="uid://dnm44qgj6y215" path="res://assets/textures/skill_tree_icons/can_upgrade_default.png" id="2_h5gdk"]
 [ext_resource type="PackedScene" uid="uid://js5wemejkwyy" path="res://prefabs/tool_tip.tscn" id="3_opfj4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yflkj"]
