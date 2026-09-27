@@ -5,7 +5,7 @@ extends Node
 var current_track: MusicTrack;
 var stem_players: Dictionary = {}
 var active_stems: Dictionary = {}
-var master_volume_db: float = 0.0
+@export var master_volume_db: float = 0.0
 
 var active_roots := {
 	"normal": 0,

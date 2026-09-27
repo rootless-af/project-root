@@ -18,11 +18,15 @@ var store: Store;
 # -- Resources --
 @export_group("Bucket Resources")
 @export var normal_bucket_texture: Texture2D;
+@export var normal_bucket_pickup_sfx: AudioShot;
 @export var water_bucket_texture: Texture2D;
+@export var water_bucket_pickup_sfx: AudioShot;
 @export var fire_bucket_texture: Texture2D;
+@export var fire_bucket_pickup_sfx: AudioShot;
 @export var metal_bucket_texture: Texture2D;
+@export var metal_bucket_pickup_sfx: AudioShot;
 @export var alien_bucket_texture: Texture2D;
-
+@export var alien_bucket_pickup_sfx: AudioShot;
 @export var error_bucket_texture: Texture2D;
 
 @export_subgroup("Seed")
@@ -39,18 +43,25 @@ var fire_upgrades:Array[Upgrade] = []
 var metal_upgrades:Array[Upgrade] = []
 var alien_upgrades:Array[Upgrade] = []
 
+var audio_grab: AudioShot;
+
 func _ready() -> void:
 	match(bucket_type):
 		BucketType.NORMAL:
 			bucket_sprite.texture = normal_bucket_texture;
+			audio_grab = normal_bucket_pickup_sfx;
 		BucketType.WATER:
 			bucket_sprite.texture = water_bucket_texture;
+			audio_grab = water_bucket_pickup_sfx;
 		BucketType.FIRE:
 			bucket_sprite.texture = fire_bucket_texture;
+			audio_grab = fire_bucket_pickup_sfx;
 		BucketType.METAL:
 			bucket_sprite.texture = metal_bucket_texture;
+			audio_grab = metal_bucket_pickup_sfx;
 		BucketType.ALIEN:
 			bucket_sprite.texture = alien_bucket_texture;
+			audio_grab = alien_bucket_pickup_sfx;
 		_:
 			bucket_sprite.texture = error_bucket_texture;
 
@@ -101,12 +112,13 @@ func grab_seed() -> void:
 	
 	if camera == null:
 		push_error("No active Camera2D!");
-		seed.queue_free();
+		seed.queue_free();"res://resources/music/background03/background03.tres::Resource_5cxca"
 		return;
 	
 	var mouse_position := camera.get_global_mouse_position();
 	seed.global_position = mouse_position;
 	seed.start_drag(mouse_position); 
+	AudioManager.play(audio_grab);
 	
 	store.close_store();
 	camera.enter_planting_view();

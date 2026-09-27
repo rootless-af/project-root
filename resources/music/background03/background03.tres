@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://biujlkjvsdfxg" path="res://assets/sound/music/background03/background03_overground_145bpm.mp3" id="7_pl6gy"]
 [ext_resource type="AudioStream" uid="uid://51n7ulyhegsu" path="res://assets/sound/music/background03/background03_underground_145bpm.mp3" id="8_xbc87"]
 [ext_resource type="AudioStream" uid="uid://ddjv2o62im1uh" path="res://assets/sound/music/background03/background03_water_145bpm.mp3" id="9_7fofs"]
+[ext_resource type="AudioStream" uid="uid://dsrbhngahhmq6" path="res://assets/sound/music/background03/background03_alien_145bpm.mp3" id="10_5cxca"]
 
 [sub_resource type="Resource" id="Resource_f3alg"]
 script = ExtResource("2_5cax2")
@@ -65,9 +66,16 @@ volume_db = -8.0
 fade_out_beats = 8.0
 metadata/_custom_type_script = "uid://cjc8kxdys65qm"
 
+[sub_resource type="Resource" id="Resource_slbpk"]
+script = ExtResource("2_5cax2")
+id = &"alien_root"
+audio = ExtResource("10_5cxca")
+volume_db = -8.0
+metadata/_custom_type_script = "uid://cjc8kxdys65qm"
+
 [resource]
 script = ExtResource("1_h0787")
 id = &"background03"
 bpm = 145.0
-stems = Array[ExtResource("2_5cax2")]([SubResource("Resource_f3alg"), SubResource("Resource_comrj"), SubResource("Resource_vk7xa"), SubResource("Resource_y1av7"), SubResource("Resource_pt0lt"), SubResource("Resource_ui7bv"), SubResource("Resource_5cxca")])
+stems = Array[ExtResource("2_5cax2")]([SubResource("Resource_f3alg"), SubResource("Resource_comrj"), SubResource("Resource_vk7xa"), SubResource("Resource_y1av7"), SubResource("Resource_pt0lt"), SubResource("Resource_ui7bv"), SubResource("Resource_5cxca"), SubResource("Resource_slbpk")])
 metadata/_custom_type_script = "uid://dvj10qorbdyls"

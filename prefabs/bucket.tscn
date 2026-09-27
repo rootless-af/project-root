@@ -4,10 +4,42 @@
 [ext_resource type="Texture2D" uid="uid://kjffokmjo5su" path="res://assets/textures/seed_bags/Normal_Seed_Bag_CROP.png" id="2_3vcjh"]
 [ext_resource type="Texture2D" uid="uid://bloi5uffcm6rh" path="res://assets/textures/seed_bags/Water_Seed_Bucket_CROP.png" id="2_a5l3r"]
 [ext_resource type="PackedScene" uid="uid://clu7cstpsyyh4" path="res://prefabs/seed.tscn" id="3_m1vms"]
+[ext_resource type="Script" uid="uid://bd670dyrr7ib2" path="res://scripts/music/audio_shot.gd" id="3_qld2t"]
+[ext_resource type="AudioStream" uid="uid://dgxlpwqqq872t" path="res://assets/sound/sfx/normal_bag_grab.mp3" id="3_rcc1x"]
 [ext_resource type="Texture2D" uid="uid://bvlfjqraa2xuk" path="res://assets/textures/seed_bags/Fire_Cage_CROP.png" id="4_3enmx"]
 [ext_resource type="Texture2D" uid="uid://o52jo6o168uh" path="res://assets/textures/seed_bags/Robot_Box_CROP.png" id="5_qld2t"]
+[ext_resource type="AudioStream" uid="uid://c0tycahv12jg2" path="res://assets/sound/sfx/seed/grab_bucket.mp3" id="5_w2ipu"]
 [ext_resource type="Texture2D" uid="uid://bejjkjp7t27wa" path="res://assets/textures/prototype_textures/error_bucket.png" id="6_ii2cr"]
 [ext_resource type="Texture2D" uid="uid://dneqpl3qs4s3h" path="res://assets/textures/seed_bags/Alien_Storage_CROP.png" id="6_w2ipu"]
+[ext_resource type="AudioStream" uid="uid://ukb2k2pq7w1e" path="res://assets/sound/sfx/fire_bucket.mp3" id="7_p1uuw"]
+[ext_resource type="AudioStream" uid="uid://c47yh6fvaalro" path="res://assets/sound/sfx/robot_cardboard_grab.mp3" id="9_rcc1x"]
+[ext_resource type="AudioStream" uid="uid://brivoncweo4gb" path="res://assets/sound/sfx/seed/alien_grab.mp3" id="11_pko00"]
+
+[sub_resource type="Resource" id="Resource_slbpk"]
+script = ExtResource("3_qld2t")
+audio = ExtResource("3_rcc1x")
+metadata/_custom_type_script = "uid://bd670dyrr7ib2"
+
+[sub_resource type="Resource" id="Resource_di48r"]
+script = ExtResource("3_qld2t")
+audio = ExtResource("5_w2ipu")
+volume_db = 5.0
+metadata/_custom_type_script = "uid://bd670dyrr7ib2"
+
+[sub_resource type="Resource" id="Resource_0bbw8"]
+script = ExtResource("3_qld2t")
+audio = ExtResource("7_p1uuw")
+metadata/_custom_type_script = "uid://bd670dyrr7ib2"
+
+[sub_resource type="Resource" id="Resource_r6od6"]
+script = ExtResource("3_qld2t")
+audio = ExtResource("9_rcc1x")
+metadata/_custom_type_script = "uid://bd670dyrr7ib2"
+
+[sub_resource type="Resource" id="Resource_lewwm"]
+script = ExtResource("3_qld2t")
+audio = ExtResource("11_pko00")
+metadata/_custom_type_script = "uid://bd670dyrr7ib2"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5l3r"]
 size = Vector2(166, 159)
@@ -15,10 +47,15 @@ size = Vector2(166, 159)
 [node name="Bucket" type="Node2D" unique_id=544090845]
 script = ExtResource("1_lsg32")
 normal_bucket_texture = ExtResource("2_3vcjh")
+normal_bucket_pickup_sfx = SubResource("Resource_slbpk")
 water_bucket_texture = ExtResource("2_a5l3r")
+water_bucket_pickup_sfx = SubResource("Resource_di48r")
 fire_bucket_texture = ExtResource("4_3enmx")
+fire_bucket_pickup_sfx = SubResource("Resource_0bbw8")
 metal_bucket_texture = ExtResource("5_qld2t")
+metal_bucket_pickup_sfx = SubResource("Resource_r6od6")
 alien_bucket_texture = ExtResource("6_w2ipu")
+alien_bucket_pickup_sfx = SubResource("Resource_lewwm")
 error_bucket_texture = ExtResource("6_ii2cr")
 seed_scene = ExtResource("3_m1vms")
 

@@ -96,6 +96,7 @@ tree_name = "Alien"
 [node name="Node" type="Node" parent="." unique_id=2031323702]
 script = ExtResource("7_05ihm")
 background_track = ExtResource("5_2ni8l")
+
 [node name="GameManager" parent="." unique_id=459991247 instance=ExtResource("12_0bbw8")]
 
 [connection signal="appled_upgrade" from="NormalTree" to="StoreCanvas/Store" method="_on_normal_tree_appled_upgrade"]

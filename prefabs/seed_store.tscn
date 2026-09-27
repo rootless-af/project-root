@@ -2,13 +2,30 @@
 
 [ext_resource type="Script" uid="uid://cnyeetsqa3xsq" path="res://scripts/store.gd" id="1_6uu7c"]
 [ext_resource type="PackedScene" uid="uid://bweklfylimun5" path="res://prefabs/bucket.tscn" id="2_6uu7c"]
+[ext_resource type="AudioStream" uid="uid://bm4355353jaot" path="res://assets/sound/sfx/store_close.mp3" id="2_n52wu"]
 [ext_resource type="Texture2D" uid="uid://bkx7lkrxbu82p" path="res://assets/textures/misc/Shop_uncollapsed.png" id="2_opl07"]
+[ext_resource type="Script" uid="uid://bd670dyrr7ib2" path="res://scripts/music/audio_shot.gd" id="3_qahsj"]
+[ext_resource type="AudioStream" uid="uid://fcubasl3gjhk" path="res://assets/sound/sfx/store_open.mp3" id="4_pvx6y"]
+
+[sub_resource type="Resource" id="Resource_slbpk"]
+script = ExtResource("3_qahsj")
+audio = ExtResource("2_n52wu")
+volume_db = -4.0
+metadata/_custom_type_script = "uid://bd670dyrr7ib2"
+
+[sub_resource type="Resource" id="Resource_di48r"]
+script = ExtResource("3_qahsj")
+audio = ExtResource("4_pvx6y")
+volume_db = -5.0
+metadata/_custom_type_script = "uid://bd670dyrr7ib2"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4pjw"]
 size = Vector2(111.858536, 720)
 
 [node name="Store" type="Node2D" unique_id=419499197]
 script = ExtResource("1_6uu7c")
+store_close_sfx = SubResource("Resource_slbpk")
+store_open_sfx = SubResource("Resource_di48r")
 
 [node name="Handle" type="Sprite2D" parent="." unique_id=1812378022]
 position = Vector2(640, 404)

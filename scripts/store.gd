@@ -20,6 +20,10 @@ signal alien_tree_applied_upgrade(upgrade:Upgrade)
 @export var transition: Tween.TransitionType = Tween.TRANS_QUAD;
 @export var ease_type: Tween.EaseType = Tween.EASE_OUT;
 
+@export_subgroup("Sound")
+@export var store_close_sfx: AudioShot;
+@export var store_open_sfx: AudioShot;
+
 # -- State --
 var is_open: bool = false;
 var is_animating: bool = false;
@@ -64,13 +68,14 @@ func open_store() -> void:
 	if is_animating:
 		return;
 	
+	AudioManager.play(store_open_sfx);
 	is_open = true;
 	_slide_to(get_open_x());
 
 func close_store() -> void:
 	if is_animating:
 		return;
-	
+	AudioManager.play(store_close_sfx);
 	is_open = false;
 	_slide_to(get_closed_x());
 
