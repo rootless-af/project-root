@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 GLOBALS="*uid://glw8qu4i4j47"
-MusicManager="*uid://drr54ke5ijsig"
 AudioManager="*uid://bcpa32onbpr6h"
+MusicManager="*uid://bn2k3ys17ix0c"
 
 [display]
 

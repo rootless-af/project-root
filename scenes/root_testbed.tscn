@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://prefabs/viewport_camera.tscn" id="1_u0w26"]
 [ext_resource type="PackedScene" uid="uid://dmf6gdhkwebhn" path="res://prefabs/background.tscn" id="2_di48r"]
 [ext_resource type="Resource" uid="uid://cara2cbioyihp" path="res://resources/music/background03/background03.tres" id="5_2ni8l"]
-[ext_resource type="Script" uid="uid://drr54ke5ijsig" path="res://scripts/music/music_manager.gd" id="6_gg5g5"]
 [ext_resource type="Script" uid="uid://bcpa32onbpr6h" path="res://scripts/music/audio_shots_manager.gd" id="7_2ni8l"]
 [ext_resource type="Script" uid="uid://b8g8udnyp4pyf" path="res://scripts/music/music_manager_tester.gd" id="7_05ihm"]
 [ext_resource type="PackedScene" uid="uid://do2p2ws4kn635" path="res://prefabs/seed_store.tscn" id="8_2ni8l"]
@@ -59,13 +58,6 @@ texture = SubResource("NoiseTexture2D_t4pjw")
 position = Vector2(0, 31)
 shape = SubResource("RectangleShape2D_t4pjw")
 
-[node name="MusicManager" type="Node" parent="." unique_id=1907065918]
-script = ExtResource("6_gg5g5")
-
-[node name="MusicManagerTester" type="Node" parent="." unique_id=45235182]
-script = ExtResource("7_05ihm")
-background_track = ExtResource("5_2ni8l")
-
 [node name="AudioManager" type="Node" parent="." unique_id=510782242]
 script = ExtResource("7_2ni8l")
 
@@ -101,6 +93,9 @@ tree_name = "Metal"
 position = Vector2(4235, -945)
 tree_name = "Alien"
 
+[node name="Node" type="Node" parent="." unique_id=2031323702]
+script = ExtResource("7_05ihm")
+background_track = ExtResource("5_2ni8l")
 [node name="GameManager" parent="." unique_id=459991247 instance=ExtResource("12_0bbw8")]
 
 [connection signal="appled_upgrade" from="NormalTree" to="StoreCanvas/Store" method="_on_normal_tree_appled_upgrade"]
