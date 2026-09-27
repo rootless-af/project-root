@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_3a0j8")
-root_width_upgrade = 100.0
+root_width_upgrade = 50.0
 metadata/_custom_type_script = "uid://dkn2utirwsf51"

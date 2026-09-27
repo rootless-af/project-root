@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://6vv72lvjbp3i"]
+
+[ext_resource type="Script" uid="uid://bfh8kvlbp61bm" path="res://scripts/obstacle.gd" id="1_u2pes"]
+[ext_resource type="Texture2D" uid="uid://sxw7h84dpo85" path="res://assets/textures/minerals_and_obstacles/rock.png" id="2_k3ab8"]
+[ext_resource type="Texture2D" uid="uid://v1g2gio2dlfr" path="res://icon.svg" id="2_oqdh3"]
+[ext_resource type="Texture2D" uid="uid://w4slw4xt7jfj" path="res://assets/textures/minerals_and_obstacles/clay.png" id="3_bif4w"]
+
+[node name="Obstacle" type="Node2D" unique_id=1893432283]
+script = ExtResource("1_u2pes")
+rock_texture = ExtResource("2_k3ab8")
+clay_texture = ExtResource("3_bif4w")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1094201421]
+texture_filter = 1
+texture = ExtResource("2_oqdh3")

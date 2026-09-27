@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b0j5otk6wtrap"]
+
+[ext_resource type="PackedScene" uid="uid://d1pn0awo34ut7" path="res://prefabs/root.tscn" id="1_d38li"]
+[ext_resource type="Texture2D" uid="uid://nshiytp4w42p" path="res://assets/textures/roots/Alien_Root_ROTATED.png" id="2_jor6o"]
+
+[node name="Root" unique_id=1285881573 instance=ExtResource("1_d38li")]
+max_active_tips = 15
+root_texture = ExtResource("2_jor6o")
+root_width = 50.0
+root_type = 4
+max_depth = 2000.0
+split_chance = 0.05

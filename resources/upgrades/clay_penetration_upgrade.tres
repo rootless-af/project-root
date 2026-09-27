@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ClayPenetrationUpgrade" format=3 uid="uid://c5ie483ajvql1"]
+
+[ext_resource type="Script" uid="uid://dixl3i0h7v0li" path="res://scripts/upgrades/clay_penetration_upgrade.gd" id="1_hmuvl"]
+
+[resource]
+script = ExtResource("1_hmuvl")
+clay_penetration_upgrade = 0.2
+metadata/_custom_type_script = "uid://dixl3i0h7v0li"

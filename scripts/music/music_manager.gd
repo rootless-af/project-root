@@ -5,18 +5,136 @@ extends Node
 var current_track: MusicTrack;
 var stem_players: Dictionary = {}
 var active_stems: Dictionary = {}
-var master_volume_db: float = 0.0
+@export var master_volume_db: float = 0.0
 
 var active_roots := {
 	"normal": 0,
 	"water": 0,
 	"fire": 0,
-	"metal": 0
+	"metal": 0,
+	"alien": 0
 }
 
 var is_camera_underground: bool = false;
 
 var stem_tweens: Dictionary = {};
+
+@export_group("Track Rotation")
+@export var tracks: Array[MusicTrack] = [];
+@export var track_min_time: float = 180.0;
+@export var track_max_time: float = 300.0;
+@export var track_fade_out_beats: float = 4.0;
+
+var track_timer: Timer;
+var is_transitioning: bool = false;
+
+func _ready() -> void:
+	track_timer = Timer.new();
+	track_timer.one_shot = true;
+	track_timer.timeout.connect(_on_track_timer_timeout);
+	add_child(track_timer);
+
+	_start_random_track();
+
+func _start_random_track() -> void:
+	if tracks.is_empty():
+		push_warning("[Music Manager] No tracks assigned.");
+		return;
+
+	var track: MusicTrack = tracks.pick_random();
+
+	load_track(track);
+	_restore_music_state();
+	_start_track_timer();
+
+func _start_track_timer() -> void:
+	var duration := randf_range(
+		track_min_time,
+		track_max_time
+	);
+
+	track_timer.start(duration);
+
+	if debug_messages:
+		print(
+			"[Music Manager] Next track in ",
+			duration,
+			" seconds."
+		);
+
+func _on_track_timer_timeout() -> void:
+	if is_transitioning:
+		return;
+
+	is_transitioning = true;
+
+	await _fade_out_current_track();
+
+	_start_next_random_track();
+
+	is_transitioning = false;
+
+func _start_next_random_track() -> void:
+	if tracks.is_empty():
+		is_transitioning = false;
+		return;
+
+	var next_track: MusicTrack = tracks.pick_random();
+
+	if tracks.size() > 1:
+		while next_track == current_track:
+			next_track = tracks.pick_random();
+
+	load_track(next_track);
+	_restore_music_state();
+	_start_track_timer();
+
+func _fade_out_current_track() -> void:
+	if current_track == null:
+		return;
+
+	var fade_time := _beats_to_seconds(track_fade_out_beats);
+
+	for id in stem_players.keys():
+		var player: AudioStreamPlayer = stem_players[id];
+
+		if not is_instance_valid(player):
+			continue;
+
+		var tween := create_tween();
+		tween.set_trans(Tween.TRANS_SINE);
+		tween.set_ease(Tween.EASE_IN_OUT);
+
+		tween.tween_property(
+			player,
+			"volume_db",
+			-80.0,
+			fade_time
+		);
+
+	await get_tree().create_timer(fade_time).timeout;
+
+func _restore_music_state() -> void:
+	# Base music is always active.
+	set_stem("base", true);
+
+	# Restore currently active root types.
+	for root_type in active_roots.keys():
+		if active_roots[root_type] <= 0:
+			continue;
+
+		var stem_id := _root_type_to_stem(root_type);
+
+		if stem_id != "":
+			set_stem(stem_id, true);
+
+	# Restore underground/overground state.
+	if is_camera_underground:
+		set_stem("underground", true);
+		set_stem("overground", false);
+	else:
+		set_stem("underground", false);
+		set_stem("overground", true);
 
 func load_track(track: MusicTrack) -> void:
 	_clear_current_track();
@@ -41,8 +159,10 @@ func load_track(track: MusicTrack) -> void:
 		
 		add_child(player);
 		
-		stem_players[stem.id] = player;
-		active_stems[stem.id] = false;
+		var stem_id := StringName(stem.id)
+		
+		stem_players[stem_id] = player;
+		active_stems[stem_id] = false;
 		
 		# Start all stems at the same time
 		player.volume_db = -80.0;
@@ -68,7 +188,7 @@ func set_stem(id: StringName,enabled:bool) -> void:
 		print("[Music Manager] SET STEM: ", id, " enabled = ", enabled);
 	
 	if not stem_players.has(id):
-		push_warning("Something went wrong!"); # TODO make the warning better lol
+		push_warning("Music player doesn't have stems for '%s' " % id);
 		return;
 	
 	var player: AudioStreamPlayer = stem_players[id];
@@ -258,6 +378,8 @@ func _root_type_to_stem(root_type: StringName) -> StringName:
 			return "fire_root";
 		"metal":
 			return "metal_root";
+		"alien":
+			return "alien_root";
 	
 	return "";
 

@@ -12,7 +12,8 @@ enum SeedType {
 	NORMAL,
 	WATER,
 	FIRE,
-	METAL
+	METAL,
+	ALIEN
 }
 @export var seed_type: SeedType = SeedType.NORMAL;
 
@@ -39,21 +40,35 @@ const GROUND_MASK := 2; # Collision layer
 # -- Resources --
 var root_scene: PackedScene;
 var root_offset := Vector2(0,-115);
+var seed_plant_sfx: AudioShot;
 
 
 @export_group("Seed References")
 # NORMAL 
 @export var seed_basic_texture: Texture2D;
 @export var root_basic_scene: PackedScene;
+@export var seed_basic_plant_sfx: AudioShot;
 # WATER
 @export var seed_water_texture: Texture2D;
 @export var root_water_scene: PackedScene;
+@export var seed_water_plant_sfx: AudioShot;
 # FIRE
 @export var seed_fire_texture: Texture2D;
 @export var root_fire_scene : PackedScene;
+@export var seed_fire_plant_sfx: AudioShot;
 # METAL
 @export var seed_metal_texture: Texture2D;
 @export var root_metal_scene : PackedScene;
+@export var seed_metal_plant_sfx: AudioShot;
+# ALIEN
+@export var seed_alien_texture: Texture2D;
+@export var root_alien_scene : PackedScene;
+@export var seed_alien_plant_sfx: AudioShot;
+var normal_upgrades:Array[Upgrade] = []
+var water_upgrades:Array[Upgrade] = []
+var fire_upgrades:Array[Upgrade] = []
+var metal_upgrades:Array[Upgrade] = []
+var alien_upgrades:Array[Upgrade] = []
 
 func _ready() -> void:
 	setup_seed();
@@ -64,21 +79,35 @@ func setup_seed() -> void:
 			seed_sprite.texture = seed_basic_texture;
 			root_scene = root_basic_scene;
 			root_offset = Vector2(0, -115);
+			seed_plant_sfx = seed_basic_plant_sfx;
 		SeedType.WATER:
 			seed_sprite.texture = seed_water_texture;
 			root_scene = root_water_scene;
 			root_offset = Vector2(0,-90);
+			seed_plant_sfx = seed_water_plant_sfx;
 		SeedType.FIRE:
 			seed_sprite.texture = seed_fire_texture;
 			root_scene = root_fire_scene;
 			root_offset = Vector2(0,-90);
+			seed_plant_sfx = seed_fire_plant_sfx;
 		SeedType.METAL:
 			seed_sprite.texture = seed_metal_texture;
 			root_scene = root_metal_scene;
 			root_offset = Vector2(0,-90);
+			seed_plant_sfx = seed_metal_plant_sfx;
+		SeedType.ALIEN:
+			seed_sprite.texture = seed_alien_texture;
+			root_scene = root_alien_scene;
+			root_offset = Vector2(0,-90);
+			seed_plant_sfx = seed_alien_plant_sfx;
 		_:
 			seed_sprite.texture = seed_basic_texture;
 			root_scene = root_basic_scene;
+
+
+func apply_upgrades(root: Node, upgrades: Array[Upgrade]) -> void:
+	for upgrade in upgrades:
+		root.add_child(upgrade)
 
 func _on_seed_input_event(
 	_viewport: Node,
@@ -188,6 +217,12 @@ func plant(ground_position: Vector2) -> void:
 	# Put the seed in da ground contact point
 	global_position = ground_position - Vector2.DOWN * seed_bottom_offset;
 	
+	AudioManager.play(seed_plant_sfx);
+	
+	var camera := get_viewport().get_camera_2d();
+	if camera:
+		camera.exit_planting_view(); 
+
 	spawn_root();
 
 func spawn_root() -> void:
@@ -196,7 +231,17 @@ func spawn_root() -> void:
 		return;
 	
 	var root := root_scene.instantiate();
-	
+	match seed_type:
+		SeedType.NORMAL:
+			apply_upgrades(root, normal_upgrades)
+		SeedType.WATER:
+			apply_upgrades(root, water_upgrades)
+		SeedType.FIRE:
+			apply_upgrades(root, fire_upgrades)
+		SeedType.METAL:
+			apply_upgrades(root, metal_upgrades)
+		SeedType.ALIEN:
+			apply_upgrades(root, alien_upgrades)
 	# Root and seed should be siblings. (Sweet home alabama)
 	get_parent().add_child(root);
 	
