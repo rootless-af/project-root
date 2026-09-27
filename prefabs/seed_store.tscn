@@ -2,31 +2,25 @@
 
 [ext_resource type="Script" uid="uid://cnyeetsqa3xsq" path="res://scripts/store.gd" id="1_6uu7c"]
 [ext_resource type="PackedScene" uid="uid://bweklfylimun5" path="res://prefabs/bucket.tscn" id="2_6uu7c"]
-[ext_resource type="Texture2D" uid="uid://v1g2gio2dlfr" path="res://icon.svg" id="2_opl07"]
+[ext_resource type="Texture2D" uid="uid://bkx7lkrxbu82p" path="res://assets/textures/misc/Shop_uncollapsed.png" id="2_opl07"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4pjw"]
-size = Vector2(49, 289)
+size = Vector2(111.858536, 720)
 
 [node name="Store" type="Node2D" unique_id=419499197]
 script = ExtResource("1_6uu7c")
 
-[node name="Background" type="Sprite2D" parent="." unique_id=47192935]
-position = Vector2(639.5, 575.5)
-scale = Vector2(9.9921875, 2.2578127)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1812378022]
+position = Vector2(640, 404)
+scale = Vector2(0.8, 0.79999995)
 texture = ExtResource("2_opl07")
 
-[node name="Handle" type="Sprite2D" parent="." unique_id=1939893923]
-modulate = Color(0, 0.007843138, 0.007843138, 1)
-position = Vector2(24.75, 575.5)
-scale = Vector2(0.38671875, 2.2578127)
-texture = ExtResource("2_opl07")
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=1069961920]
+position = Vector2(-800, 88.75)
+scale = Vector2(1.2627549, 1.2500001)
 
-[node name="Area2D" type="Area2D" parent="Handle" unique_id=1069961920]
-position = Vector2(-64, -63.999996)
-scale = Vector2(2.6122448, 0.44290656)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Handle/Area2D" unique_id=899645269]
-position = Vector2(24.5, 144.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=899645269]
+position = Vector2(55.929268, -71)
 shape = SubResource("RectangleShape2D_t4pjw")
 
 [node name="Buckets" type="Node2D" parent="." unique_id=1731847054]
@@ -50,4 +44,4 @@ bucket_type = 3
 position = Vector2(1057, 583)
 bucket_type = 4
 
-[connection signal="input_event" from="Handle/Area2D" to="." method="_on_handle_input_event"]
+[connection signal="input_event" from="Sprite2D/Area2D" to="." method="_on_handle_input_event"]

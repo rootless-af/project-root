@@ -91,3 +91,6 @@ position = Vector2(640, 360)
 layer = 10
 
 [node name="Store" parent="StoreCanvas" unique_id=419499197 instance=ExtResource("8_2ni8l")]
+handle_visible_width = 100.0
+
+[connection signal="input_event" from="Area2D" to="WaterBucket" method="_on_area_2d_input_event"]
