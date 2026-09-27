@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BranchAbilityUpgrade" format=3 uid="uid://fxfp6ac5cajy"]
+
+[ext_resource type="Script" uid="uid://8l3fwlbjhuxy" path="res://scripts/upgrades/branch_ability_upgrade.gd" id="1_q1mhe"]
+
+[resource]
+script = ExtResource("1_q1mhe")
+max_active_tips_upgrade = 1
+metadata/_custom_type_script = "uid://8l3fwlbjhuxy"
