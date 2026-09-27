@@ -21,7 +21,24 @@ signal appled_upgrade(upgrade:Upgrade, tree_name:String)
 @onready var penetrate_rock_speed_upgrade: SkillTreeButton = $PenetrateRockSpeedUpgrade
 @onready var label: Label = $Label
 
+@onready var tree_texture: Sprite2D = $TreeTexture
+
+@export var normal_tree_texture: Texture2D;
+@export var water_tree_texture: Texture2D;
+@export var fire_tree_texture: Texture2D;
+@export var metal_tree_texture: Texture2D;
+@export var alien_tree_texture: Texture2D;
+
 @export var tree_name:String
+
+enum TreeType {
+	NORMAL,
+	WATER,
+	FIRE,
+	METAL,
+	ALIEN
+}
+@export var this_tree_type: TreeType = TreeType.NORMAL;
 
 const UPGRADE = preload("uid://cx4b27672a2ps")
 const ROOT = preload("uid://d1pn0awo34ut7")
@@ -30,6 +47,19 @@ var root_instance = null;
 var root = null;
 
 func _ready() -> void:
+	
+	match (this_tree_type):
+		TreeType.NORMAL:
+			tree_texture.texture = normal_tree_texture;
+		TreeType.WATER:
+			tree_texture.texture = water_tree_texture;
+		TreeType.FIRE:
+			tree_texture.texture = fire_tree_texture;
+		TreeType.METAL:
+			tree_texture.texture = metal_tree_texture;
+		TreeType.ALIEN:
+			tree_texture.texture = alien_tree_texture;
+	
 	label.text = tree_name
 	penetrate_rock_ability.disable(true)
 	penetrate_clay_speed_upgrade.disable(true)
