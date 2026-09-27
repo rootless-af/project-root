@@ -6,6 +6,17 @@ signal water_tree_applied_upgrade(upgrade:Upgrade)
 signal fire_tree_applied_upgrade(upgrade:Upgrade)
 signal metal_tree_applied_upgrade(upgrade:Upgrade)
 signal alien_tree_applied_upgrade(upgrade:Upgrade)
+signal normal_tree_minerals_initialized(minerals: Array[MineralOre])
+signal water_tree_minerals_initialized(minerals: Array[MineralOre])
+signal fire_tree_minerals_initialized(minerals: Array[MineralOre])
+signal metal_tree_minerals_initialized(minerals: Array[MineralOre])
+signal alien_tree_minerals_initialized(minerals: Array[MineralOre])
+
+signal normal_tree_obstacles_initialized(obstacles: Array[Obstacle])
+signal water_tree_obstacles_initialized(obstacles: Array[Obstacle])
+signal fire_tree_obstacles_initialized(obstacles: Array[Obstacle])
+signal metal_tree_obstacles_initialized(obstacles: Array[Obstacle])
+signal alien_tree_obstacles_initialized(obstacles: Array[Obstacle])
 
 # -- References -- 
 @onready var handle_area: Area2D = $Handle/Area2D
@@ -120,3 +131,22 @@ func _on_metal_tree_appled_upgrade(upgrade: Upgrade, tree_name: String) -> void:
 
 func _on_alien_tree_appled_upgrade(upgrade: Upgrade, tree_name: String) -> void:
 	alien_tree_applied_upgrade.emit(upgrade)
+
+
+func _on_mineral_spawner_minerals_initialized(
+	minerals: Array[MineralOre]
+) -> void:
+	normal_tree_minerals_initialized.emit(minerals)
+	water_tree_minerals_initialized.emit(minerals)
+	fire_tree_minerals_initialized.emit(minerals)
+	metal_tree_minerals_initialized.emit(minerals)
+	alien_tree_minerals_initialized.emit(minerals)
+	
+func _on_mineral_spawner_obstacles_initialized(
+	obstacles: Array[Obstacle]
+) -> void:
+	normal_tree_obstacles_initialized.emit(obstacles)
+	water_tree_obstacles_initialized.emit(obstacles)
+	fire_tree_obstacles_initialized.emit(obstacles)
+	metal_tree_obstacles_initialized.emit(obstacles)
+	alien_tree_obstacles_initialized.emit(obstacles)

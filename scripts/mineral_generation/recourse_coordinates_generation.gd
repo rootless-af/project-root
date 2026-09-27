@@ -4,6 +4,7 @@ class_name recourse_coordinates_generation
 
 @export_group("DEBUG")
 @export var debug_messages: bool = false
+@onready var mineral_spawner: MineralSpawner = $"../MineralSpawner"
 
 
 # ============================================================
@@ -15,10 +16,10 @@ var mid_ore_counts: Dictionary = {}
 var middeep_ore_counts: Dictionary = {}
 var deep_ore_counts: Dictionary = {}
 
-const LOW_SPAWN_CHANCE: float = 0.025
-const MID_SPAWN_CHANCE: float = 0.01
-const MIDDEEP_SPAWN_CHANCE: float = 0.007
-const DEEP_SPAWN_CHANCE: float = 0.003
+const LOW_SPAWN_CHANCE: float = 0.006
+const MID_SPAWN_CHANCE: float = 0.003
+const MIDDEEP_SPAWN_CHANCE: float = 0.0015
+const DEEP_SPAWN_CHANCE: float = 0.00075
 
 
 # ============================================================
@@ -32,8 +33,6 @@ var rng := RandomNumberGenerator.new()
 # We generate ore positions in TILE coordinates.
 var map_width: int = GLOBALS.map_width / GLOBALS.TILE_SIZE
 var map_height: int = GLOBALS.map_height / GLOBALS.TILE_SIZE
-
-@onready var mineral_spawner: MineralSpawner = $MineralSpawner
 
 var noise_seed: int = 720343699
 
@@ -500,22 +499,27 @@ func _ready() -> void:
 		mineral_deposits.size()
 	)
 
+	var mineral_data: Array[MineralSpawner.MineralData] = []
+
 	for i in range(amount_to_spawn):
 
 		var deposit: Dictionary = mineral_deposits[i]
 		var coordinates: Vector2i = deposit["coordinates"]
 
-		# If 251 means PIXELS, this should instead be:
-		# coordinates.y * GLOBALS.TILE_SIZE > 251
-		#
-		# Currently 251 means TILE coordinates.
-		if coordinates.y * GLOBALS.TILE_SIZE > 251:
+		if coordinates.y * GLOBALS.TILE_SIZE <= 500:
+			continue
 
-			mineral_spawner.initialize_material(
-				coordinates,
-				deposit["richness"],
-				deposit["type"]
-			)
+		var data := MineralSpawner.MineralData.new()
+
+		data.init(
+			coordinates * GLOBALS.TILE_SIZE,
+			deposit["richness"],
+			deposit["type"]
+		)
+
+		mineral_data.append(data)
+
+	mineral_spawner.initialize_minerals(mineral_data)
 
 
 # ============================================================

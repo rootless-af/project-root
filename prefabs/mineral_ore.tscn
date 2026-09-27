@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://di30io1e3prjq" path="res://assets/textures/minerals_and_obstacles/rihtocide_01.png" id="12_hoge1"]
 [ext_resource type="Texture2D" uid="uid://deg15s0sx33pg" path="res://assets/textures/minerals_and_obstacles/kviktorium_01.png" id="13_3gtvu"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yflkj"]
+size = Vector2(80, 56)
+
 [node name="MineralOre" type="Node2D" unique_id=1686280603]
 texture_filter = 1
 script = ExtResource("1_5gd4m")
@@ -33,3 +36,10 @@ kviktorium_texture_35 = ExtResource("13_3gtvu")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1236444070]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("10_q137r")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=598837746]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=32676371]
+shape = SubResource("RectangleShape2D_yflkj")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

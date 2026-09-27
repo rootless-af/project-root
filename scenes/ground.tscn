@@ -1,61 +1,7 @@
 [gd_scene format=3 uid="uid://bijhh1d7ipppv"]
 
 [ext_resource type="Script" uid="uid://bx8736t6ynf6a" path="res://scripts/mineral_generation/recourse_coordinates_generation.gd" id="1_mi8v4"]
-[ext_resource type="Script" uid="uid://bibr0txprl21m" path="res://scenes/terrain_generator.gd" id="2_lmksl"]
-[ext_resource type="Texture2D" uid="uid://v1g2gio2dlfr" path="res://icon.svg" id="3_lmksl"]
-[ext_resource type="Script" uid="uid://c1spkjmhf052x" path="res://scripts/mineral_generation/kviktorium_ore_2d.gd" id="4_1ywih"]
-[ext_resource type="PackedScene" uid="uid://bgr2cyhrkt2hv" path="res://prefabs/mineral_spawner.tscn" id="5_ct7o8"]
-[ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://prefabs/viewport_camera.tscn" id="6_ct7o8"]
-[ext_resource type="PackedScene" uid="uid://dliby6xgc5o06" path="res://scenes/root_testbed.tscn" id="7_vjnaj"]
-[ext_resource type="Texture2D" uid="uid://6fn7fl3fcnke" path="res://assets/textures/background_3_columns.png" id="8_hokwi"]
-[ext_resource type="PackedScene" uid="uid://n5dxx2e4o678" path="res://prefabs/skill_tree.tscn" id="9_6ra5r"]
-
-[sub_resource type="Gradient" id="Gradient_14lh4"]
-interpolation_mode = 2
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_4pira"]
-noise_type = 3
-seed = 720343699
-frequency = 0.033
-offset = Vector3(821.43, -210.53, 0)
-fractal_octaves = 7
-metadata/_preview_in_3d_space_ = true
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b1wkp"]
-noise = SubResource("FastNoiseLite_4pira")
-color_ramp = SubResource("Gradient_14lh4")
 
 [node name="Ground" type="Node2D" unique_id=1266298725]
 script = ExtResource("1_mi8v4")
 debug_messages = true
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1264636969]
-visible = false
-position = Vector2(636, 357.5)
-scale = Vector2(2.4960938, 1.3886719)
-texture = SubResource("NoiseTexture2D_b1wkp")
-script = ExtResource("2_lmksl")
-
-[node name="KviktoriumOre2D" type="Sprite2D" parent="." unique_id=223995600]
-visible = false
-texture = ExtResource("3_lmksl")
-script = ExtResource("4_1ywih")
-
-[node name="MineralSpawner" parent="." unique_id=1578543460 instance=ExtResource("5_ct7o8")]
-ore_scale = 0.1
-
-[node name="ViewportCamera" parent="." unique_id=1012732459 instance=ExtResource("6_ct7o8")]
-zoom_strength = 0.005
-min_zoom = 0.01
-
-[node name="RootTestbed" parent="." unique_id=1355742889 instance=ExtResource("7_vjnaj")]
-visible = false
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1322474083]
-offset_right = 10500.0
-offset_bottom = 9500.0
-texture = ExtResource("8_hokwi")
-stretch_mode = 1
-
-[node name="SkillTree" parent="." unique_id=613364986 instance=ExtResource("9_6ra5r")]
-position = Vector2(1066, -349)

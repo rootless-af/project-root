@@ -62,10 +62,10 @@ func mine_material(mined_amount: int) -> void:
 		actual_amount_mined = mined_amount
 
 	material_mined.emit(mineral_type, actual_amount_mined)
-
+	print("MINERAL ORE: MINED & REMAINING: ", amount)
 	update_texture()
 
-	print("MINERAL ORE: MINED & REMAINING: ", amount)
+	
 
 
 func update_texture() -> void:
@@ -106,3 +106,7 @@ func update_texture() -> void:
 				sprite.texture = kviktorium_texture_75
 			else:
 				sprite.texture = kviktorium_texture_35
+
+
+func _on_area_2d_mouse_entered() -> void:
+	print(coordinates)

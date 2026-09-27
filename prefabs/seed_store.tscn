@@ -62,8 +62,18 @@ position = Vector2(1057, 583)
 bucket_type = 4
 
 [connection signal="alien_tree_applied_upgrade" from="." to="Buckets/AlienBucket" method="_on_store_alien_tree_applied_upgrade"]
+[connection signal="alien_tree_minerals_initialized" from="." to="Buckets/AlienBucket" method="_on_store_alien_tree_minerals_initialized"]
+[connection signal="alien_tree_obstacles_initialized" from="." to="Buckets/AlienBucket" method="_on_store_alien_tree_obstacles_initialized"]
 [connection signal="fire_tree_applied_upgrade" from="." to="Buckets/FireBucket" method="_on_store_fire_tree_applied_upgrade"]
+[connection signal="fire_tree_minerals_initialized" from="." to="Buckets/FireBucket" method="_on_store_fire_tree_minerals_initialized"]
+[connection signal="fire_tree_obstacles_initialized" from="." to="Buckets/FireBucket" method="_on_store_fire_tree_obstacles_initialized"]
 [connection signal="metal_tree_applied_upgrade" from="." to="Buckets/MetalBucket" method="_on_store_metal_tree_applied_upgrade"]
+[connection signal="metal_tree_minerals_initialized" from="." to="Buckets/MetalBucket" method="_on_store_metal_tree_minerals_initialized"]
+[connection signal="metal_tree_obstacles_initialized" from="." to="Buckets/MetalBucket" method="_on_store_metal_tree_obstacles_initialized"]
 [connection signal="normal_tree_applied_upgrade" from="." to="Buckets/NormalBucket" method="_on_store_normal_tree_applied_upgrade"]
+[connection signal="normal_tree_minerals_initialized" from="." to="Buckets/NormalBucket" method="_on_store_normal_tree_minerals_initialized"]
+[connection signal="normal_tree_obstacles_initialized" from="." to="Buckets/NormalBucket" method="_on_store_normal_tree_obstacles_initialized"]
 [connection signal="water_tree_applied_upgrade" from="." to="Buckets/WaterBucket" method="_on_store_water_tree_applied_upgrade"]
+[connection signal="water_tree_minerals_initialized" from="." to="Buckets/WaterBucket" method="_on_store_water_tree_minerals_initialized"]
+[connection signal="water_tree_obstacles_initialized" from="." to="Buckets/WaterBucket" method="_on_store_water_tree_obstacles_initialized"]
 [connection signal="input_event" from="Handle/Area2D" to="." method="_on_handle_input_event"]
