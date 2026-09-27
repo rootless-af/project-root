@@ -16,16 +16,30 @@ func _ready() -> void:
 func get_minerals():
 	return minerals
 
+func can_afford(cost: Dictionary) -> bool:
+	for type in cost:
+		if minerals.get(type, 0) < cost[type]:
+			return false
+	
+	return true
+
+
+
 func check_transaction(type:GLOBALS.Minerals, amount:int):
 	if minerals.get(type) < amount:
 		return false;
 	return true;
 
 
-func make_transaction(type:GLOBALS.Minerals, amount:int):
-	if !check_transaction(type, amount):
-		return
-	minerals.set(type, minerals.get(type) - amount)
+func make_transaction(cost: Dictionary) -> bool:
+	if not can_afford(cost):
+		return false
+	
+	for type in cost:
+		minerals[type] -= cost[type]
+	
+	mineral_amount_changed.emit(minerals)
+	return true
 
 
 func add_funds(type:GLOBALS.Minerals, amount:int):
@@ -34,9 +48,18 @@ func add_funds(type:GLOBALS.Minerals, amount:int):
 	print("[Inventory] Added: " + str(amount) + " to " + str(type))
 
 
-func _on_skill_tree_upgrade_purchased(entivera: int, barbarium: int, rihtocide: int, kviktorium: int) -> void:
-	make_transaction(GLOBALS.Minerals.Entivera, entivera)
-	make_transaction(GLOBALS.Minerals.Barbanium, barbarium)
-	make_transaction(GLOBALS.Minerals.Rihtocide, rihtocide)
-	make_transaction(GLOBALS.Minerals.Kviktorium, kviktorium)
-	mineral_amount_changed.emit(minerals)
+func _on_skill_tree_upgrade_purchased(
+	entivera: int,
+	barbarium: int,
+	rihtocide: int,
+	kviktorium: int
+) -> void:
+	var cost := {
+		GLOBALS.Minerals.Entivera: entivera,
+		GLOBALS.Minerals.Barbanium: barbarium,
+		GLOBALS.Minerals.Rihtocide: rihtocide,
+		GLOBALS.Minerals.Kviktorium: kviktorium
+	}
+	
+	if make_transaction(cost):
+		print("[Inventory] Skill tree upgrade purchased")

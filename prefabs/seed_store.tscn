@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bkx7lkrxbu82p" path="res://assets/textures/misc/Shop_uncollapsed.png" id="2_opl07"]
 [ext_resource type="Script" uid="uid://bd670dyrr7ib2" path="res://scripts/music/audio_shot.gd" id="3_qahsj"]
 [ext_resource type="AudioStream" uid="uid://fcubasl3gjhk" path="res://assets/sound/sfx/store_open.mp3" id="4_pvx6y"]
+[ext_resource type="Texture2D" uid="uid://b2rfum4vmrkgr" path="res://assets/textures/misc/leaf_32.png" id="5_qahsj"]
 
 [sub_resource type="Resource" id="Resource_slbpk"]
 script = ExtResource("3_qahsj")
@@ -19,6 +20,35 @@ audio = ExtResource("4_pvx6y")
 volume_db = -5.0
 metadata/_custom_type_script = "uid://bd670dyrr7ib2"
 
+[sub_resource type="Curve" id="Curve_6mxdo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.36926997, 0.9171322), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_14upv"]
+curve = SubResource("Curve_6mxdo")
+
+[sub_resource type="Curve" id="Curve_qahsj"]
+_data = [Vector2(1e-05, 0.076028585), 0.0, 0.0, 0, 0, Vector2(0.86215335, 0.62522364), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_slbpk"]
+curve = SubResource("Curve_qahsj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t4pjw"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(58, 80, 1)
+gravity = Vector3(0, 98, 0)
+alpha_curve = SubResource("CurveTexture_14upv")
+turbulence_enabled = true
+turbulence_noise_strength = 0.2
+turbulence_noise_scale = 8.0
+turbulence_noise_speed_random = 0.1
+turbulence_influence_min = 0.0
+turbulence_influence_over_life = SubResource("CurveTexture_slbpk")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4pjw"]
 size = Vector2(111.858536, 720)
 
@@ -26,6 +56,20 @@ size = Vector2(111.858536, 720)
 script = ExtResource("1_6uu7c")
 store_close_sfx = SubResource("Resource_slbpk")
 store_open_sfx = SubResource("Resource_di48r")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1730179808]
+top_level = true
+position = Vector2(758, 278)
+emitting = false
+amount = 64
+texture = ExtResource("5_qahsj")
+lifetime = 8.0
+explosiveness = 0.1
+randomness = 1.0
+fixed_fps = 60
+visibility_rect = Rect2(-2000, -1000, 4000, 3000)
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_t4pjw")
 
 [node name="Handle" type="Sprite2D" parent="." unique_id=1812378022]
 position = Vector2(640, 404)
@@ -48,18 +92,32 @@ position = Vector2(273, 583)
 [node name="WaterBucket" parent="Buckets" unique_id=483295452 instance=ExtResource("2_6uu7c")]
 position = Vector2(475, 583)
 bucket_type = 1
+unlock_cost = Dictionary[int, int]({
+1: 100
+})
 
 [node name="FireBucket" parent="Buckets" unique_id=783804066 instance=ExtResource("2_6uu7c")]
 position = Vector2(668, 583)
 bucket_type = 2
+unlock_cost = Dictionary[int, int]({
+2: 100
+})
 
 [node name="MetalBucket" parent="Buckets" unique_id=30162254 instance=ExtResource("2_6uu7c")]
 position = Vector2(856, 583)
 bucket_type = 3
+unlock_cost = Dictionary[int, int]({
+3: 100
+})
 
 [node name="AlienBucket" parent="Buckets" unique_id=1571851925 instance=ExtResource("2_6uu7c")]
 position = Vector2(1057, 583)
 bucket_type = 4
+unlock_cost = Dictionary[int, int]({
+1: 250,
+2: 150,
+3: 100
+})
 
 [connection signal="alien_tree_applied_upgrade" from="." to="Buckets/AlienBucket" method="_on_store_alien_tree_applied_upgrade"]
 [connection signal="fire_tree_applied_upgrade" from="." to="Buckets/FireBucket" method="_on_store_fire_tree_applied_upgrade"]
