@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_417b1")
-active_tips_upgrade = 5
+active_tips_upgrade = 2
 metadata/_custom_type_script = "uid://clbo5g8v05sys"
