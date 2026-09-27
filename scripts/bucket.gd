@@ -29,6 +29,19 @@ var store: Store;
 @export var alien_bucket_pickup_sfx: AudioShot;
 @export var error_bucket_texture: Texture2D;
 
+
+var normal_minerals: Array[MineralOre] = []
+var water_minerals: Array[MineralOre] = []
+var fire_minerals: Array[MineralOre] = []
+var metal_minerals: Array[MineralOre] = []
+var alien_minerals: Array[MineralOre] = []
+
+var normal_obstacles: Array[Obstacle] = []
+var water_obstacles: Array[Obstacle] = []
+var fire_obstacles: Array[Obstacle] = []
+var metal_obstacles: Array[Obstacle] = []
+var alien_obstacles: Array[Obstacle] = []
+
 @export_subgroup("Seed")
 @export var seed_scene: PackedScene; 
 
@@ -121,26 +134,32 @@ func grab_seed() -> void:
 	match bucket_type:
 		BucketType.NORMAL:
 			seed.seed_type = Seed.SeedType.NORMAL
+			seed.minerals = normal_minerals
+			seed.obstacles = normal_obstacles
 			for upgrade in normal_upgrades:
 				seed.normal_upgrades.append(upgrade.duplicate())
-				
 		BucketType.WATER:
 			seed.seed_type = Seed.SeedType.WATER
+			seed.minerals = water_minerals
+			seed.obstacles = water_obstacles
 			for upgrade in water_upgrades:
 				seed.water_upgrades.append(upgrade.duplicate())
-				
 		BucketType.FIRE:
 			seed.seed_type = Seed.SeedType.FIRE
+			seed.minerals = fire_minerals
+			seed.obstacles = fire_obstacles
 			for upgrade in fire_upgrades:
 				seed.fire_upgrades.append(upgrade.duplicate())
-				
 		BucketType.METAL:
 			seed.seed_type = Seed.SeedType.METAL
+			seed.minerals = metal_minerals
+			seed.obstacles = metal_obstacles
 			for upgrade in metal_upgrades:
 				seed.metal_upgrades.append(upgrade.duplicate())
-				
 		BucketType.ALIEN:
 			seed.seed_type = Seed.SeedType.ALIEN
+			seed.minerals = alien_minerals
+			seed.obstacles = alien_obstacles
 			for upgrade in alien_upgrades:
 				seed.alien_upgrades.append(upgrade.duplicate())
 	
@@ -163,18 +182,42 @@ func grab_seed() -> void:
 	store.close_store()
 	camera.enter_planting_view()
 
+func _on_store_normal_tree_minerals_initialized(minerals: Array[MineralOre]) -> void:
+	normal_minerals = minerals
 
-func _on_store_normal_tree_applied_upgrade(upgrade: Upgrade) -> void:
-	normal_upgrades.append(upgrade)
 
-func _on_store_water_tree_applied_upgrade(upgrade: Upgrade) -> void:
-	water_upgrades.append(upgrade)
+func _on_store_normal_tree_obstacles_initialized(obstacles: Array[Obstacle]) -> void:
+	normal_obstacles = obstacles
 
-func _on_store_fire_tree_applied_upgrade(upgrade: Upgrade) -> void:
-	fire_upgrades.append(upgrade)
 
-func _on_store_metal_tree_applied_upgrade(upgrade: Upgrade) -> void:
-	metal_upgrades.append(upgrade)
+func _on_store_water_tree_minerals_initialized(minerals: Array[MineralOre]) -> void:
+	water_minerals = minerals
 
-func _on_store_alien_tree_applied_upgrade(upgrade: Upgrade) -> void:
-	alien_upgrades.append(upgrade)
+
+func _on_store_water_tree_obstacles_initialized(obstacles: Array[Obstacle]) -> void:
+	water_obstacles = obstacles
+
+
+func _on_store_fire_tree_minerals_initialized(minerals: Array[MineralOre]) -> void:
+	fire_minerals = minerals
+
+
+func _on_store_fire_tree_obstacles_initialized(obstacles: Array[Obstacle]) -> void:
+	fire_obstacles = obstacles
+
+
+func _on_store_metal_tree_minerals_initialized(minerals: Array[MineralOre]) -> void:
+	metal_minerals = minerals
+
+
+func _on_store_metal_tree_obstacles_initialized(obstacles: Array[Obstacle]) -> void:
+	metal_obstacles = obstacles
+
+
+func _on_store_alien_tree_minerals_initialized(minerals: Array[MineralOre]) -> void:
+	alien_minerals = minerals
+
+
+func _on_store_alien_tree_obstacles_initialized(obstacles: Array[Obstacle]) -> void:
+	alien_obstacles = obstacles
+	

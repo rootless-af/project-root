@@ -75,7 +75,7 @@ var is_growing: bool = false;
 
 # -- Mineral Mining --
 var minerals: Array[MineralOre] = []
-@export var mineral_detection_radius: float = 100.0
+@export var mineral_detection_radius: float = 40.0
 var gather_amount := 1
 var gather_speed := 0.5
 var mining_operations: Array[MiningOperation] = []
@@ -83,7 +83,7 @@ var mining_operations: Array[MiningOperation] = []
 
 # -- Obstacles --
 var obstacles: Array[Obstacle] = []
-@export var obstacle_detection_radius: float = 100.0
+@export var obstacle_detection_radius: float = 25.0
 var obstacle_operations: Array[ObstacleMiningOperation] = []
 
 #var current_direction := Vector2(0,1);
@@ -152,6 +152,18 @@ func set_obstacles(value: Array[Obstacle]) -> void:
 
 func set_minerals(value: Array[MineralOre]) -> void:
 	minerals = value
+
+	print("ROOT: minerals received = ", minerals.size())
+
+	if minerals.size() > 0:
+		print(
+			"ROOT: first mineral global pos = ",
+			minerals[0].global_position,
+			" type = ",
+			minerals[0].mineral_type,
+			" amount = ",
+			minerals[0].amount
+		)
 
 func _process(delta: float) -> void:
 	if not is_growing:
@@ -412,20 +424,39 @@ func all_tips_finished() -> bool:
 	return true
 
 
-func check_segment_for_minerals(segment: RootSegment,tip: RootTip) -> void:
+func check_segment_for_minerals(segment: RootSegment, tip: RootTip) -> void:
 	var segment_start := to_global(segment.start)
 	var segment_end := to_global(segment.end)
+
+	print(
+		"CHECK SEGMENT: ",
+		segment_start,
+		" -> ",
+		segment_end,
+		" | minerals = ",
+		minerals.size()
+	)
+
 	for mineral in minerals:
 		if not is_instance_valid(mineral):
 			continue
+
 		var closest_point := Geometry2D.get_closest_point_to_segment(
 			mineral.global_position,
 			segment_start,
 			segment_end
 		)
+
 		var distance := mineral.global_position.distance_to(closest_point)
 
 		if distance <= mineral_detection_radius:
+			print(
+				"MINERAL DETECTED! distance = ",
+				distance,
+				" mineral = ",
+				mineral.global_position
+			)
+
 			start_mining(mineral, tip)
 		
 
@@ -485,6 +516,7 @@ class MiningOperation:
 
 	func _init(mineral_to_mine: MineralOre, mining_root: Node2D, gather_amount:int, gather_speed:float) -> void:
 		mineral = mineral_to_mine
+		print("MINERAL ORE: MINED & REMAINING: ")
 		root = mining_root
 		self.gather_amount = gather_amount
 		
@@ -505,7 +537,6 @@ class MiningOperation:
 		mineral.mine_material(gather_amount)
 		mineral_damage.emit(mineral.damage_dealt)
 		if mineral.amount <= 0:
-			mineral.amount = 0
 			stop()
 			mineral.queue_free()
 

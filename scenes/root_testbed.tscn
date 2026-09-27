@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://d3ubhvxo26uf0" path="res://prefabs/inventory.tscn" id="10_0bbw8"]
 [ext_resource type="PackedScene" uid="uid://n5dxx2e4o678" path="res://prefabs/skill_tree.tscn" id="11_r6od6"]
 [ext_resource type="PackedScene" uid="uid://33excjcr7cbc" path="res://prefabs/game_manager.tscn" id="12_0bbw8"]
+[ext_resource type="PackedScene" uid="uid://bijhh1d7ipppv" path="res://scenes/ground.tscn" id="12_lewwm"]
 [ext_resource type="PackedScene" uid="uid://d3erw76eelrs5" path="res://prefabs/menu.tscn" id="12_r6od6"]
+[ext_resource type="PackedScene" uid="uid://bgr2cyhrkt2hv" path="res://prefabs/mineral_spawner.tscn" id="13_r6od6"]
 
 [sub_resource type="Gradient" id="Gradient_4bjpm"]
 offsets = PackedFloat32Array(0.32985553, 0.63322634)
@@ -121,9 +123,17 @@ background_track = ExtResource("5_2ni8l")
 [node name="GameManager" parent="." unique_id=459991247 instance=ExtResource("12_0bbw8")]
 
 [node name="Menu" parent="." unique_id=796871995 instance=ExtResource("12_r6od6")]
+visible = false
+
+[node name="Ground" parent="." unique_id=1266298725 instance=ExtResource("12_lewwm")]
+
+[node name="MineralSpawner" parent="." unique_id=1578543460 instance=ExtResource("13_r6od6")]
+tile_size = 16
 
 [connection signal="appled_upgrade" from="NormalTree" to="StoreCanvas/Store" method="_on_normal_tree_appled_upgrade"]
 [connection signal="appled_upgrade" from="WaterTree" to="StoreCanvas/Store" method="_on_water_tree_appled_upgrade"]
 [connection signal="appled_upgrade" from="FireTree" to="StoreCanvas/Store" method="_on_fire_tree_appled_upgrade"]
 [connection signal="appled_upgrade" from="MetalTree" to="StoreCanvas/Store" method="_on_metal_tree_appled_upgrade"]
 [connection signal="appled_upgrade" from="AlienTree" to="StoreCanvas/Store" method="_on_alien_tree_appled_upgrade"]
+[connection signal="minerals_initialized" from="MineralSpawner" to="StoreCanvas/Store" method="_on_mineral_spawner_minerals_initialized"]
+[connection signal="obstacles_initialized" from="MineralSpawner" to="StoreCanvas/Store" method="_on_mineral_spawner_obstacles_initialized"]

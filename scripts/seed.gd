@@ -15,6 +15,9 @@ enum SeedType {
 	METAL,
 	ALIEN
 }
+
+var minerals: Array[MineralOre] = []
+var obstacles: Array[Obstacle] = []
 @export var seed_type: SeedType = SeedType.NORMAL;
 
 # -- Falling --
@@ -231,6 +234,8 @@ func spawn_root() -> void:
 		return;
 	
 	var root := root_scene.instantiate();
+	root.minerals = minerals
+	root.obstacles = obstacles
 	match seed_type:
 		SeedType.NORMAL:
 			apply_upgrades(root, normal_upgrades)

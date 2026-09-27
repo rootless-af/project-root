@@ -1,6 +1,5 @@
 extends Sprite2D
 
-var low_ground_resources
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
