@@ -49,6 +49,9 @@ var alien_upgrades:Array[Upgrade] = []
 var audio_grab: AudioShot;
 var is_unlocked: bool = false
 
+const LOCKED_MODULATE := Color(0.35, 0.35, 0.35, 1.0)
+const UNLOCKED_MODULATE := Color.WHITE
+
 func _ready() -> void:
 	is_unlocked = bucket_type == BucketType.NORMAL;
 	
@@ -70,6 +73,8 @@ func _ready() -> void:
 			audio_grab = alien_bucket_pickup_sfx;
 		_:
 			bucket_sprite.texture = error_bucket_texture;
+	
+	bucket_sprite.modulate = UNLOCKED_MODULATE if is_unlocked else LOCKED_MODULATE;
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -83,14 +88,17 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 func purchase_bucket() -> void:
 	if bucket_type == BucketType.NORMAL:
 		is_unlocked = true
+		bucket_sprite.modulate = UNLOCKED_MODULATE
 		return
 	
 	if unlock_cost.is_empty():
 		is_unlocked = true
+		bucket_sprite.modulate = UNLOCKED_MODULATE
 		return
 	
 	if Inventory.make_transaction(unlock_cost):
 		is_unlocked = true
+		bucket_sprite.modulate = UNLOCKED_MODULATE
 		print("[Bucket] Unlocked: ", BucketType.keys()[bucket_type])
 	else:
 		print("[Bucket] Not enough minerals to unlock bucket")
