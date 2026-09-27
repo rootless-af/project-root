@@ -1,14 +1,20 @@
 [gd_scene format=3 uid="uid://n5dxx2e4o678"]
 
 [ext_resource type="Script" uid="uid://u1tp2dq861pb" path="res://scripts/skill_tree.gd" id="1_wugqu"]
+[ext_resource type="Texture2D" uid="uid://rxmr0kjdbpno" path="res://assets/textures/trees/normal_tree.png" id="2_ahepd"]
 [ext_resource type="PackedScene" uid="uid://c6nu82r4fgm0v" path="res://prefabs/skill_tree_button.tscn" id="2_y3bw0"]
+[ext_resource type="Texture2D" uid="uid://ci3vusimfg8nv" path="res://assets/textures/trees/water_tree.png" id="3_fcsft"]
 [ext_resource type="Texture2D" uid="uid://cg441rjdm8dh8" path="res://assets/textures/skill_tree_icons/skill_tree/plant_01.png" id="3_mxfui"]
 [ext_resource type="Script" uid="uid://cv6w68fd80511" path="res://scripts/upgrade_with_costs.gd" id="3_wc8jx"]
 [ext_resource type="Resource" uid="uid://dxuhkvs3nfnv8" path="res://resources/upgrades/depth_upgrade_no_min.tres" id="4_k4kkx"]
+[ext_resource type="Texture2D" uid="uid://v2h8yfruvyd7" path="res://assets/textures/trees/fire_tree.png" id="4_o78vw"]
 [ext_resource type="Texture2D" uid="uid://cd25mt0p7wjx5" path="res://assets/textures/skill_tree_icons/skill_tree/plant_02.png" id="4_seow5"]
+[ext_resource type="Texture2D" uid="uid://cdii104csy3rr" path="res://assets/textures/trees/metal_tree.png" id="5_5qfi1"]
 [ext_resource type="Texture2D" uid="uid://dby7lr1fkg5bd" path="res://assets/textures/skill_tree_icons/skill_tree/plant_03.png" id="5_upe6w"]
 [ext_resource type="Texture2D" uid="uid://1hfbgnf0ghli" path="res://assets/textures/skill_tree_icons/skill_tree/plant_04.png" id="6_vpgdj"]
+[ext_resource type="Texture2D" uid="uid://c0i6p2lo1o73b" path="res://assets/textures/trees/alien_tree.png" id="6_yi4w8"]
 [ext_resource type="Texture2D" uid="uid://chbv37ulo1wsx" path="res://assets/textures/skill_tree_icons/skill_tree/plant_05.png" id="7_08smd"]
+[ext_resource type="Texture2D" uid="uid://b2rfum4vmrkgr" path="res://assets/textures/misc/leaf_32.png" id="7_fcsft"]
 [ext_resource type="Texture2D" uid="uid://lt25616v7s5x" path="res://assets/textures/skill_tree_icons/skill_tree/gather_res_01.png" id="8_aao7a"]
 [ext_resource type="Resource" uid="uid://fxfp6ac5cajy" path="res://resources/upgrades/branch_ability_upgrade.tres" id="8_dpic0"]
 [ext_resource type="Texture2D" uid="uid://dsipynqk84dac" path="res://assets/textures/skill_tree_icons/skill_tree/gather_res_02.png" id="9_porqx"]
@@ -95,6 +101,35 @@
 [ext_resource type="Texture2D" uid="uid://p4iet1iyacgb" path="res://assets/textures/skill_tree_icons/skill_tree/pen_rock_speed_03.png" id="91_oswo0"]
 [ext_resource type="Texture2D" uid="uid://b80kdblbia203" path="res://assets/textures/skill_tree_icons/skill_tree/pen_rock_speed_04.png" id="92_3ix0l"]
 [ext_resource type="Texture2D" uid="uid://bywqai1uuy43q" path="res://assets/textures/skill_tree_icons/skill_tree/pen_rock_speed_05.png" id="93_kwkn2"]
+
+[sub_resource type="Curve" id="Curve_o78vw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.36926997, 0.9171322), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_14upv"]
+curve = SubResource("Curve_o78vw")
+
+[sub_resource type="Curve" id="Curve_5qfi1"]
+_data = [Vector2(1e-05, 0.076028585), 0.0, 0.0, 0, 0, Vector2(0.86215335, 0.62522364), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_slbpk"]
+curve = SubResource("Curve_5qfi1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yi4w8"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(58, 250, 1)
+gravity = Vector3(0, 98, 0)
+alpha_curve = SubResource("CurveTexture_14upv")
+turbulence_enabled = true
+turbulence_noise_strength = 0.2
+turbulence_noise_scale = 8.0
+turbulence_noise_speed_random = 0.1
+turbulence_influence_min = 0.0
+turbulence_influence_over_life = SubResource("CurveTexture_slbpk")
 
 [sub_resource type="Resource" id="Resource_n3oq1"]
 script = ExtResource("3_wc8jx")
@@ -253,9 +288,32 @@ metadata/_custom_type_script = "uid://cv6w68fd80511"
 
 [node name="SkillTree" type="Node2D" unique_id=1946057991]
 script = ExtResource("1_wugqu")
+normal_tree_texture = ExtResource("2_ahepd")
+water_tree_texture = ExtResource("3_fcsft")
+fire_tree_texture = ExtResource("4_o78vw")
+metal_tree_texture = ExtResource("5_5qfi1")
+alien_tree_texture = ExtResource("6_yi4w8")
+
+[node name="TreeTexture" type="Sprite2D" parent="." unique_id=900621899]
+position = Vector2(392, 392)
+scale = Vector2(0.6171875, 0.6171875)
+texture = ExtResource("2_ahepd")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=781681085]
+visible = false
+top_level = true
+position = Vector2(403, 278)
+texture = ExtResource("7_fcsft")
+lifetime = 8.0
+explosiveness = 0.1
+randomness = 1.0
+fixed_fps = 60
+visibility_rect = Rect2(-2000, -1000, 4000, 3000)
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_yi4w8")
 
 [node name="PlantSeedsUpgrade" parent="." unique_id=1944092315 instance=ExtResource("2_y3bw0")]
-position = Vector2(553, 546)
+position = Vector2(395, 661)
 tooltip_text = "Plant seeds on soil."
 disabled_texture = ExtResource("3_mxfui")
 insufficient_funds_texture = ExtResource("4_seow5")
@@ -265,7 +323,7 @@ can_upgrade_texture = ExtResource("7_08smd")
 unlocked = true
 
 [node name="GatherResourcesUpgrade" parent="." unique_id=1470648050 instance=ExtResource("2_y3bw0")]
-position = Vector2(450, 457)
+position = Vector2(209, 532)
 tooltip_text = "Gather minerals underground."
 disabled_texture = ExtResource("8_aao7a")
 insufficient_funds_texture = ExtResource("9_porqx")
@@ -275,7 +333,7 @@ can_upgrade_texture = ExtResource("12_o78vw")
 unlocked = true
 
 [node name="GrowUpgrade" parent="." unique_id=216369451 instance=ExtResource("2_y3bw0")]
-position = Vector2(646, 472)
+position = Vector2(518, 548)
 tooltip_text = "Grow roots underground."
 disabled_texture = ExtResource("13_5qfi1")
 insufficient_funds_texture = ExtResource("14_yi4w8")
@@ -285,7 +343,7 @@ can_upgrade_texture = ExtResource("17_r6b5m")
 unlocked = true
 
 [node name="BranchAbility" parent="." unique_id=1679841028 instance=ExtResource("2_y3bw0")]
-position = Vector2(670, 367)
+position = Vector2(557, 389)
 tooltip_text = "Ability to branch out roots."
 disabled_texture = ExtResource("18_2wnci")
 insufficient_funds_texture = ExtResource("19_yuxwf")
@@ -295,7 +353,7 @@ can_upgrade_texture = ExtResource("22_o883r")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_n3oq1")])
 
 [node name="AngleUpgrade" parent="." unique_id=447204229 instance=ExtResource("2_y3bw0")]
-position = Vector2(756, 393)
+position = Vector2(690, 424)
 upgrade_level = 2
 tooltip_text = "Increases randomness of root angle."
 disabled_texture = ExtResource("25_cvec4")
@@ -306,7 +364,7 @@ can_upgrade_texture = ExtResource("29_incmo")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_nkv23"), SubResource("Resource_bhdf1")])
 
 [node name="StraightenUpgrade" parent="." unique_id=1265112158 instance=ExtResource("2_y3bw0")]
-position = Vector2(837, 386)
+position = Vector2(812, 418)
 upgrade_level = 2
 tooltip_text = "Decreases randomness of root angle."
 disabled_texture = ExtResource("31_y615r")
@@ -317,7 +375,7 @@ can_upgrade_texture = ExtResource("35_mmblx")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_wt88y"), SubResource("Resource_byysx")])
 
 [node name="WidthUpgrade" parent="." unique_id=941389989 instance=ExtResource("2_y3bw0")]
-position = Vector2(822, 292)
+position = Vector2(790, 265)
 tooltip_text = "Increases the width of the root."
 disabled_texture = ExtResource("37_837vv")
 insufficient_funds_texture = ExtResource("38_53mrv")
@@ -327,7 +385,7 @@ can_upgrade_texture = ExtResource("41_eryjl")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_wpqac")])
 
 [node name="BranchingTipsUpgrade" parent="." unique_id=587880139 instance=ExtResource("2_y3bw0")]
-position = Vector2(735, 236)
+position = Vector2(654, 175)
 upgrade_level = 5
 tooltip_text = "Increases the amount of possible branches."
 disabled_texture = ExtResource("43_tl5om")
@@ -338,7 +396,7 @@ can_upgrade_texture = ExtResource("47_3loy3")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_p26pw"), SubResource("Resource_2qdpj"), SubResource("Resource_8knmp"), SubResource("Resource_0acac"), SubResource("Resource_qikkt")])
 
 [node name="BranchingChanceUpgrade" parent="." unique_id=1416560625 instance=ExtResource("2_y3bw0")]
-position = Vector2(660, 276)
+position = Vector2(543, 248)
 upgrade_level = 5
 tooltip_text = "Increases the chance of branching."
 disabled_texture = ExtResource("49_ohmjp")
@@ -349,7 +407,7 @@ can_upgrade_texture = ExtResource("53_uukx2")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_hclpu"), SubResource("Resource_e2dpr"), SubResource("Resource_va71d"), SubResource("Resource_kp1j3"), SubResource("Resource_jgpjt")])
 
 [node name="GrowthDepthUpgrade" parent="." unique_id=1570573617 instance=ExtResource("2_y3bw0")]
-position = Vector2(573, 254)
+position = Vector2(411, 216)
 upgrade_level = 7
 tooltip_text = "Increases the possibility of the root going deeper."
 disabled_texture = ExtResource("55_fwl31")
@@ -360,7 +418,7 @@ can_upgrade_texture = ExtResource("59_1rk54")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_rhwlh"), SubResource("Resource_hh1uo"), SubResource("Resource_rnqda"), SubResource("Resource_rwy5a"), SubResource("Resource_8ywc3"), SubResource("Resource_5fqge"), SubResource("Resource_q50to")])
 
 [node name="GatherAmountUpgrade" parent="." unique_id=1892698781 instance=ExtResource("2_y3bw0")]
-position = Vector2(442, 375)
+position = Vector2(200, 396)
 upgrade_level = 2
 tooltip_text = "Increase the amount you gather minerals per interval."
 disabled_texture = ExtResource("62_65qk7")
@@ -371,7 +429,7 @@ can_upgrade_texture = ExtResource("66_ywwcc")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_seow5"), SubResource("Resource_upe6w")])
 
 [node name="GatherSpeedUpgrade" parent="." unique_id=1123628164 instance=ExtResource("2_y3bw0")]
-position = Vector2(527, 378)
+position = Vector2(332, 406)
 upgrade_level = 2
 tooltip_text = "Increase the speed in which you gather minerals."
 disabled_texture = ExtResource("67_e22ml")
@@ -382,7 +440,7 @@ can_upgrade_texture = ExtResource("71_8mc28")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_mxfui"), SubResource("Resource_vpgdj")])
 
 [node name="PenetrateClayAbility" parent="." unique_id=273158056 instance=ExtResource("2_y3bw0")]
-position = Vector2(355, 374)
+position = Vector2(59, 399)
 tooltip_text = "Ability to destroy clay in the root's way."
 disabled_texture = ExtResource("72_rgkcp")
 insufficient_funds_texture = ExtResource("73_pd7s7")
@@ -392,7 +450,7 @@ can_upgrade_texture = ExtResource("76_cuypa")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_wgcxw")])
 
 [node name="PenetrateClaySpeedUpgrade" parent="." unique_id=1649848820 instance=ExtResource("2_y3bw0")]
-position = Vector2(382, 292)
+position = Vector2(112, 270)
 tooltip_text = "Increases the speed that the root destroys clay."
 disabled_texture = ExtResource("78_hgkb6")
 insufficient_funds_texture = ExtResource("79_0fqxr")
@@ -402,7 +460,7 @@ can_upgrade_texture = ExtResource("82_6x04k")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_mt3fx")])
 
 [node name="PenetrateRockAbility" parent="." unique_id=1293181885 instance=ExtResource("2_y3bw0")]
-position = Vector2(289, 290)
+position = Vector2(-37, 262)
 tooltip_text = "Ability to destroy rocks in the root's way."
 disabled_texture = ExtResource("83_2y67t")
 insufficient_funds_texture = ExtResource("84_33s7q")
@@ -412,7 +470,7 @@ can_upgrade_texture = ExtResource("87_m2qau")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_4b8g4")])
 
 [node name="PenetrateRockSpeedUpgrade" parent="." unique_id=1870351981 instance=ExtResource("2_y3bw0")]
-position = Vector2(283, 218)
+position = Vector2(-49, 153)
 tooltip_text = "Increases the speed that the root destroys rocks."
 disabled_texture = ExtResource("89_w18ui")
 insufficient_funds_texture = ExtResource("90_hjj25")
@@ -422,6 +480,7 @@ can_upgrade_texture = ExtResource("93_kwkn2")
 material_costs = Array[ExtResource("3_wc8jx")]([SubResource("Resource_mbrjb")])
 
 [node name="TestStartButton" type="Button" parent="." unique_id=771101340]
+visible = false
 offset_left = 1155.0
 offset_top = 10.0
 offset_right = 1261.0
@@ -429,6 +488,7 @@ offset_bottom = 41.0
 text = "start root"
 
 [node name="TestStopButton" type="Button" parent="." unique_id=1044194064]
+visible = false
 offset_left = 1156.0
 offset_top = 59.0
 offset_right = 1262.0
@@ -436,6 +496,7 @@ offset_bottom = 90.0
 text = "clear root"
 
 [node name="Label" type="Label" parent="." unique_id=316443929]
+visible = false
 offset_left = 472.0
 offset_top = 67.0
 offset_right = 643.0

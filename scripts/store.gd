@@ -21,6 +21,8 @@ signal alien_tree_obstacles_initialized(obstacles: Array[Obstacle])
 # -- References -- 
 @onready var handle_area: Area2D = $Handle/Area2D
 @onready var buckets: Node2D = $Buckets
+@onready var particles: GPUParticles2D = $GPUParticles2D
+
 
 # -- Settings --
 @export_group("Store Animation")
@@ -53,6 +55,11 @@ func _ready() -> void:
 		if child is Bucket:
 			child.store = self;
 
+func _process(delta: float) -> void:
+	particles.global_position = global_position + Vector2(758, 278);
+	if Input.is_action_pressed("toggle_store"):
+		toggle_store();
+
 func get_open_x() -> float:
 	return 0.0;
 
@@ -81,6 +88,9 @@ func open_store() -> void:
 	
 	AudioManager.play(store_open_sfx);
 	is_open = true;
+	
+	particles.emitting = true;
+	
 	_slide_to(get_open_x());
 
 func close_store() -> void:
@@ -95,6 +105,9 @@ func _slide_to(target_x: float) -> void:
 		store_tween.kill();
 	
 	is_animating = true;
+	
+	if not is_open:
+		particles.emitting = false;
 	
 	store_tween = create_tween();
 	store_tween.set_trans(transition);

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dliby6xgc5o06"]
 
-[ext_resource type="Texture2D" uid="uid://bk7cw2giy0f8h" path="res://assets/textures/prototype_textures/sky-background-sky-and-clouds-background-1313033389.jpg" id="1_n0icb"]
+[ext_resource type="Texture2D" uid="uid://cqqg8j250ibjl" path="res://assets/textures/misc/sky.jpg" id="1_di48r"]
 [ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://prefabs/viewport_camera.tscn" id="1_u0w26"]
 [ext_resource type="PackedScene" uid="uid://dmf6gdhkwebhn" path="res://prefabs/background.tscn" id="2_di48r"]
 [ext_resource type="Resource" uid="uid://cara2cbioyihp" path="res://resources/music/background03/background03.tres" id="5_2ni8l"]
@@ -31,14 +31,48 @@ noise = SubResource("FastNoiseLite_14upv")
 color_ramp = SubResource("Gradient_4bjpm")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4pjw"]
-size = Vector2(34739, 101.5)
+size = Vector2(69958, 101.5)
 
 [node name="RootTestbed" type="Node2D" unique_id=1355742889]
 
+[node name="SkyBG" type="TextureRect" parent="." unique_id=526828200]
+offset_left = -326.0
+offset_top = -5484.0
+offset_right = 53447.0
+offset_bottom = 307.0
+texture = ExtResource("1_di48r")
+stretch_mode = 1
+
 [node name="SkyBackgroundSkyAndCloudsBackground1313033389" type="Sprite2D" parent="." unique_id=1471652262]
-position = Vector2(1467.0005, -1854.0001)
-scale = Vector2(24.391113, 14.884165)
-texture = ExtResource("1_n0icb")
+visible = false
+texture_repeat = 2
+position = Vector2(-2099.6252, -1854.0001)
+scale = Vector2(17.425047, 14.884165)
+texture = ExtResource("1_di48r")
+
+[node name="NormalTree" parent="." unique_id=1946057991 instance=ExtResource("11_r6od6")]
+position = Vector2(827, -703)
+tree_name = "Normal"
+
+[node name="WaterTree" parent="." unique_id=1667299626 instance=ExtResource("11_r6od6")]
+position = Vector2(2382, -703)
+tree_name = "Water"
+this_tree_type = 1
+
+[node name="FireTree" parent="." unique_id=1240922305 instance=ExtResource("11_r6od6")]
+position = Vector2(3936, -703)
+tree_name = "Fire"
+this_tree_type = 2
+
+[node name="MetalTree" parent="." unique_id=616646068 instance=ExtResource("11_r6od6")]
+position = Vector2(5461, -703)
+tree_name = "Metal"
+this_tree_type = 3
+
+[node name="AlienTree" parent="." unique_id=1846135072 instance=ExtResource("11_r6od6")]
+position = Vector2(6967, -703)
+tree_name = "Alien"
+this_tree_type = 4
 
 [node name="Background" parent="." unique_id=340771107 instance=ExtResource("2_di48r")]
 texture_filter = 1
@@ -46,7 +80,7 @@ offset_top = 170.00012
 offset_bottom = 9670.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1847053134]
-position = Vector2(1153.5, 265.25)
+position = Vector2(1154, 284)
 scale = Vector2(1, 0.9999999)
 collision_layer = 3
 collision_mask = 3
@@ -58,7 +92,7 @@ scale = Vector2(16.38011, 10.994644)
 texture = SubResource("NoiseTexture2D_t4pjw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1904284498]
-position = Vector2(0, 31)
+position = Vector2(17609.5, 31)
 shape = SubResource("RectangleShape2D_t4pjw")
 
 [node name="AudioManager" type="Node" parent="." unique_id=510782242]
@@ -67,6 +101,12 @@ script = ExtResource("7_2ni8l")
 [node name="ViewportCamera" parent="." unique_id=1012732459 instance=ExtResource("1_u0w26")]
 position = Vector2(640, 360)
 zoom_strength = 0.01
+world_left = 640.0
+world_right = 19802.0
+world_top = -1144.674
+world_bottom = 9600.0
+print_camera_bounds = true
+planting_y = -125.0
 
 [node name="StoreCanvas" type="CanvasLayer" parent="." unique_id=2031667489]
 layer = 10
@@ -75,26 +115,6 @@ layer = 10
 handle_visible_width = 100.0
 
 [node name="Inventory" parent="." unique_id=1872189339 instance=ExtResource("10_0bbw8")]
-
-[node name="NormalTree" parent="." unique_id=1946057991 instance=ExtResource("11_r6od6")]
-position = Vector2(-152, -945)
-tree_name = "Normal"
-
-[node name="WaterTree" parent="." unique_id=1667299626 instance=ExtResource("11_r6od6")]
-position = Vector2(997, -945)
-tree_name = "Water"
-
-[node name="FireTree" parent="." unique_id=1240922305 instance=ExtResource("11_r6od6")]
-position = Vector2(2102, -945)
-tree_name = "Fire"
-
-[node name="MetalTree" parent="." unique_id=616646068 instance=ExtResource("11_r6od6")]
-position = Vector2(3280, -945)
-tree_name = "Metal"
-
-[node name="AlienTree" parent="." unique_id=1846135072 instance=ExtResource("11_r6od6")]
-position = Vector2(4235, -945)
-tree_name = "Alien"
 
 [node name="Node" type="Node" parent="." unique_id=2031323702]
 script = ExtResource("7_05ihm")

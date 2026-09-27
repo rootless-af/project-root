@@ -18,6 +18,7 @@
 [sub_resource type="Resource" id="Resource_slbpk"]
 script = ExtResource("3_qld2t")
 audio = ExtResource("3_rcc1x")
+volume_db = -5.0
 metadata/_custom_type_script = "uid://bd670dyrr7ib2"
 
 [sub_resource type="Resource" id="Resource_di48r"]
