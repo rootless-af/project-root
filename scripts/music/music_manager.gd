@@ -69,7 +69,7 @@ func set_stem(id: StringName,enabled:bool) -> void:
 		print("[Music Manager] SET STEM: ", id, " enabled = ", enabled);
 	
 	if not stem_players.has(id):
-		push_warning("Something went wrong!"); # TODO make the warning better lol
+		push_warning("Music player doesn't have stems for '%s' " % id);
 		return;
 	
 	var player: AudioStreamPlayer = stem_players[id];

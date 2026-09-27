@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="MusicTrack" format=3 uid="uid://cara2cbioyihp"]
+
+[ext_resource type="Script" uid="uid://dvj10qorbdyls" path="res://scripts/music/music_track.gd" id="1_h0787"]
+[ext_resource type="Script" uid="uid://cjc8kxdys65qm" path="res://scripts/music/music_stem.gd" id="2_5cax2"]
+[ext_resource type="AudioStream" uid="uid://2ncnlh6w6h62" path="res://assets/sound/music/background03/background03_base_145bpm.mp3" id="3_ui7bv"]
+[ext_resource type="AudioStream" uid="uid://bwpxpqya0n4nk" path="res://assets/sound/music/background03/background03_basic_145bpm.mp3" id="4_5cxca"]
+[ext_resource type="AudioStream" uid="uid://33spk7v3sj3p" path="res://assets/sound/music/background03/background03_fire_145bpm.mp3" id="5_frfcn"]
+[ext_resource type="AudioStream" uid="uid://cvhyjy71tfvmn" path="res://assets/sound/music/background03/background03_metal_145bpm.mp3" id="6_rsl1c"]
+[ext_resource type="AudioStream" uid="uid://biujlkjvsdfxg" path="res://assets/sound/music/background03/background03_overground_145bpm.mp3" id="7_pl6gy"]
+[ext_resource type="AudioStream" uid="uid://51n7ulyhegsu" path="res://assets/sound/music/background03/background03_underground_145bpm.mp3" id="8_xbc87"]
+[ext_resource type="AudioStream" uid="uid://ddjv2o62im1uh" path="res://assets/sound/music/background03/background03_water_145bpm.mp3" id="9_7fofs"]
+
+[sub_resource type="Resource" id="Resource_f3alg"]
+script = ExtResource("2_5cax2")
+id = &"base"
+audio = ExtResource("3_ui7bv")
+volume_db = -5.0
+fade_out_beats = 8.0
+metadata/_custom_type_script = "uid://cjc8kxdys65qm"
+
+[sub_resource type="Resource" id="Resource_comrj"]
+script = ExtResource("2_5cax2")
+id = &"normal_root"
+audio = ExtResource("4_5cxca")
+volume_db = -10.0
+fade_out_beats = 8.0
+metadata/_custom_type_script = "uid://cjc8kxdys65qm"
+
+[sub_resource type="Resource" id="Resource_vk7xa"]
+script = ExtResource("2_5cax2")
+id = &"fire_root"
+audio = ExtResource("5_frfcn")
+fade_out_beats = 8.0
+metadata/_custom_type_script = "uid://cjc8kxdys65qm"
+
+[sub_resource type="Resource" id="Resource_y1av7"]
+script = ExtResource("2_5cax2")
+id = &"metal_root"
+audio = ExtResource("6_rsl1c")
+volume_db = -5.0
+fade_out_beats = 8.0
+metadata/_custom_type_script = "uid://cjc8kxdys65qm"
+
+[sub_resource type="Resource" id="Resource_pt0lt"]
+script = ExtResource("2_5cax2")
+id = &"overground"
+audio = ExtResource("7_pl6gy")
+volume_db = -15.0
+fade_out_beats = 8.0
+metadata/_custom_type_script = "uid://cjc8kxdys65qm"
+
+[sub_resource type="Resource" id="Resource_ui7bv"]
+script = ExtResource("2_5cax2")
+id = &"underground"
+audio = ExtResource("8_xbc87")
+volume_db = -15.0
+fade_out_beats = 8.0
+metadata/_custom_type_script = "uid://cjc8kxdys65qm"
+
+[sub_resource type="Resource" id="Resource_5cxca"]
+script = ExtResource("2_5cax2")
+id = &"water_root"
+audio = ExtResource("9_7fofs")
+volume_db = -8.0
+fade_out_beats = 8.0
+metadata/_custom_type_script = "uid://cjc8kxdys65qm"
+
+[resource]
+script = ExtResource("1_h0787")
+id = &"background03"
+bpm = 145.0
+stems = Array[ExtResource("2_5cax2")]([SubResource("Resource_f3alg"), SubResource("Resource_comrj"), SubResource("Resource_vk7xa"), SubResource("Resource_y1av7"), SubResource("Resource_pt0lt"), SubResource("Resource_ui7bv"), SubResource("Resource_5cxca")])
+metadata/_custom_type_script = "uid://dvj10qorbdyls"

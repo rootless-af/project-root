@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bk7cw2giy0f8h" path="res://assets/textures/prototype_textures/sky-background-sky-and-clouds-background-1313033389.jpg" id="1_n0icb"]
 [ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://prefabs/viewport_camera.tscn" id="1_u0w26"]
 [ext_resource type="PackedScene" uid="uid://bweklfylimun5" path="res://prefabs/bucket.tscn" id="4_n0icb"]
-[ext_resource type="Resource" uid="uid://bolbdg5v1w1q8" path="res://resources/music/background02/background02.tres" id="6_05ihm"]
+[ext_resource type="Resource" uid="uid://cara2cbioyihp" path="res://resources/music/background03/background03.tres" id="5_2ni8l"]
 [ext_resource type="Script" uid="uid://drr54ke5ijsig" path="res://scripts/music/music_manager.gd" id="6_gg5g5"]
 [ext_resource type="Script" uid="uid://bcpa32onbpr6h" path="res://scripts/music/audio_shots_manager.gd" id="7_2ni8l"]
 [ext_resource type="Script" uid="uid://b8g8udnyp4pyf" path="res://scripts/music/music_manager_tester.gd" id="7_05ihm"]
@@ -26,7 +26,7 @@ noise = SubResource("FastNoiseLite_14upv")
 color_ramp = SubResource("Gradient_4bjpm")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4pjw"]
-size = Vector2(34739, 39.5)
+size = Vector2(34739, 101.5)
 
 [node name="RootTestbed" type="Node2D" unique_id=1355742889]
 
@@ -47,6 +47,7 @@ scale = Vector2(16.38011, 10.994644)
 texture = SubResource("NoiseTexture2D_t4pjw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1904284498]
+position = Vector2(0, 31)
 shape = SubResource("RectangleShape2D_t4pjw")
 
 [node name="WaterBucket" parent="." unique_id=544090845 instance=ExtResource("4_n0icb")]
@@ -78,7 +79,7 @@ script = ExtResource("6_gg5g5")
 
 [node name="MusicManagerTester" type="Node" parent="." unique_id=45235182]
 script = ExtResource("7_05ihm")
-background_track = ExtResource("6_05ihm")
+background_track = ExtResource("5_2ni8l")
 
 [node name="AudioManager" type="Node" parent="." unique_id=510782242]
 script = ExtResource("7_2ni8l")
