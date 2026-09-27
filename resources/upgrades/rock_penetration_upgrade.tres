@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="RockPenetrationUpgrade" format=3 uid="uid://d08wwi3d3xnqv"]
+
+[ext_resource type="Script" uid="uid://3750dyaqrp5r" path="res://scripts/upgrades/rock_penetration_upgrade.gd" id="1_etwv0"]
+
+[resource]
+script = ExtResource("1_etwv0")
+rock_penetration_upgrade = 0.2
+metadata/_custom_type_script = "uid://3750dyaqrp5r"
