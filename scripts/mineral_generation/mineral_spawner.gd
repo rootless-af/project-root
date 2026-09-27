@@ -1,3 +1,4 @@
+
 extends Node2D
 class_name MineralSpawner
 
@@ -5,37 +6,19 @@ signal minerals_initialized(minerals: Array[MineralOre])
 signal obstacles_initialized(obstacles: Array[Obstacle])
 
 var mineral_types = GLOBALS.Minerals
-
+var next_obstacle: int
 const MINERAL_ORE = preload("uid://m28neimafqeu")
-const OBSTACLE = preload("uid://6vv72lvjbp3i")
+const OBSTACLE = preload("uid://ktc6e14lkvxc")
 
 var minerals: Array[MineralOre] = []
 var obstacles: Array[Obstacle] = []
 
 @onready var inventory: Node2D = $"../Inventory"
-
 @export var tile_size: int = 16
-
-# How many minerals to skip before spawning the next obstacle.
-var next_obstacle: int = 7
-
+@export var ore_scale: float = 0.5
 
 func _ready() -> void:
-	# Test purposes
-	var test_data: Array[MineralData] = []
-
-	var mineral1 := MineralData.new()
-	var coords := Vector2i(500, 250)
-
-	mineral1.init(
-		coords,
-		0.1,
-		GLOBALS.Minerals.Entivera
-	)
-
-	test_data.append(mineral1)
-
-	initialize_minerals(test_data)
+	pass
 
 
 func initialize_minerals(data: Array[MineralData]) -> void:
@@ -68,7 +51,7 @@ func initialize_minerals(data: Array[MineralData]) -> void:
 
 		mineral.amount = int(material_data.richness * 100)
 		mineral.coordinates = material_data.coordinates
-		mineral.position = Vector2(material_data.coordinates)
+		mineral.global_position = Vector2(material_data.coordinates)
 		mineral.mineral_type = material_data.mineral_type
 
 		mineral.material_mined.connect(_on_material_mined)

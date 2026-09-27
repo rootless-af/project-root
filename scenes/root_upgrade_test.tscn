@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://n5dxx2e4o678" path="res://prefabs/skill_tree.tscn" id="3_jgn6e"]
 [ext_resource type="PackedScene" uid="uid://bgr2cyhrkt2hv" path="res://prefabs/mineral_spawner.tscn" id="5_fxa2x"]
 [ext_resource type="PackedScene" uid="uid://dmf6gdhkwebhn" path="res://prefabs/background.tscn" id="5_vax7y"]
+[ext_resource type="PackedScene" uid="uid://bijhh1d7ipppv" path="res://scenes/ground.tscn" id="7_32udh"]
 [ext_resource type="PackedScene" uid="uid://33excjcr7cbc" path="res://prefabs/game_manager.tscn" id="7_ptxhx"]
 
 [node name="RootUpgradeTest" type="Node2D" unique_id=620800501]
@@ -35,6 +36,8 @@ position = Vector2(105, -610)
 tile_size = 16
 
 [node name="GameManager" parent="." unique_id=459991247 instance=ExtResource("7_ptxhx")]
+
+[node name="Ground" parent="." unique_id=1266298725 instance=ExtResource("7_32udh")]
 
 [connection signal="mineral_amount_changed" from="Inventory" to="SkillTree" method="_on_inventory_mineral_amount_changed"]
 [connection signal="upgrade_purchased" from="SkillTree" to="Inventory" method="_on_skill_tree_upgrade_purchased"]

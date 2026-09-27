@@ -11,10 +11,10 @@ func _ready() -> void:
 	bg_cover_1.size.x = 21000
 	bg_cover_2.size.x = 21000
 	bg_cover_3.size.x = 21000
+	
+	
 func discover_mid_level():
 	animation_player.play("fade_out_1")
-	print("[BACKGROUND] Played Animation One")
-
 
 func discover_mid_deep_level():
 	animation_player.play("fade_out_2")

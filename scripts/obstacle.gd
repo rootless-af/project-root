@@ -5,8 +5,6 @@ enum ObstacleType {
 	CLAY,
 	ROCK
 }
-
-@onready var sprite: Sprite2D = $Sprite
 @export var rock_texture:Texture2D
 @export var clay_texture:Texture2D
 
@@ -18,6 +16,7 @@ var strength: float
 var depleted := false
 
 func setup(obs_type: ObstacleType, coords: Vector2i) -> void:
+	var sprite: Sprite2D = $Sprite
 	type = obs_type
 	coordinates = coords
 

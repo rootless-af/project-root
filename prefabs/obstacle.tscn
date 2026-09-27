@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://6vv72lvjbp3i"]
+[gd_scene format=3 uid="uid://ktc6e14lkvxc"]
 
 [ext_resource type="Script" uid="uid://bfh8kvlbp61bm" path="res://scripts/obstacle.gd" id="1_u2pes"]
 [ext_resource type="Texture2D" uid="uid://sxw7h84dpo85" path="res://assets/textures/minerals_and_obstacles/rock.png" id="2_k3ab8"]
@@ -12,4 +12,5 @@ clay_texture = ExtResource("3_bif4w")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1094201421]
 texture_filter = 1
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_oqdh3")
