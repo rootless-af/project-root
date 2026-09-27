@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://ca57cq4tkaen2" path="res://assets/textures/prototype_textures/skill_tree_icons/disabled.png" id="5_nkv23"]
 [ext_resource type="Texture2D" uid="uid://baewq13xc33yo" path="res://assets/textures/prototype_textures/skill_tree_icons/insufficient_funds.png" id="6_bhdf1"]
 [ext_resource type="Resource" uid="uid://fxfp6ac5cajy" path="res://resources/upgrades/branch_ability_upgrade.tres" id="8_dpic0"]
-[ext_resource type="Script" uid="uid://iqlywu0whth0" path="res://scripts/disable_test_button.gd" id="9_dpic0"]
 [ext_resource type="Resource" uid="uid://df6dfebnjccbh" path="res://resources/upgrades/angle_upgrade.tres" id="9_wpqac"]
 [ext_resource type="Resource" uid="uid://cukw5ijc63gis" path="res://resources/upgrades/straighten_upgrade.tres" id="10_rhwlh"]
 [ext_resource type="Resource" uid="uid://oyi56l1p0qru" path="res://resources/upgrades/width_upgrade.tres" id="11_hh1uo"]
@@ -320,14 +319,6 @@ offset_right = 1262.0
 offset_bottom = 90.0
 text = "clear root"
 
-[node name="TestDisable" type="Button" parent="." unique_id=283250501]
-offset_left = 1177.0
-offset_top = 102.0
-offset_right = 1242.0
-offset_bottom = 133.0
-text = "Disable"
-script = ExtResource("9_dpic0")
-
 [connection signal="mineral_amount_changed" from="." to="PlantSeedsUpgrade" method="_on_skill_tree_mineral_amount_changed"]
 [connection signal="upgrade_purchased" from="PlantSeedsUpgrade" to="." method="_on_growth_upgrade_upgrade_purchased"]
 [connection signal="upgrade_purchased" from="GatherResourcesUpgrade" to="." method="_on_growth_upgrade_upgrade_purchased"]
@@ -347,4 +338,3 @@ script = ExtResource("9_dpic0")
 [connection signal="upgrade_purchased" from="PenetrateRockSpeedUpgrade" to="." method="_on_growth_upgrade_upgrade_purchased"]
 [connection signal="pressed" from="TestStartButton" to="." method="_on_test_start_button_pressed"]
 [connection signal="pressed" from="TestStopButton" to="." method="_on_test_stop_button_pressed"]
-[connection signal="pressed" from="TestDisable" to="TestDisable" method="_on_pressed"]
