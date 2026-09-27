@@ -2,12 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://bk7cw2giy0f8h" path="res://assets/textures/prototype_textures/sky-background-sky-and-clouds-background-1313033389.jpg" id="1_n0icb"]
 [ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://prefabs/viewport_camera.tscn" id="1_u0w26"]
+[ext_resource type="PackedScene" uid="uid://dmf6gdhkwebhn" path="res://prefabs/background.tscn" id="2_di48r"]
 [ext_resource type="PackedScene" uid="uid://bweklfylimun5" path="res://prefabs/bucket.tscn" id="4_n0icb"]
 [ext_resource type="Resource" uid="uid://bolbdg5v1w1q8" path="res://resources/music/background02/background02.tres" id="6_05ihm"]
 [ext_resource type="Script" uid="uid://drr54ke5ijsig" path="res://scripts/music/music_manager.gd" id="6_gg5g5"]
 [ext_resource type="Script" uid="uid://bcpa32onbpr6h" path="res://scripts/music/audio_shots_manager.gd" id="7_2ni8l"]
 [ext_resource type="Script" uid="uid://b8g8udnyp4pyf" path="res://scripts/music/music_manager_tester.gd" id="7_05ihm"]
 [ext_resource type="PackedScene" uid="uid://do2p2ws4kn635" path="res://prefabs/seed_store.tscn" id="8_2ni8l"]
+[ext_resource type="PackedScene" uid="uid://d3ubhvxo26uf0" path="res://prefabs/inventory.tscn" id="10_0bbw8"]
+[ext_resource type="PackedScene" uid="uid://n5dxx2e4o678" path="res://prefabs/skill_tree.tscn" id="11_r6od6"]
 
 [sub_resource type="Gradient" id="Gradient_4bjpm"]
 offsets = PackedFloat32Array(0.32985553, 0.63322634)
@@ -35,6 +38,11 @@ position = Vector2(1467.0005, -1854.0001)
 scale = Vector2(24.391113, 14.884165)
 texture = ExtResource("1_n0icb")
 
+[node name="Background" parent="." unique_id=340771107 instance=ExtResource("2_di48r")]
+texture_filter = 1
+offset_top = 170.00012
+offset_bottom = 9670.0
+
 [node name="Area2D" type="Area2D" parent="." unique_id=1847053134]
 position = Vector2(1153.5, 265.25)
 scale = Vector2(1, 0.9999999)
@@ -42,6 +50,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="PlaceholderTerrain" type="Sprite2D" parent="Area2D" unique_id=1358222686]
+visible = false
 position = Vector2(-474.5, 11129.185)
 scale = Vector2(16.38011, 10.994644)
 texture = SubResource("NoiseTexture2D_t4pjw")
@@ -85,8 +94,37 @@ script = ExtResource("7_2ni8l")
 
 [node name="ViewportCamera" parent="." unique_id=1012732459 instance=ExtResource("1_u0w26")]
 position = Vector2(640, 360)
+zoom_strength = 0.01
 
 [node name="StoreCanvas" type="CanvasLayer" parent="." unique_id=2031667489]
 layer = 10
 
 [node name="Store" parent="StoreCanvas" unique_id=419499197 instance=ExtResource("8_2ni8l")]
+
+[node name="Inventory" parent="." unique_id=1872189339 instance=ExtResource("10_0bbw8")]
+
+[node name="NormalTree" parent="." unique_id=1946057991 instance=ExtResource("11_r6od6")]
+position = Vector2(-152, -945)
+tree_name = "Normal"
+
+[node name="WaterTree" parent="." unique_id=1667299626 instance=ExtResource("11_r6od6")]
+position = Vector2(997, -945)
+tree_name = "Water"
+
+[node name="FireTree" parent="." unique_id=1240922305 instance=ExtResource("11_r6od6")]
+position = Vector2(2102, -945)
+tree_name = "Fire"
+
+[node name="MetalTree" parent="." unique_id=616646068 instance=ExtResource("11_r6od6")]
+position = Vector2(3280, -945)
+tree_name = "Metal"
+
+[node name="AlienTree" parent="." unique_id=1846135072 instance=ExtResource("11_r6od6")]
+position = Vector2(4235, -945)
+tree_name = "Alien"
+
+[connection signal="appled_upgrade" from="NormalTree" to="StoreCanvas/Store" method="_on_normal_tree_appled_upgrade"]
+[connection signal="appled_upgrade" from="WaterTree" to="StoreCanvas/Store" method="_on_water_tree_appled_upgrade"]
+[connection signal="appled_upgrade" from="FireTree" to="StoreCanvas/Store" method="_on_fire_tree_appled_upgrade"]
+[connection signal="appled_upgrade" from="MetalTree" to="StoreCanvas/Store" method="_on_metal_tree_appled_upgrade"]
+[connection signal="appled_upgrade" from="AlienTree" to="StoreCanvas/Store" method="_on_alien_tree_appled_upgrade"]

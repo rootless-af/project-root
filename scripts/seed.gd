@@ -64,6 +64,11 @@ var seed_plant_sfx: AudioShot;
 @export var seed_alien_texture: Texture2D;
 @export var root_alien_scene : PackedScene;
 @export var seed_alien_plant_sfx: AudioShot;
+var normal_upgrades:Array[Upgrade] = []
+var water_upgrades:Array[Upgrade] = []
+var fire_upgrades:Array[Upgrade] = []
+var metal_upgrades:Array[Upgrade] = []
+var alien_upgrades:Array[Upgrade] = []
 
 func _ready() -> void:
 	setup_seed();
@@ -98,6 +103,11 @@ func setup_seed() -> void:
 		_:
 			seed_sprite.texture = seed_basic_texture;
 			root_scene = root_basic_scene;
+
+
+func apply_upgrades(root: Node, upgrades: Array[Upgrade]) -> void:
+	for upgrade in upgrades:
+		root.add_child(upgrade)
 
 func _on_seed_input_event(
 	_viewport: Node,
@@ -221,6 +231,17 @@ func spawn_root() -> void:
 		return;
 	
 	var root := root_scene.instantiate();
+	match seed_type:
+		SeedType.NORMAL:
+			apply_upgrades(root, normal_upgrades)
+		SeedType.WATER:
+			apply_upgrades(root, water_upgrades)
+		SeedType.FIRE:
+			apply_upgrades(root, fire_upgrades)
+		SeedType.METAL:
+			apply_upgrades(root, metal_upgrades)
+		SeedType.ALIEN:
+			apply_upgrades(root, alien_upgrades)
 	
 	# Root and seed should be siblings. (Sweet home alabama)
 	get_parent().add_child(root);

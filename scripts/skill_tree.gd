@@ -1,6 +1,8 @@
 extends Node2D
 signal mineral_amount_changed(minerals)
 signal upgrade_purchased(entivera:int, barbarium:int, rihtocide:int, kviktorium:int)
+signal appled_upgrade(upgrade:Upgrade, tree_name:String)
+
 
 #@onready var inventory: Node2D = $"../Inventory"
 
@@ -17,8 +19,9 @@ signal upgrade_purchased(entivera:int, barbarium:int, rihtocide:int, kviktorium:
 @onready var penetrate_clay_speed_upgrade: SkillTreeButton = $PenetrateClaySpeedUpgrade
 @onready var penetrate_rock_ability: SkillTreeButton = $PenetrateRockAbility
 @onready var penetrate_rock_speed_upgrade: SkillTreeButton = $PenetrateRockSpeedUpgrade
+@onready var label: Label = $Label
 
-
+@export var tree_name:String
 
 const UPGRADE = preload("uid://cx4b27672a2ps")
 const ROOT = preload("uid://d1pn0awo34ut7")
@@ -27,6 +30,7 @@ var root_instance = null;
 var root = null;
 
 func _ready() -> void:
+	label.text = tree_name
 	penetrate_rock_ability.disable(true)
 	penetrate_clay_speed_upgrade.disable(true)
 	penetrate_rock_speed_upgrade.disable(true)
@@ -52,10 +56,25 @@ func _ready() -> void:
 	root_instance.growth_speed = 800
 
 
+	branch_ability.upgrade_purchased.connect(_on_upgrade_purchased)
+	angle_upgrade.upgrade_purchased.connect(_on_upgrade_purchased)
+	straighten_upgrade.upgrade_purchased.connect(_on_upgrade_purchased)
+	width_upgrade.upgrade_purchased.connect(_on_upgrade_purchased)
+	branching_tips_upgrade.upgrade_purchased.connect(_on_upgrade_purchased)
+	branching_chance_upgrade.upgrade_purchased.connect(_on_upgrade_purchased)
+	growth_depth_upgrade.upgrade_purchased.connect(_on_upgrade_purchased)
+	gather_amount_upgrade.upgrade_purchased.connect(_on_upgrade_purchased)
+	gather_speed_upgrade.upgrade_purchased.connect(_on_upgrade_purchased)
+	penetrate_clay_ability.upgrade_purchased.connect(_on_upgrade_purchased)
+	penetrate_clay_speed_upgrade.upgrade_purchased.connect(_on_upgrade_purchased)
+	penetrate_rock_ability.upgrade_purchased.connect(_on_upgrade_purchased)
+	penetrate_rock_speed_upgrade.upgrade_purchased.connect(_on_upgrade_purchased)
+
+
 func apply_upgrade(upgrade_type:Resource):
 	var upgrade:Upgrade = UPGRADE.instantiate()
 	upgrade.upgrade_base = upgrade_type
-	test_upgrade(upgrade)
+	appled_upgrade.emit(upgrade, tree_name)
 
 
 func test_upgrade(upgrade:Upgrade):
@@ -77,15 +96,15 @@ func _on_inventory_mineral_amount_changed(minerals) -> void:
 	mineral_amount_changed.emit(minerals)
 
 
-func _on_growth_upgrade_upgrade_purchased(upgrade_with_cost: UpgradeWithCosts) -> void:
+func _on_upgrade_purchased(upgrade_with_cost: UpgradeWithCosts) -> void:
 	apply_upgrade(upgrade_with_cost.upgrade_type)
+
 	upgrade_purchased.emit(
 		upgrade_with_cost.entivera,
-		upgrade_with_cost.barbanium, 
-		upgrade_with_cost.rihtocide, 
+		upgrade_with_cost.barbanium,
+		upgrade_with_cost.rihtocide,
 		upgrade_with_cost.kviktorium
 	)
-
 
 func _on_branch_ability_completed() -> void:
 	branching_chance_upgrade.disable(false)

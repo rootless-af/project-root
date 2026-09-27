@@ -1,6 +1,12 @@
 class_name Store
 extends Node2D
 
+signal normal_tree_applied_upgrade(upgrade:Upgrade)
+signal water_tree_applied_upgrade(upgrade:Upgrade)
+signal fire_tree_applied_upgrade(upgrade:Upgrade)
+signal metal_tree_applied_upgrade(upgrade:Upgrade)
+signal alien_tree_applied_upgrade(upgrade:Upgrade)
+
 # -- References -- 
 @onready var handle_area: Area2D = $Handle/Area2D
 @onready var buckets: Node2D = $Buckets
@@ -89,3 +95,23 @@ func _slide_to(target_x: float) -> void:
 
 func _on_slide_finished() -> void:
 	is_animating = false;
+
+
+func _on_normal_tree_appled_upgrade(upgrade: Upgrade, tree_name: String) -> void:
+	normal_tree_applied_upgrade.emit(upgrade)
+
+
+func _on_water_tree_appled_upgrade(upgrade: Upgrade, tree_name: String) -> void:
+	water_tree_applied_upgrade.emit(upgrade)
+
+
+func _on_fire_tree_appled_upgrade(upgrade: Upgrade, tree_name: String) -> void:
+	fire_tree_applied_upgrade.emit(upgrade)
+
+
+func _on_metal_tree_appled_upgrade(upgrade: Upgrade, tree_name: String) -> void:
+	metal_tree_applied_upgrade.emit(upgrade)
+
+
+func _on_alien_tree_appled_upgrade(upgrade: Upgrade, tree_name: String) -> void:
+	alien_tree_applied_upgrade.emit(upgrade)

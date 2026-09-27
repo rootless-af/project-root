@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://dmf6gdhkwebhn"]
 
-[ext_resource type="Texture2D" uid="uid://6fn7fl3fcnke" path="res://assets/textures/background_3_columns.png" id="1_7o46m"]
+[ext_resource type="Texture2D" uid="uid://6fn7fl3fcnke" path="res://assets/textures/background/background_3_columns.png" id="1_7o46m"]
 [ext_resource type="Script" uid="uid://b35tvrrb8u0wk" path="res://scripts/texture_rect.gd" id="2_mgwus"]
+[ext_resource type="Texture2D" uid="uid://dt1ettsyvs47g" path="res://assets/textures/background/bg_cover_1.png" id="3_w63yj"]
+[ext_resource type="Texture2D" uid="uid://4o5f4nhth7gv" path="res://assets/textures/background/bg_cover_2.png" id="4_0enms"]
+[ext_resource type="Texture2D" uid="uid://srxuis4daly3" path="res://assets/textures/background/bg_cover_3.png" id="5_ksogo"]
 
 [node name="Background" type="TextureRect" unique_id=340771107]
 offset_right = 1500.0
@@ -9,3 +12,27 @@ offset_bottom = 9500.0
 texture = ExtResource("1_7o46m")
 stretch_mode = 1
 script = ExtResource("2_mgwus")
+
+[node name="BgCover3" type="TextureRect" parent="." unique_id=1456935931]
+visible = false
+layout_mode = 0
+offset_top = 6683.0
+offset_right = 1500.0
+offset_bottom = 9508.0
+texture = ExtResource("5_ksogo")
+
+[node name="BgCover2" type="TextureRect" parent="." unique_id=737063567]
+visible = false
+layout_mode = 0
+offset_top = 4503.0
+offset_right = 1500.0
+offset_bottom = 9512.0
+texture = ExtResource("4_0enms")
+
+[node name="BgCover1" type="TextureRect" parent="." unique_id=1583897106]
+visible = false
+layout_mode = 0
+offset_top = 2376.0
+offset_right = 1500.0
+offset_bottom = 9504.0
+texture = ExtResource("3_w63yj")
