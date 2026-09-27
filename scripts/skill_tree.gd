@@ -40,6 +40,8 @@ func _ready() -> void:
 	branching_tips_upgrade.disable(true)
 	
 	branch_ability.upgrade_completed.connect(_on_branch_ability_completed)
+	angle_upgrade.upgrade_completed.connect(_on_angle_completed)
+	straighten_upgrade.upgrade_completed.connect(_on_straighten_completed)
 
 	angle_upgrade.upgrade_started.connect(_on_angle_started)
 	straighten_upgrade.upgrade_started.connect(_on_straighten_started)
@@ -54,6 +56,8 @@ func _ready() -> void:
 	root_instance.max_depth = 1000
 	root_instance.min_depth = 500
 	root_instance.growth_speed = 800
+	root_instance.rock_penetration = 0.15
+	root_instance.clay_penetration = 0.15
 
 
 	branch_ability.upgrade_purchased.connect(_on_upgrade_purchased)
@@ -84,6 +88,7 @@ func _on_test_start_button_pressed() -> void:
 	if root == null:
 		root = root_instance.duplicate()
 		root.set_minerals(root_instance.minerals)
+		root.set_obstacles(root_instance.obstacles)
 		root.position += Vector2(500, 0)
 		get_parent().add_child(root)
 
@@ -140,3 +145,7 @@ func _on_penetrate_rock_completed() -> void:
 
 func _on_mineral_spawner_minerals_initialized(minerals: Array[MineralOre]) -> void:
 	root_instance.set_minerals(minerals)
+
+
+func _on_mineral_spawner_obstacles_initialized(obstacles: Array[Obstacle]) -> void:
+	root_instance.set_obstacles(obstacles)

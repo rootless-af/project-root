@@ -1,12 +1,35 @@
 [gd_scene format=3 uid="uid://m28neimafqeu"]
 
 [ext_resource type="Script" uid="uid://mk4p5kksauwi" path="res://scripts/mineral_ore.gd" id="1_5gd4m"]
-[ext_resource type="Texture2D" uid="uid://v1g2gio2dlfr" path="res://icon.svg" id="2_rk2xv"]
+[ext_resource type="Texture2D" uid="uid://7eiaro87xx2m" path="res://assets/textures/minerals_and_obstacles/entivera_03.png" id="2_nine2"]
+[ext_resource type="Texture2D" uid="uid://b4iqdv4yqtcsi" path="res://assets/textures/minerals_and_obstacles/barbanium_03.png" id="3_kbria"]
+[ext_resource type="Texture2D" uid="uid://dn4fhax4r7dlv" path="res://assets/textures/minerals_and_obstacles/rihtocide_03.png" id="4_dsv42"]
+[ext_resource type="Texture2D" uid="uid://b1p7iyy1qrddc" path="res://assets/textures/minerals_and_obstacles/kviktorium_03.png" id="5_xohy2"]
+[ext_resource type="Texture2D" uid="uid://c1vnrlecl8bdc" path="res://assets/textures/minerals_and_obstacles/entivera_02.png" id="6_1mqip"]
+[ext_resource type="Texture2D" uid="uid://blrbysd5fqqd4" path="res://assets/textures/minerals_and_obstacles/barbanium_02.png" id="7_8iil0"]
+[ext_resource type="Texture2D" uid="uid://ieg5obnbn87l" path="res://assets/textures/minerals_and_obstacles/rihtocide_02.png" id="8_1qahk"]
+[ext_resource type="Texture2D" uid="uid://bvbsco0inf1st" path="res://assets/textures/minerals_and_obstacles/kviktorium_02.png" id="9_kq1fy"]
+[ext_resource type="Texture2D" uid="uid://jlf83byas2wd" path="res://assets/textures/minerals_and_obstacles/entivera_01.png" id="10_q137r"]
+[ext_resource type="Texture2D" uid="uid://c4ojmoywwo58c" path="res://assets/textures/minerals_and_obstacles/barbanium_01.png" id="11_g2u6a"]
+[ext_resource type="Texture2D" uid="uid://di30io1e3prjq" path="res://assets/textures/minerals_and_obstacles/rihtocide_01.png" id="12_hoge1"]
+[ext_resource type="Texture2D" uid="uid://deg15s0sx33pg" path="res://assets/textures/minerals_and_obstacles/kviktorium_01.png" id="13_3gtvu"]
 
 [node name="MineralOre" type="Node2D" unique_id=1686280603]
+texture_filter = 1
 script = ExtResource("1_5gd4m")
+entivera_texture = ExtResource("2_nine2")
+barbanium_texture = ExtResource("3_kbria")
+rihtoice_texture = ExtResource("4_dsv42")
+kviktorium_texture = ExtResource("5_xohy2")
+entivera_texture_75 = ExtResource("6_1mqip")
+barbanium_texture_75 = ExtResource("7_8iil0")
+rihtoice_texture_75 = ExtResource("8_1qahk")
+kviktorium_texture_75 = ExtResource("9_kq1fy")
+entivera_texture_35 = ExtResource("10_q137r")
+barbanium_texture_35 = ExtResource("11_g2u6a")
+rihtoice_texture_35 = ExtResource("12_hoge1")
+kviktorium_texture_35 = ExtResource("13_3gtvu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1236444070]
-texture = ExtResource("2_rk2xv")
-
-[node name="Timer" type="Timer" parent="." unique_id=2023041924]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_q137r")
