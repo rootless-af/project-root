@@ -10,7 +10,7 @@ var minerals = {
 }
 
 func _ready() -> void:
-	pass
+	mineral_amount_changed.emit(minerals)
 
 
 func get_minerals():

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dliby6xgc5o06"]
 
 [ext_resource type="Texture2D" uid="uid://cqqg8j250ibjl" path="res://assets/textures/misc/sky.jpg" id="1_di48r"]
+[ext_resource type="PackedScene" uid="uid://debj7alvyh4je" path="res://prefabs/wallet.tscn" id="1_lewwm"]
 [ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://prefabs/viewport_camera.tscn" id="1_u0w26"]
 [ext_resource type="PackedScene" uid="uid://dmf6gdhkwebhn" path="res://prefabs/background.tscn" id="2_di48r"]
 [ext_resource type="Resource" uid="uid://cara2cbioyihp" path="res://resources/music/background03/background03.tres" id="5_2ni8l"]
@@ -98,6 +99,12 @@ shape = SubResource("RectangleShape2D_t4pjw")
 [node name="AudioManager" type="Node" parent="." unique_id=510782242]
 script = ExtResource("7_2ni8l")
 
+[node name="StoreCanvas" type="CanvasLayer" parent="." unique_id=2031667489]
+layer = 10
+
+[node name="Store" parent="StoreCanvas" unique_id=419499197 instance=ExtResource("8_2ni8l")]
+handle_visible_width = 100.0
+
 [node name="ViewportCamera" parent="." unique_id=1012732459 instance=ExtResource("1_u0w26")]
 position = Vector2(640, 360)
 zoom_strength = 0.01
@@ -108,11 +115,11 @@ world_bottom = 9600.0
 print_camera_bounds = true
 planting_y = -125.0
 
-[node name="StoreCanvas" type="CanvasLayer" parent="." unique_id=2031667489]
-layer = 10
+[node name="CanvasLayer" type="CanvasLayer" parent="ViewportCamera" unique_id=1065406108]
 
-[node name="Store" parent="StoreCanvas" unique_id=419499197 instance=ExtResource("8_2ni8l")]
-handle_visible_width = 100.0
+[node name="Wallet" parent="ViewportCamera/CanvasLayer" unique_id=822626628 instance=ExtResource("1_lewwm")]
+z_index = 4096
+mouse_filter = 2
 
 [node name="Inventory" parent="." unique_id=1872189339 instance=ExtResource("10_0bbw8")]
 
@@ -135,5 +142,6 @@ tile_size = 16
 [connection signal="appled_upgrade" from="FireTree" to="StoreCanvas/Store" method="_on_fire_tree_appled_upgrade"]
 [connection signal="appled_upgrade" from="MetalTree" to="StoreCanvas/Store" method="_on_metal_tree_appled_upgrade"]
 [connection signal="appled_upgrade" from="AlienTree" to="StoreCanvas/Store" method="_on_alien_tree_appled_upgrade"]
+[connection signal="mineral_amount_changed" from="Inventory" to="ViewportCamera/CanvasLayer/Wallet" method="_on_inventory_mineral_amount_changed"]
 [connection signal="minerals_initialized" from="MineralSpawner" to="StoreCanvas/Store" method="_on_mineral_spawner_minerals_initialized"]
 [connection signal="obstacles_initialized" from="MineralSpawner" to="StoreCanvas/Store" method="_on_mineral_spawner_obstacles_initialized"]
