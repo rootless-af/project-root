@@ -13,6 +13,10 @@ enum RootType {
 @onready var root_lifetime: Timer = $RootLifetime
 #@onready var root_line: Line2D = $RootPath/RootLine
 
+# -- Health --
+@export var health: int = 1000
+var dead:= false
+
 # -- Growth --
 
 @export var growth_speed: float = 400.0;
@@ -59,6 +63,14 @@ var segments: Array[RootSegment] = [];
 var current_depth: float = 0.0;
 var total_length: float = 0.0;
 var is_growing: bool = false;
+
+
+# -- Mineral Mining --
+var minerals: Array[MineralOre] = []
+@export var mineral_detection_radius: float = 100.0
+var gather_amount := 3
+var gather_speed := 0.5
+var mining_operations: Array[MiningOperation] = []
 
 #var current_direction := Vector2(0,1);
 
@@ -117,6 +129,9 @@ func create_root_line() -> Line2D:
 	
 	add_child(line);
 	return line;
+
+func set_minerals(value: Array[MineralOre]) -> void:
+	minerals = value
 
 func _process(delta: float) -> void:
 	if not is_growing:
@@ -215,44 +230,51 @@ func calculate_growth_direction(tip: RootTip) -> Vector2:
 	return tip.direction;
 
 func create_branch(position: Vector2, parent_direction: Vector2) -> void:
-	if root_tips.size() >= max_active_tips:
-		return;
-	
-	var branch_direction := parent_direction.rotated(
-		randf_range(-0.8,0.8)
-	);
-	
-	branch_direction.y = abs(branch_direction.y);
-	
-	branch_direction = branch_direction.normalized();
-	var branch_line := create_root_line();
-	branch_line.add_point(position);	
-	
-	var branch := RootTip.new(
-		position,
-		branch_direction,
-		branch_line,
-		randf_range(min_depth,max_depth)
-	);
-	
-	root_tips.append(branch);
+	if not dead:
+		if root_tips.size() >= max_active_tips:
+			return;
+
+		var branch_direction := parent_direction.rotated(
+			randf_range(-0.8,0.8)
+		);
+
+		branch_direction.y = abs(branch_direction.y);
+
+		branch_direction = branch_direction.normalized();
+		var branch_line := create_root_line();
+		branch_line.add_point(position);	
+
+		var branch := RootTip.new(
+			position,
+			branch_direction,
+			branch_line,
+			randf_range(min_depth,max_depth)
+		);
+
+		root_tips.append(branch);
 
 func create_segment(tip: RootTip) -> void:
-	var segment := RootSegment.new(
-		tip.previous_position,
-		tip.position
-	);
-	
-	segments.append(segment);
-	
-	total_length += segment.length;
-	
-	# Render
-	tip.line.add_point(tip.position);
-	
-	# Branching
-	if randf() < split_chance:
-		create_branch(tip.position, tip.direction);
+	if not dead:
+		var segment := RootSegment.new(
+			tip.previous_position,
+			tip.position
+		);
+		
+		segments.append(segment);
+		
+		total_length += segment.length;
+		
+		# Render
+		tip.line.add_point(tip.position);
+		check_segment_for_minerals(segment, tip)
+		# Branching
+		if randf() < split_chance:
+			create_branch(tip.position, tip.direction);
+
+func die():
+	dead = true
+	stop_growth()
+
 
 func stop_growth() -> void:
 	
@@ -280,6 +302,40 @@ func all_tips_finished() -> bool:
 		
 	return true;
 
+
+func check_segment_for_minerals(segment: RootSegment,tip: RootTip) -> void:
+	var segment_start := to_global(segment.start)
+	var segment_end := to_global(segment.end)
+	for mineral in minerals:
+		if not is_instance_valid(mineral):
+			continue
+		var closest_point := Geometry2D.get_closest_point_to_segment(
+			mineral.global_position,
+			segment_start,
+			segment_end
+		)
+		var distance := mineral.global_position.distance_to(closest_point)
+
+		if distance <= mineral_detection_radius:
+			start_mining(mineral, tip)
+		
+
+func start_mining(mineral: MineralOre, tip: RootTip) -> void:
+	for operation in mining_operations:
+		if operation.mineral == mineral:
+			return
+	var operation := MiningOperation.new(mineral, self, gather_amount, gather_speed)
+	operation.mineral_damage.connect(_on_mineral_damage)
+	mining_operations.append(operation)
+
+func _on_mineral_damage(amount:int):
+	if health - amount == 0:
+		health = 0
+		die()
+	else:
+		health -= amount
+	print("[ROOT]: Damage Dealt " + str(amount) + ". Health remaining: " + str(health))
+
 class RootTip:
 	var position: Vector2;
 	var previous_position: Vector2;
@@ -306,3 +362,43 @@ class RootSegment:
 		start = start_position;
 		end = end_position;
 		length = start.distance_to(end);
+
+
+class MiningOperation:
+	var mineral: MineralOre
+	var timer: Timer
+	var root: Node2D
+	var gather_amount:int
+	
+	signal mineral_damage(damage:int)
+
+	func _init(mineral_to_mine: MineralOre, mining_root: Node2D, gather_amount:int, gather_speed:float) -> void:
+		mineral = mineral_to_mine
+		root = mining_root
+		self.gather_amount = gather_amount
+		
+		timer = Timer.new()
+		timer.one_shot = false
+		timer.wait_time = gather_speed
+
+		root.add_child(timer)
+		timer.timeout.connect(_on_timer_timeout)
+
+		timer.start()
+
+	func _on_timer_timeout() -> void:
+		if not is_instance_valid(mineral):
+			stop()
+			return
+
+		mineral.mine_material(gather_amount)
+		mineral_damage.emit(mineral.damage_dealt)
+		if mineral.amount <= 0:
+			stop()
+
+	func stop() -> void:
+		if is_instance_valid(timer):
+			timer.stop()
+			timer.queue_free()
+		
+		root.mining_operations.erase(self)

@@ -8,3 +8,5 @@ script = ExtResource("1_5gd4m")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1236444070]
 texture = ExtResource("2_rk2xv")
+
+[node name="Timer" type="Timer" parent="." unique_id=2023041924]

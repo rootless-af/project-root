@@ -5,8 +5,6 @@ signal upgrade_purchased(upgrade_with_cost: UpgradeWithCosts)
 signal upgrade_completed
 signal upgrade_started
 
-enum MineralTypes { ENTIVERA, BARBANIUM, RIHTOCIDE, KVIKTORIUM }
-
 @onready var tool_tip: ToolTip = $ToolTip
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var upgrade_level_label: Label = $UpgradeLevelLabel

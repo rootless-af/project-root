@@ -15,8 +15,8 @@ func _process(delta: float) -> void:
 
 
 func _on_pressed() -> void:
-	inventory.add_funds(MineralTypes.ENTIVERA, 50)
-	inventory.add_funds(MineralTypes.BARBANIUM, 50)
-	inventory.add_funds(MineralTypes.RIHTOCIDE, 50)
-	inventory.add_funds(MineralTypes.KVIKTORIUM, 50)
+	inventory.add_funds(GLOBALS.Minerals.Entivera, 50)
+	inventory.add_funds(GLOBALS.Minerals.Barbanium, 50)
+	inventory.add_funds(GLOBALS.Minerals.Rihtocide, 50)
+	inventory.add_funds(GLOBALS.Minerals.Kviktorium, 50)
 	rich_text_label.text = str(inventory.get_minerals())
