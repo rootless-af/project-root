@@ -14,10 +14,17 @@ texture_filter = 1
 
 [node name="ViewportCamera" parent="." unique_id=1012732459 instance=ExtResource("1_jgn6e")]
 position = Vector2(640, 360)
+zoom_strength = null
 min_zoom = 0.25
 max_zoom = 4.0
 is_sprint_toggle = true
 zoom_speed_multiplier = 0.6
+debug_messages = null
+planting_y = null
+planting_zoom = null
+planting_transition_duration = null
+planting_transition = null
+planting_ease = null
 
 [node name="Inventory" parent="." unique_id=1872189339 instance=ExtResource("3_e477q")]
 

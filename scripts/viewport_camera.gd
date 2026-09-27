@@ -122,6 +122,28 @@ func handle_planting_camera(delta: float) -> void:
 
 	zoom = Vector2(planting_zoom, planting_zoom)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if not can_alter_camera:
+		return
+
+	if is_in_planting_view or is_entering_planting_view:
+		return
+
+	if event is InputEventMouseButton and event.pressed:
+		match event.button_index:
+			MOUSE_BUTTON_WHEEL_UP:
+				zoom_camera(zoom_strength)
+
+			MOUSE_BUTTON_WHEEL_DOWN:
+				zoom_camera(-zoom_strength)
+
+
+func zoom_camera(amount: float) -> void:
+	var new_zoom := zoom.x + amount
+	new_zoom = clamp(new_zoom, min_zoom, max_zoom)
+
+	zoom = Vector2(new_zoom, new_zoom)
+
 func move_camera(motion:CameraMotion, delta: float):
 	is_moving = true;
 	var current_speed = speed * (1.0 / zoom.x) * zoom_speed_multiplier

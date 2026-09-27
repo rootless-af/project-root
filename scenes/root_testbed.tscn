@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d3ubhvxo26uf0" path="res://prefabs/inventory.tscn" id="10_0bbw8"]
 [ext_resource type="PackedScene" uid="uid://n5dxx2e4o678" path="res://prefabs/skill_tree.tscn" id="11_r6od6"]
 [ext_resource type="PackedScene" uid="uid://33excjcr7cbc" path="res://prefabs/game_manager.tscn" id="12_0bbw8"]
+[ext_resource type="PackedScene" uid="uid://d3erw76eelrs5" path="res://prefabs/menu.tscn" id="12_r6od6"]
 
 [sub_resource type="Gradient" id="Gradient_4bjpm"]
 offsets = PackedFloat32Array(0.32985553, 0.63322634)
@@ -98,6 +99,8 @@ script = ExtResource("7_05ihm")
 background_track = ExtResource("5_2ni8l")
 
 [node name="GameManager" parent="." unique_id=459991247 instance=ExtResource("12_0bbw8")]
+
+[node name="Menu" parent="." unique_id=796871995 instance=ExtResource("12_r6od6")]
 
 [connection signal="appled_upgrade" from="NormalTree" to="StoreCanvas/Store" method="_on_normal_tree_appled_upgrade"]
 [connection signal="appled_upgrade" from="WaterTree" to="StoreCanvas/Store" method="_on_water_tree_appled_upgrade"]
