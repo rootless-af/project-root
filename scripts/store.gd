@@ -32,7 +32,7 @@ var store_tween: Tween;
 func _ready() -> void:
 	position.x = get_closed_x();
 	
-	handle_area.input_event.connect(_on_handle_input_event);
+	#handle_area.input_event.connect(_on_handle_input_event);
 	
 	for child in buckets.get_children():
 		if child is Bucket:
