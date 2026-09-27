@@ -3,9 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bk7cw2giy0f8h" path="res://assets/textures/prototype_textures/sky-background-sky-and-clouds-background-1313033389.jpg" id="1_n0icb"]
 [ext_resource type="PackedScene" uid="uid://3kk5tnl4ya4j" path="res://prefabs/viewport_camera.tscn" id="1_u0w26"]
 [ext_resource type="PackedScene" uid="uid://dmf6gdhkwebhn" path="res://prefabs/background.tscn" id="2_di48r"]
-[ext_resource type="PackedScene" uid="uid://bweklfylimun5" path="res://prefabs/bucket.tscn" id="4_n0icb"]
 [ext_resource type="Resource" uid="uid://cara2cbioyihp" path="res://resources/music/background03/background03.tres" id="5_2ni8l"]
-[ext_resource type="Script" uid="uid://drr54ke5ijsig" path="res://scripts/music/music_manager.gd" id="6_gg5g5"]
 [ext_resource type="Script" uid="uid://bcpa32onbpr6h" path="res://scripts/music/audio_shots_manager.gd" id="7_2ni8l"]
 [ext_resource type="Script" uid="uid://b8g8udnyp4pyf" path="res://scripts/music/music_manager_tester.gd" id="7_05ihm"]
 [ext_resource type="PackedScene" uid="uid://do2p2ws4kn635" path="res://prefabs/seed_store.tscn" id="8_2ni8l"]
@@ -59,37 +57,6 @@ texture = SubResource("NoiseTexture2D_t4pjw")
 position = Vector2(0, 31)
 shape = SubResource("RectangleShape2D_t4pjw")
 
-[node name="WaterBucket" parent="." unique_id=544090845 instance=ExtResource("4_n0icb")]
-visible = false
-position = Vector2(1167, 111)
-bucket_type = 1
-
-[node name="NormalBucket" parent="." unique_id=944378662 instance=ExtResource("4_n0icb")]
-visible = false
-position = Vector2(985, 111)
-
-[node name="FireBucket" parent="." unique_id=361972041 instance=ExtResource("4_n0icb")]
-visible = false
-position = Vector2(780, 111)
-bucket_type = 2
-
-[node name="MetalBucket" parent="." unique_id=637135922 instance=ExtResource("4_n0icb")]
-visible = false
-position = Vector2(576, 111)
-bucket_type = 3
-
-[node name="AlienBucket" parent="." unique_id=1250978755 instance=ExtResource("4_n0icb")]
-visible = false
-position = Vector2(396, 111)
-bucket_type = 4
-
-[node name="MusicManager" type="Node" parent="." unique_id=1907065918]
-script = ExtResource("6_gg5g5")
-
-[node name="MusicManagerTester" type="Node" parent="." unique_id=45235182]
-script = ExtResource("7_05ihm")
-background_track = ExtResource("5_2ni8l")
-
 [node name="AudioManager" type="Node" parent="." unique_id=510782242]
 script = ExtResource("7_2ni8l")
 
@@ -102,8 +69,6 @@ layer = 10
 
 [node name="Store" parent="StoreCanvas" unique_id=419499197 instance=ExtResource("8_2ni8l")]
 handle_visible_width = 100.0
-
-[connection signal="input_event" from="Area2D" to="WaterBucket" method="_on_area_2d_input_event"]
 
 [node name="Inventory" parent="." unique_id=1872189339 instance=ExtResource("10_0bbw8")]
 
@@ -126,6 +91,10 @@ tree_name = "Metal"
 [node name="AlienTree" parent="." unique_id=1846135072 instance=ExtResource("11_r6od6")]
 position = Vector2(4235, -945)
 tree_name = "Alien"
+
+[node name="Node" type="Node" parent="." unique_id=2031323702]
+script = ExtResource("7_05ihm")
+background_track = ExtResource("5_2ni8l")
 
 [connection signal="appled_upgrade" from="NormalTree" to="StoreCanvas/Store" method="_on_normal_tree_appled_upgrade"]
 [connection signal="appled_upgrade" from="WaterTree" to="StoreCanvas/Store" method="_on_water_tree_appled_upgrade"]
