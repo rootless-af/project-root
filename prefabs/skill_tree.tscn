@@ -319,6 +319,16 @@ offset_right = 1262.0
 offset_bottom = 90.0
 text = "clear root"
 
+[node name="Label" type="Label" parent="." unique_id=316443929]
+offset_left = 472.0
+offset_top = 67.0
+offset_right = 643.0
+offset_bottom = 134.0
+theme_override_font_sizes/font_size = 48
+text = "Sample"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="mineral_amount_changed" from="." to="PlantSeedsUpgrade" method="_on_skill_tree_mineral_amount_changed"]
 [connection signal="upgrade_purchased" from="PlantSeedsUpgrade" to="." method="_on_growth_upgrade_upgrade_purchased"]
 [connection signal="upgrade_purchased" from="GatherResourcesUpgrade" to="." method="_on_growth_upgrade_upgrade_purchased"]

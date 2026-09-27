@@ -33,6 +33,12 @@ var store: Store;
 @export var bucket_type: BucketType = BucketType.NORMAL;
 @export var cost_per_seed: int = 100;
 
+var normal_upgrades:Array[Upgrade] = []
+var water_upgrades:Array[Upgrade] = []
+var fire_upgrades:Array[Upgrade] = []
+var metal_upgrades:Array[Upgrade] = []
+var alien_upgrades:Array[Upgrade] = []
+
 func _ready() -> void:
 	match(bucket_type):
 		BucketType.NORMAL:
@@ -63,19 +69,29 @@ func grab_seed() -> void:
 		push_error("Bucket has no store reference u dum dum!");
 		return;
 	
-	var seed := seed_scene.instantiate();
+	var seed:Seed = seed_scene.instantiate();
 	
-	match(bucket_type):
+	match bucket_type:
 		BucketType.NORMAL:
-			seed.seed_type = Seed.SeedType.NORMAL;
+			seed.seed_type = Seed.SeedType.NORMAL
+			for upgrade in normal_upgrades:
+				seed.normal_upgrades.append(upgrade.duplicate())
 		BucketType.WATER:
-			seed.seed_type = Seed.SeedType.WATER;
+			seed.seed_type = Seed.SeedType.WATER
+			for upgrade in water_upgrades:
+				seed.water_upgrades.append(upgrade.duplicate())
 		BucketType.FIRE:
-			seed.seed_type = Seed.SeedType.FIRE;
+			seed.seed_type = Seed.SeedType.FIRE
+			for upgrade in fire_upgrades:
+				seed.fire_upgrades.append(upgrade.duplicate())
 		BucketType.METAL:
-			seed.seed_type = Seed.SeedType.METAL;
+			seed.seed_type = Seed.SeedType.METAL
+			for upgrade in metal_upgrades:
+				seed.metal_upgrades.append(upgrade.duplicate())
 		BucketType.ALIEN:
-			seed.seed_type = Seed.SeedType.ALIEN;
+			seed.seed_type = Seed.SeedType.ALIEN
+			for upgrade in alien_upgrades:
+				seed.alien_upgrades.append(upgrade.duplicate())
 	
 	var world := get_tree().current_scene;
 	
@@ -94,3 +110,19 @@ func grab_seed() -> void:
 	
 	store.close_store();
 	camera.enter_planting_view();
+
+
+func _on_store_normal_tree_applied_upgrade(upgrade: Upgrade) -> void:
+	normal_upgrades.append(upgrade)
+
+func _on_store_water_tree_applied_upgrade(upgrade: Upgrade) -> void:
+	water_upgrades.append(upgrade)
+
+func _on_store_fire_tree_applied_upgrade(upgrade: Upgrade) -> void:
+	fire_upgrades.append(upgrade)
+
+func _on_store_metal_tree_applied_upgrade(upgrade: Upgrade) -> void:
+	metal_upgrades.append(upgrade)
+
+func _on_store_alien_tree_applied_upgrade(upgrade: Upgrade) -> void:
+	alien_upgrades.append(upgrade)

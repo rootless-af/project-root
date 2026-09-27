@@ -3,3 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://d1pn0awo34ut7" path="res://prefabs/root.tscn" id="1_kaexe"]
 
 [node name="Root" unique_id=1285881573 instance=ExtResource("1_kaexe")]
+growth_speed = 400.0
+max_active_tips = 1
+root_width = 50.0
+max_depth = 1000.0
+min_depth = 500.0

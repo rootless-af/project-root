@@ -19,13 +19,6 @@ zoom_speed_multiplier = 0.6
 
 [node name="Inventory" parent="." unique_id=1872189339 instance=ExtResource("3_e477q")]
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1795547942]
-offset_left = 991.0
-offset_top = -360.0
-offset_right = 1267.0
-offset_bottom = -130.0
-horizontal_alignment = 2
-
 [node name="SkillTree" parent="." unique_id=1946057991 instance=ExtResource("3_jgn6e")]
 position = Vector2(105, -610)
 

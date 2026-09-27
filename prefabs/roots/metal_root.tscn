@@ -6,7 +6,10 @@
 [node name="Root" unique_id=1285881573 instance=ExtResource("1_bbgio")]
 growth_speed = 400.0
 segment_length = 200.0
+max_active_tips = 1
 root_texture = ExtResource("2_5mrdh")
+root_width = 50.0
 randomness = 0.05
 root_type = 3
-min_depth = 5000.0
+max_depth = 3500.0
+min_depth = 2500.0
