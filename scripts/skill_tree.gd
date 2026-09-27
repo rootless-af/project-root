@@ -83,6 +83,7 @@ func test_upgrade(upgrade:Upgrade):
 func _on_test_start_button_pressed() -> void:
 	if root == null:
 		root = root_instance.duplicate()
+		root.set_minerals(root_instance.minerals)
 		root.position += Vector2(500, 0)
 		get_parent().add_child(root)
 
@@ -135,3 +136,7 @@ func _on_penetrate_clay_completed() -> void:
 
 func _on_penetrate_rock_completed() -> void:
 	penetrate_rock_speed_upgrade.disable(false)
+
+
+func _on_mineral_spawner_minerals_initialized(minerals: Array[MineralOre]) -> void:
+	root_instance.set_minerals(minerals)
