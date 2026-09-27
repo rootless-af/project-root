@@ -43,3 +43,5 @@ script = ExtResource("4_1ywih")
 min_zoom = 0.01
 
 [node name="RootTestbed" parent="." unique_id=1355742889 instance=ExtResource("7_vjnaj")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2003939629]

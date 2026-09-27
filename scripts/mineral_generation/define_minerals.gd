@@ -20,12 +20,11 @@ func define_material_richness(volume_noise_value: float, limit: float, threshold
 	
 	return richness
 	
-func couple_ore_vein(volume_noise_value: float, coordinates: Vector2i):
-	var mineral_type: GLOBALS.Minerals = define_mineral_type(volume_noise_value)
+func couple_ore_vein(volume_noise_value: float, coordinates: Vector2i, mineral_type: GLOBALS.Minerals):
 	var mineral_richness: float = 0.0
 	
 	if mineral_type == Minerals.None :
 		return {}
 		 
-	mineral_richness = define_material_richness(volume_noise_value, minerals_range[mineral_type].max, minerals_range[mineral_type].min)
+	mineral_richness = define_material_richness(volume_noise_value, minerals_range[mineral_type].max, minerals_range[mineral_type].min, )
 	return {"coordinates": coordinates, "noise_volume": volume_noise_value, "type": mineral_type, "richness": mineral_richness}
