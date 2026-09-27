@@ -1,20 +1,53 @@
 [gd_scene format=3 uid="uid://do2p2ws4kn635"]
 
+[ext_resource type="Script" uid="uid://cnyeetsqa3xsq" path="res://scripts/store.gd" id="1_6uu7c"]
 [ext_resource type="PackedScene" uid="uid://bweklfylimun5" path="res://prefabs/bucket.tscn" id="2_6uu7c"]
+[ext_resource type="Texture2D" uid="uid://v1g2gio2dlfr" path="res://icon.svg" id="2_opl07"]
 
-[node name="SeedStore" type="Node2D" unique_id=419499197]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4pjw"]
+size = Vector2(49, 289)
 
-[node name="Bucket" parent="." unique_id=544090845 instance=ExtResource("2_6uu7c")]
+[node name="Store" type="Node2D" unique_id=419499197]
+script = ExtResource("1_6uu7c")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=47192935]
+position = Vector2(639.5, 575.5)
+scale = Vector2(9.9921875, 2.2578127)
+texture = ExtResource("2_opl07")
+
+[node name="Handle" type="Sprite2D" parent="." unique_id=1939893923]
+modulate = Color(0, 0.007843138, 0.007843138, 1)
+position = Vector2(24.75, 575.5)
+scale = Vector2(0.38671875, 2.2578127)
+texture = ExtResource("2_opl07")
+
+[node name="Area2D" type="Area2D" parent="Handle" unique_id=1069961920]
+position = Vector2(-64, -63.999996)
+scale = Vector2(2.6122448, 0.44290656)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Handle/Area2D" unique_id=899645269]
+position = Vector2(24.5, 144.5)
+shape = SubResource("RectangleShape2D_t4pjw")
+
+[node name="Buckets" type="Node2D" parent="." unique_id=1731847054]
+
+[node name="NormalBucket" parent="Buckets" unique_id=544090845 instance=ExtResource("2_6uu7c")]
 position = Vector2(273, 583)
 
-[node name="Bucket2" parent="." unique_id=483295452 instance=ExtResource("2_6uu7c")]
+[node name="WaterBucket" parent="Buckets" unique_id=483295452 instance=ExtResource("2_6uu7c")]
 position = Vector2(475, 583)
+bucket_type = 1
 
-[node name="Bucket3" parent="." unique_id=783804066 instance=ExtResource("2_6uu7c")]
+[node name="FireBucket" parent="Buckets" unique_id=783804066 instance=ExtResource("2_6uu7c")]
 position = Vector2(668, 583)
+bucket_type = 2
 
-[node name="Bucket4" parent="." unique_id=30162254 instance=ExtResource("2_6uu7c")]
+[node name="MetalBucket" parent="Buckets" unique_id=30162254 instance=ExtResource("2_6uu7c")]
 position = Vector2(856, 583)
+bucket_type = 3
 
-[node name="Bucket5" parent="." unique_id=1571851925 instance=ExtResource("2_6uu7c")]
+[node name="AlienBucket" parent="Buckets" unique_id=1571851925 instance=ExtResource("2_6uu7c")]
 position = Vector2(1057, 583)
+bucket_type = 4
+
+[connection signal="input_event" from="Handle/Area2D" to="." method="_on_handle_input_event"]

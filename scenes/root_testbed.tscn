@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://drr54ke5ijsig" path="res://scripts/music/music_manager.gd" id="6_gg5g5"]
 [ext_resource type="Script" uid="uid://bcpa32onbpr6h" path="res://scripts/music/audio_shots_manager.gd" id="7_2ni8l"]
 [ext_resource type="Script" uid="uid://b8g8udnyp4pyf" path="res://scripts/music/music_manager_tester.gd" id="7_05ihm"]
+[ext_resource type="PackedScene" uid="uid://do2p2ws4kn635" path="res://prefabs/seed_store.tscn" id="8_2ni8l"]
 
 [sub_resource type="Gradient" id="Gradient_4bjpm"]
 offsets = PackedFloat32Array(0.32985553, 0.63322634)
@@ -34,9 +35,6 @@ position = Vector2(1467.0005, -1854.0001)
 scale = Vector2(24.391113, 14.884165)
 texture = ExtResource("1_n0icb")
 
-[node name="ViewportCamera" parent="." unique_id=1012732459 instance=ExtResource("1_u0w26")]
-position = Vector2(640, 360)
-
 [node name="Area2D" type="Area2D" parent="." unique_id=1847053134]
 position = Vector2(1153.5, 265.25)
 scale = Vector2(1, 0.9999999)
@@ -52,21 +50,26 @@ texture = SubResource("NoiseTexture2D_t4pjw")
 shape = SubResource("RectangleShape2D_t4pjw")
 
 [node name="WaterBucket" parent="." unique_id=544090845 instance=ExtResource("4_n0icb")]
+visible = false
 position = Vector2(1167, 111)
 bucket_type = 1
 
 [node name="NormalBucket" parent="." unique_id=944378662 instance=ExtResource("4_n0icb")]
+visible = false
 position = Vector2(985, 111)
 
 [node name="FireBucket" parent="." unique_id=361972041 instance=ExtResource("4_n0icb")]
+visible = false
 position = Vector2(780, 111)
 bucket_type = 2
 
 [node name="MetalBucket" parent="." unique_id=637135922 instance=ExtResource("4_n0icb")]
+visible = false
 position = Vector2(576, 111)
 bucket_type = 3
 
 [node name="AlienBucket" parent="." unique_id=1250978755 instance=ExtResource("4_n0icb")]
+visible = false
 position = Vector2(396, 111)
 bucket_type = 4
 
@@ -79,3 +82,11 @@ background_track = ExtResource("6_05ihm")
 
 [node name="AudioManager" type="Node" parent="." unique_id=510782242]
 script = ExtResource("7_2ni8l")
+
+[node name="ViewportCamera" parent="." unique_id=1012732459 instance=ExtResource("1_u0w26")]
+position = Vector2(640, 360)
+
+[node name="StoreCanvas" type="CanvasLayer" parent="." unique_id=2031667489]
+layer = 10
+
+[node name="Store" parent="StoreCanvas" unique_id=419499197 instance=ExtResource("8_2ni8l")]

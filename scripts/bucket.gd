@@ -1,3 +1,4 @@
+class_name Bucket
 extends Node2D
 
 enum BucketType {
@@ -11,7 +12,7 @@ enum BucketType {
 # -- Refs --
 @onready var bucket_sprite: Sprite2D = $BucketSprite
 @onready var bucket_area: Area2D = $Area2D
-
+var store: Store;
 
 
 # -- Resources --
@@ -58,6 +59,10 @@ func grab_seed() -> void:
 		push_error("Bucket has no seed scene u dummy!");
 		return;
 	
+	if store == null:
+		push_error("Bucket has no store reference u dum dum!");
+		return;
+	
 	var seed := seed_scene.instantiate();
 	
 	match(bucket_type):
@@ -72,7 +77,20 @@ func grab_seed() -> void:
 		BucketType.ALIEN:
 			seed.seed_type = Seed.SeedType.ALIEN;
 	
-	get_parent().add_child(seed);
-	var mouse_position := get_global_mouse_position();
+	var world := get_tree().current_scene;
+	
+	world.add_child(seed);
+	
+	var camera := get_viewport().get_camera_2d();
+	
+	if camera == null:
+		push_error("No active Camera2D!");
+		seed.queue_free();
+		return;
+	
+	var mouse_position := camera.get_global_mouse_position();
 	seed.global_position = mouse_position;
 	seed.start_drag(mouse_position); 
+	
+	store.close_store();
+	camera.enter_planting_view();

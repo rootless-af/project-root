@@ -208,6 +208,11 @@ func plant(ground_position: Vector2) -> void:
 	global_position = ground_position - Vector2.DOWN * seed_bottom_offset;
 	
 	AudioManager.play(seed_plant_sfx);
+	
+	var camera := get_viewport().get_camera_2d();
+	if camera:
+		camera.exit_planting_view(); 
+
 	spawn_root();
 
 func spawn_root() -> void:
