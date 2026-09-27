@@ -46,6 +46,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	particles.global_position = global_position + Vector2(758, 278);
+	if Input.is_action_pressed("toggle_store"):
+		toggle_store();
 
 func get_open_x() -> float:
 	return 0.0;
